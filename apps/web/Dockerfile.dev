@@ -1,0 +1,39 @@
+# Development Dockerfile for AI Job Chommie Web App
+# Optimized for development with hot reloading
+
+FROM node:18-alpine
+
+# Install development dependencies
+RUN apk add --no-cache curl bash
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files for better caching
+COPY package*.json ./
+COPY turbo.json ./
+COPY tsconfig.json ./
+
+# Copy workspace package files
+COPY apps/web/package*.json ./apps/web/
+COPY packages/shared/package*.json ./packages/shared/
+
+# Install dependencies
+RUN npm install
+
+# Copy source code (will be mounted as volume in docker-compose)
+COPY apps/web ./apps/web
+COPY packages/shared ./packages/shared
+
+# Expose port
+EXPOSE 3000
+
+# Set environment
+ENV NODE_ENV=development
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:3000/ || exit 1
+
+# Start development server with hot reloading
+CMD ["npm", "run", "dev", "--workspace=@aijobchommie/web"]

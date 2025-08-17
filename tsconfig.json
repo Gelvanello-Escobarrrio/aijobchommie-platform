@@ -56,10 +56,7 @@
       "path": "./packages/api"
     },
     {
-      "path": "./packages/web"
-    },
-    {
-      "path": "./packages/admin"
+      "path": "./apps/web"
     }
   ]
 }

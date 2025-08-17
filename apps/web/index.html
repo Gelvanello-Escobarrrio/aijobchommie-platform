@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logos/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="AI Job Chommie - Your intelligent job search companion for South Africa. Find your dream job with AI-powered matching." />
+    <meta name="keywords" content="job search, AI jobs, South Africa, career, employment, job matching" />
+    <meta name="author" content="AI Job Chommie" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aijobchommie.co.za/" />
+    <meta property="og:title" content="AI Job Chommie - Intelligent Job Search for South Africa" />
+    <meta property="og:description" content="Your AI companion for seamless job matching and career advancement in South Africa" />
+    <meta property="og:image" content="/logos/android-launchericon-512-512.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://aijobchommie.co.za/" />
+    <meta property="twitter:title" content="AI Job Chommie - Intelligent Job Search for South Africa" />
+    <meta property="twitter:description" content="Your AI companion for seamless job matching and career advancement in South Africa" />
+    <meta property="twitter:image" content="/logos/android-launchericon-512-512.png" />
+    
+    <!-- Theme and PWA -->
+    <meta name="theme-color" content="#00ffff" />
+    <link rel="apple-touch-icon" href="/logos/apple-launchericon-180-180.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    
+    <title>AI Job Chommie - Intelligent Job Search for South Africa</title>
+    
+    <!-- Loading Animation Styles -->
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(0, 255, 255, 0.3);
+        border-top: 4px solid #00ffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      .loading-text {
+        color: #00ffff;
+        font-family: 'Orbitron', monospace;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Fallback loading screen for users with JavaScript disabled -->
+      <div class="loading-container">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">⚡ Loading AI Job Chommie...</p>
+        <noscript>
+          <p style="color: #ff6b6b; margin-top: 20px;">
+            JavaScript is required to run this application.
+          </p>
+        </noscript>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

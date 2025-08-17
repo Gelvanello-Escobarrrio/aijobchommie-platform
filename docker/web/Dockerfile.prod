@@ -1,0 +1,71 @@
+# Multi-stage production Dockerfile for AI Job Chommie Web App
+# Optimized for production deployment with Nginx
+
+# =====================================
+# Stage 1: Build Stage
+# =====================================
+FROM node:18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+COPY turbo.json ./
+COPY tsconfig.json ./
+
+# Copy workspace packages
+COPY apps/web/package*.json ./apps/web/
+COPY packages/shared/package*.json ./packages/shared/
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
+COPY apps/web ./apps/web
+COPY packages/shared ./packages/shared
+
+# Build shared package first
+WORKDIR /app/packages/shared
+RUN npm run build
+
+# Build web application
+WORKDIR /app/apps/web
+RUN npm run build
+
+# =====================================
+# Stage 2: Production Stage with Nginx
+# =====================================
+FROM nginx:alpine AS production
+
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init curl
+
+# Create app user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S aijobchommie -u 1001
+
+# Copy built application
+COPY --from=builder /app/apps/web/dist /usr/share/nginx/html
+
+# Copy custom nginx configuration
+COPY docker/web/nginx.conf /etc/nginx/nginx.conf
+COPY docker/web/default.conf /etc/nginx/conf.d/default.conf
+
+# Create necessary directories and set permissions
+RUN mkdir -p /var/cache/nginx /var/log/nginx /var/run && \
+    chown -R aijobchommie:nodejs /var/cache/nginx /var/log/nginx /var/run /usr/share/nginx/html
+
+# Switch to non-root user for security
+USER aijobchommie
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3000/ || exit 1
+
+# Start Nginx
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["nginx", "-g", "daemon off;"]
