@@ -1,0 +1,408 @@
+version: '3.8'
+
+services:
+  # Production PostgreSQL Database
+  postgres-prod:
+    image: postgres:16-alpine
+    container_name: aijobchommie-postgres-prod
+    environment:
+      POSTGRES_DB: aijobchommie_prod
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+      - ./scripts/init-production-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d aijobchommie_prod"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+        reservations:
+          memory: 512M
+          cpus: '0.25'
+
+  # Production Redis Cache
+  redis-prod:
+    image: redis:7-alpine
+    container_name: aijobchommie-redis-prod
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_prod_data:/data
+      - ./docker/redis/redis-prod.conf:/usr/local/etc/redis/redis.conf:ro
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.25'
+        reservations:
+          memory: 128M
+          cpus: '0.1'
+
+  # Production API Server
+  api-prod:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile.prod
+    container_name: aijobchommie-api-prod
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@postgres-prod:5432/aijobchommie_prod
+      REDIS_URL: redis://redis-prod:6379
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      PAYSTACK_SECRET_KEY: ${PAYSTACK_SECRET_KEY}
+      PAYSTACK_PUBLIC_KEY: ${PAYSTACK_PUBLIC_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      HUGGINGFACE_API_KEY: ${HUGGINGFACE_API_KEY}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      FROM_EMAIL: ${FROM_EMAIL}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      API_BASE_URL: ${API_BASE_URL}
+      SENTRY_DSN: ${SENTRY_DSN}
+      LOG_LEVEL: info
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - api_uploads:/app/uploads
+      - api_logs:/app/logs
+    depends_on:
+      postgres-prod:
+        condition: service_healthy
+      redis-prod:
+        condition: service_healthy
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Production Web Application
+  web-prod:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile.prod
+    container_name: aijobchommie-web-prod
+    environment:
+      NODE_ENV: production
+      VITE_API_BASE_URL: ${API_BASE_URL}
+      VITE_PAYSTACK_PUBLIC_KEY: ${PAYSTACK_PUBLIC_KEY}
+      VITE_GA_TRACKING_ID: ${GOOGLE_ANALYTICS_ID}
+      VITE_FACEBOOK_APP_ID: ${FACEBOOK_APP_ID}
+      VITE_SENTRY_DSN: ${SENTRY_DSN_WEB}
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - api-prod
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Production Admin Dashboard
+  admin-prod:
+    build:
+      context: .
+      dockerfile: ./docker/admin/Dockerfile.prod
+    container_name: aijobchommie-admin-prod
+    environment:
+      NODE_ENV: production
+      VITE_API_BASE_URL: ${API_BASE_URL}
+      VITE_ADMIN_TITLE: "AI Job Chommie Admin"
+    ports:
+      - "127.0.0.1:3002:3000"
+    depends_on:
+      - api-prod
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Nginx Reverse Proxy
+  nginx-prod:
+    image: nginx:alpine
+    container_name: aijobchommie-nginx-prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx-prod.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/sites-enabled:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - nginx_logs:/var/log/nginx
+      - ./nginx/ssl-params.conf:/etc/nginx/ssl-params.conf:ro
+    depends_on:
+      - web-prod
+      - api-prod
+      - admin-prod
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+        reservations:
+          memory: 128M
+          cpus: '0.1'
+
+  # Production Monitoring - Prometheus
+  prometheus-prod:
+    image: prom/prometheus:v2.48.0
+    container_name: aijobchommie-prometheus-prod
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus-prod.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_prod_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=90d'
+      - '--web.enable-lifecycle'
+      - '--web.external-url=https://monitoring.aijobchommie.co.za/prometheus'
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Production Monitoring - Grafana
+  grafana-prod:
+    image: grafana/grafana:10.2.0
+    container_name: aijobchommie-grafana-prod
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
+      GF_SERVER_ROOT_URL: https://monitoring.aijobchommie.co.za/grafana
+      GF_SERVER_SERVE_FROM_SUB_PATH: true
+      GF_INSTALL_PLUGINS: grafana-piechart-panel,grafana-worldmap-panel
+      GF_ANALYTICS_REPORTING_ENABLED: false
+      GF_ANALYTICS_CHECK_FOR_UPDATES: false
+      GF_SMTP_ENABLED: true
+      GF_SMTP_HOST: ${SMTP_HOST}:${SMTP_PORT}
+      GF_SMTP_USER: ${SMTP_USER}
+      GF_SMTP_PASSWORD: ${SMTP_PASS}
+      GF_SMTP_FROM_ADDRESS: monitoring@aijobchommie.co.za
+    ports:
+      - "127.0.0.1:3001:3000"
+    volumes:
+      - grafana_prod_data:/var/lib/grafana
+      - ./docker/grafana/provisioning-prod:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus-prod
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Log Aggregation - Loki
+  loki-prod:
+    image: grafana/loki:2.9.0
+    container_name: aijobchommie-loki-prod
+    ports:
+      - "127.0.0.1:3100:3100"
+    volumes:
+      - loki_prod_data:/loki
+      - ./docker/loki/loki-prod.yml:/etc/loki/local-config.yaml:ro
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Backup Service
+  backup-service:
+    image: alpine:latest
+    container_name: aijobchommie-backup-service
+    environment:
+      DB_HOST: postgres-prod
+      DB_NAME: aijobchommie_prod
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      BACKUP_SCHEDULE: "0 2 * * *"  # Daily at 2 AM
+      BACKUP_RETENTION_DAYS: 30
+      S3_BUCKET: ${BACKUP_S3_BUCKET}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - backup_data:/backups
+      - ./scripts/backup-service.sh:/usr/local/bin/backup-service.sh:ro
+    depends_on:
+      - postgres-prod
+    networks:
+      - aijobchommie-prod-network
+    restart: unless-stopped
+    command: crond -f
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+        reservations:
+          memory: 128M
+          cpus: '0.1'
+
+volumes:
+  postgres_prod_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/aijobchommie/postgres
+  redis_prod_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/aijobchommie/redis
+  prometheus_prod_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/aijobchommie/prometheus
+  grafana_prod_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/aijobchommie/grafana
+  loki_prod_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/aijobchommie/loki
+  api_uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/aijobchommie/uploads
+  api_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/log/aijobchommie
+  nginx_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/log/nginx
+  backup_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/backups/aijobchommie
+
+networks:
+  aijobchommie-prod-network:
+    driver: bridge
+    name: aijobchommie-prod-network
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
