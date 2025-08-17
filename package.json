@@ -4,6 +4,7 @@
   "description": "AI-powered job search platform for South Africa - Complete SaaS solution",
   "private": true,
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
@@ -12,7 +13,9 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "type-check": "turbo run type-check",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean && rimraf node_modules",
+    "lint:fix": "turbo run lint:fix",
+    "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "db:generate": "turbo run db:generate",
@@ -22,15 +25,22 @@
     "docker:prod": "docker-compose -f docker-compose.prod.yml up"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "@typescript-eslint/eslint-plugin": "^6.13.0",
-    "@typescript-eslint/parser": "^6.13.0",
-    "eslint": "^8.54.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "prettier": "^3.1.0",
-    "turbo": "^1.11.0",
-    "typescript": "^5.3.0"
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "turbo": "^1.11.3",
+    "typescript": "^5.3.3"
   },
   "packageManager": "npm@10.2.0",
   "engines": {

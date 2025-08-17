@@ -1,0 +1,256 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: aijobchommie-postgres
+    environment:
+      POSTGRES_DB: aijobchommie
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_MULTIPLE_DATABASES: aijobchommie_test
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d aijobchommie"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis Cache & Session Store
+  redis:
+    image: redis:7-alpine
+    container_name: aijobchommie-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # MailHog (Email testing in development)
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: aijobchommie-mailhog
+    ports:
+      - "1025:1025"  # SMTP port
+      - "8025:8025"  # Web UI port
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # MinIO (S3-compatible storage for development)
+  minio:
+    image: minio/minio:RELEASE.2024-01-16T16-07-38Z
+    container_name: aijobchommie-minio
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: admin123456
+      MINIO_DOMAIN: localhost
+    ports:
+      - "9000:9000"  # API port
+      - "9001:9001"  # Console port
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # Elasticsearch (for advanced job search)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: aijobchommie-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Kibana (Elasticsearch management)
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.0
+    container_name: aijobchommie-kibana
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      xpack.security.enabled: false
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # Adminer (Database management)
+  adminer:
+    image: adminer:4.8.1
+    container_name: aijobchommie-adminer
+    ports:
+      - "8080:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # Redis Commander (Redis management)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: aijobchommie-redis-commander
+    environment:
+      REDIS_HOSTS: local:redis:6379
+      HTTP_USER: admin
+      HTTP_PASSWORD: admin
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # Prometheus (Metrics collection)
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: aijobchommie-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # Grafana (Metrics visualization)
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: aijobchommie-grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+      GF_INSTALL_PLUGINS: grafana-piechart-panel,grafana-worldmap-panel
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # Jaeger (Distributed tracing)
+  jaeger:
+    image: jaegertracing/all-in-one:1.51
+    container_name: aijobchommie-jaeger
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "14268:14268"  # Collector HTTP
+      - "14250:14250"  # Collector gRPC
+      - "6831:6831/udp"  # Agent UDP
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+
+  # Node.js Development Container (for running the API in container)
+  api-dev:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile.dev
+    container_name: aijobchommie-api-dev
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://admin:admin123@postgres:5432/aijobchommie
+      REDIS_URL: redis://redis:6379
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      STORAGE_PROVIDER: minio
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: admin123456
+      JWT_SECRET: dev-jwt-secret-change-in-production
+      JWT_REFRESH_SECRET: dev-refresh-secret-change-in-production
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./packages/api:/app/packages/api
+      - ./packages/shared:/app/packages/shared
+      - /app/packages/api/node_modules
+      - /app/packages/shared/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - aijobchommie-network
+    restart: unless-stopped
+    profiles:
+      - api-container  # Optional profile
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  elasticsearch_data:
+    driver: local
+  minio_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+networks:
+  aijobchommie-network:
+    driver: bridge
+    name: aijobchommie-network

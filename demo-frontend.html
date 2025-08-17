@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Job Chommie - South African Job Platform Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .flag {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .mission {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2::before {
+            content: '🎯';
+            margin-right: 10px;
+        }
+        
+        .jobs-list {
+            margin-bottom: 20px;
+        }
+        
+        .job-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .job-company {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .job-location {
+            color: #e67e22;
+            font-size: 0.9em;
+        }
+        
+        .urgent {
+            background: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        .footer strong {
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="flag">🇿🇦</span>AI Job Chommie</h1>
+            <p class="subtitle">World-class job search platform for South Africa</p>
+            <div class="mission">
+                Transforming lives through employment opportunities
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="card">
+                <h2>Entry-Level Jobs</h2>
+                <div class="jobs-list" id="jobsList">
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Loading jobs...</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="loadJobs()">🔄 Refresh Jobs</button>
+                    <button class="btn btn-warning" onclick="loadUrgentJobs()">⚡ Urgent Only</button>
+                    <button class="btn btn-success" onclick="loadCleaningJobs()">🧹 Cleaning Jobs</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Platform Statistics</h2>
+                <div class="stats-grid" id="statsGrid">
+                    <div class="loading" id="statsLoading">
+                        <div class="spinner"></div>
+                        <p>Loading statistics...</p>
+                    </div>
+                </div>
+                <button class="btn" onclick="loadStats()" style="margin-top: 20px;">📊 Refresh Stats</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>🎯 Mission:</strong> Prioritizing entry-level opportunities for South African job seekers</p>
+            <p><strong>🏢 Categories:</strong> General Labor • Cleaning • Security • Food Service • Transport</p>
+            <p><strong>📱 Features:</strong> Mobile-first • Multi-language • AI-powered matching • Quick Apply</p>
+            <br>
+            <p><strong>Built with ❤️ for South African job seekers</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3001';
+        
+        // Load all jobs
+        async function loadJobs() {
+            showLoading('loading');
+            try {
+                const response = await fetch(`${API_BASE}/api/jobs/entry-level`);
+                const data = await response.json();
+                displayJobs(data.data);
+            } catch (error) {
+                console.error('Error loading jobs:', error);
+                document.getElementById('jobsList').innerHTML = '<p style="color: red;">Error loading jobs. Make sure the demo server is running on port 3001.</p>';
+            }
+            hideLoading('loading');
+        }
+        
+        // Load urgent jobs only
+        async function loadUrgentJobs() {
+            showLoading('loading');
+            try {
+                const response = await fetch(`${API_BASE}/api/jobs/entry-level?urgent=true`);
+                const data = await response.json();
+                displayJobs(data.data);
+            } catch (error) {
+                console.error('Error loading urgent jobs:', error);
+                document.getElementById('jobsList').innerHTML = '<p style="color: red;">Error loading urgent jobs.</p>';
+            }
+            hideLoading('loading');
+        }
+        
+        // Load cleaning jobs only
+        async function loadCleaningJobs() {
+            showLoading('loading');
+            try {
+                const response = await fetch(`${API_BASE}/api/jobs/entry-level?category=cleaning`);
+                const data = await response.json();
+                displayJobs(data.data);
+            } catch (error) {
+                console.error('Error loading cleaning jobs:', error);
+                document.getElementById('jobsList').innerHTML = '<p style="color: red;">Error loading cleaning jobs.</p>';
+            }
+            hideLoading('loading');
+        }
+        
+        // Display jobs in the UI
+        function displayJobs(jobs) {
+            const jobsList = document.getElementById('jobsList');
+            
+            if (jobs.length === 0) {
+                jobsList.innerHTML = '<p>No jobs found matching the criteria.</p>';
+                return;
+            }
+            
+            const jobsHTML = jobs.map(job => `
+                <div class="job-item">
+                    <div class="job-title">
+                        ${job.title}
+                        ${job.urgentHire ? '<span class="urgent">URGENT</span>' : ''}
+                    </div>
+                    <div class="job-company">${job.company}</div>
+                    <div class="job-location">📍 ${job.location}</div>
+                    <div style="margin-top: 8px; font-size: 0.9em;">
+                        <strong>💰 ${job.salary}</strong> • 
+                        <span style="color: #3498db;">${job.applicationCount} applications</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            jobsList.innerHTML = jobsHTML;
+        }
+        
+        // Load platform statistics
+        async function loadStats() {
+            showLoading('statsLoading');
+            try {
+                const response = await fetch(`${API_BASE}/api/stats`);
+                const data = await response.json();
+                displayStats(data.data);
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+                document.getElementById('statsGrid').innerHTML = '<p style="color: red;">Error loading statistics.</p>';
+            }
+            hideLoading('statsLoading');
+        }
+        
+        // Display statistics in the UI
+        function displayStats(stats) {
+            const statsGrid = document.getElementById('statsGrid');
+            
+            const statsHTML = `
+                <div class="stat-item">
+                    <div class="stat-number">${stats.totalJobs.toLocaleString()}</div>
+                    <div class="stat-label">Total Jobs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${stats.entryLevelJobs.toLocaleString()}</div>
+                    <div class="stat-label">Entry-Level</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${stats.urgentJobs}</div>
+                    <div class="stat-label">Urgent Jobs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${stats.activeJobSeekers.toLocaleString()}</div>
+                    <div class="stat-label">Job Seekers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${stats.successfulPlacements.toLocaleString()}</div>
+                    <div class="stat-label">Successful Placements</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${stats.averageResponseTime}</div>
+                    <div class="stat-label">Avg Response</div>
+                </div>
+            `;
+            
+            statsGrid.innerHTML = statsHTML;
+        }
+        
+        // Utility functions
+        function showLoading(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        
+        function hideLoading(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        
+        // Load initial data when page loads
+        window.addEventListener('load', () => {
+            loadJobs();
+            loadStats();
+        });
+    </script>
+</body>
+</html>
