@@ -133,6 +133,7 @@ function App() {
           <meta name="author" content="AI Job Chommie" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#00ffff" />
+          <meta name="facebook-domain-verification" content="vhfn9uvz4i239v02vk3pk7muv7ncob" />
           <link rel="canonical" href="https://aijobchommie.co.za" />
           
           {/* Open Graph / Facebook */}
