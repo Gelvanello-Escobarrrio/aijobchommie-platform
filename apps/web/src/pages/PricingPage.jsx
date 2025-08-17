@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import ParticleSystem from '../components/ParticleSystem';
 import GeometricBackground from '../components/GeometricBackground';
 import NeonEmoji from '../components/NeonEmoji';
+import { getFeatureConfig } from '../config/featureFlags';
 
 const PricingPage = () => {
   return (
@@ -43,6 +44,72 @@ const PricingPage = () => {
               <div className="fade-in" style={{ animationDelay: '0.4s' }}>
                 <div className="stat-number" style={{ color: 'var(--primary-magenta)' }}>7</div>
                 <div className="stat-label">Day Money-Back</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Department of Labour Compliance Notice */}
+      <section className="section" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.05), rgba(255, 0, 255, 0.05))', border: '1px solid rgba(255, 107, 0, 0.2)', borderRadius: '15px', margin: '0 var(--space-lg) var(--space-4xl)' }}>
+        <div className="container">
+          <div className="fade-in" style={{ textAlign: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>
+              <NeonEmoji type="warning" size={24} color="orange" intensity="high" />
+              <h3 style={{ color: 'var(--neon-orange)', margin: 0 }}>Legal Compliance Notice</h3>
+              <NeonEmoji type="warning" size={24} color="orange" intensity="high" />
+            </div>
+            <div style={{ maxWidth: '900px', margin: '0 auto', lineHeight: '1.6' }}>
+              <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: 'var(--space-md)' }}>
+                <strong style={{ color: 'var(--neon-orange)' }}>Important:</strong> AI Job Chommie is currently in the process of registering as a <strong>Temporary Employment Agent (TEA)</strong> with the South African Department of Labour as required by law.
+              </p>
+              <div className="grid grid-2" style={{ gap: 'var(--space-lg)', textAlign: 'left', marginBottom: 'var(--space-md)' }}>
+                <div>
+                  <h4 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                    <NeonEmoji type="gear" size={16} color="cyan" intensity="medium" />
+                    Current Status
+                  </h4>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                      <NeonEmoji type="checkmark" size={14} color="lime" intensity="medium" />
+                      Platform development: Complete
+                    </li>
+                    <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                      <span style={{ color: 'var(--neon-orange)' }}>⏳</span>
+                      TEA registration: In progress
+                    </li>
+                    <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                      <span style={{ color: 'var(--neon-orange)' }}>⏳</span>
+                      Job placement services: Pending approval
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                    <NeonEmoji type="shield" size={16} color="magenta" intensity="medium" />
+                    What This Means
+                  </h4>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                      <NeonEmoji type="info" size={14} color="blue" intensity="medium" />
+                      Job search tools: Available for preview
+                    </li>
+                    <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                      <NeonEmoji type="info" size={14} color="blue" intensity="medium" />
+                      Worker placement: Coming soon
+                    </li>
+                    <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                      <NeonEmoji type="info" size={14} color="blue" intensity="medium" />
+                      Full compliance: Expected Q2 2024
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div style={{ background: 'rgba(0, 255, 255, 0.1)', padding: 'var(--space-md)', borderRadius: '10px', border: '1px solid rgba(0, 255, 255, 0.2)' }}>
+                <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--primary-cyan)' }}>
+                  <NeonEmoji type="info" size={16} color="cyan" intensity="medium" />
+                  <strong> Stay Updated:</strong> We're committed to full legal compliance. Subscribe to receive notifications when our TEA registration is complete and all services become available.
+                </p>
               </div>
             </div>
           </div>

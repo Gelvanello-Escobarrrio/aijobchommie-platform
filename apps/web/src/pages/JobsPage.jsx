@@ -11,6 +11,7 @@ import {
   subscribeToJobUpdates,
   getJobStats 
 } from '../services/jobService';
+import { canUserAccessFeature, getComingSoonMessage } from '../config/featureFlags';
 
 const JobsPage = () => {
   const navigate = useNavigate();
@@ -150,6 +151,81 @@ const JobsPage = () => {
     { id: 'saved', label: 'Saved', count: jobs.filter(j => j.is_saved).length },
     { id: 'applied', label: 'Applied', count: jobs.filter(j => j.is_applied).length }
   ];
+
+  // Check if user can access job search features
+  const canAccessJobSearch = canUserAccessFeature('userFeatures.jobSearch');
+  const comingSoonMessage = getComingSoonMessage('userFeatures.jobSearch');
+
+  // If users can't access job search, show coming soon page
+  if (!canAccessJobSearch) {
+    return (
+      <div className="min-h-screen px-4 py-6 pb-24 flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center max-w-md mx-auto"
+        >
+          <button onClick={() => navigate(-1)} className="absolute top-6 left-6 text-neon-cyan text-2xl">←</button>
+          
+          <motion.div
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-8xl mb-8"
+          >
+            🚧
+          </motion.div>
+          
+          <h1 className="text-3xl font-bold text-neon-cyan mb-4">Coming Soon!</h1>
+          <p className="text-lg text-gray-300 mb-8">
+            {comingSoonMessage}
+          </p>
+          
+          <div className="bg-gray-800/50 p-6 rounded-lg border border-neon-cyan/30 mb-8">
+            <h3 className="text-xl font-semibold text-neon-pink mb-3">What's Coming:</h3>
+            <ul className="text-left space-y-2 text-gray-300">
+              <li>🔍 AI-powered job search</li>
+              <li>⚡ Instant job matching</li>
+              <li>📱 Quick apply system</li>
+              <li>🎯 Personalized job alerts</li>
+              <li>📊 Career analytics</li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <p className="text-sm text-gray-400 mb-4">
+              Meanwhile, you can:
+            </p>
+            <div className="flex gap-3 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/profile')}
+                className="bg-gradient-to-r from-neon-cyan to-neon-blue text-black px-6 py-2 rounded-full font-medium"
+              >
+                Setup Profile
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/pricing')}
+                className="border border-neon-cyan text-neon-cyan px-6 py-2 rounded-full font-medium hover:bg-neon-cyan hover:text-black transition-all"
+              >
+                View Pricing
+              </motion.button>
+            </div>
+          </div>
+          
+          <motion.div
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="mt-8 text-sm text-gray-500"
+          >
+            We're working hard to bring you the best job search experience!
+          </motion.div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen px-4 py-6 pb-24">
