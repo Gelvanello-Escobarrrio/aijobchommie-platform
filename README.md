@@ -1,4 +1,4 @@
-# 🚀 AI Job Chommie Platform
+AI Job Chommie Platform
 
 > **AI-powered job search platform built for South Africa** - A complete SaaS solution combining intelligent job matching, seamless applications, and integrated payments.
 
@@ -8,30 +8,30 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
-## 🌟 Features
+Features
 
-### For Job Seekers
-- 🤖 **AI-Powered Job Matching** - Intelligent recommendations based on skills, experience, and preferences
-- 📄 **Smart Resume Analysis** - AI-driven resume optimization and keyword matching
-- 🎯 **Personalized Job Alerts** - Real-time notifications for relevant opportunities
-- 💼 **Application Tracking** - Complete application lifecycle management
-- 📊 **Career Analytics** - Track your job search progress and success metrics
-- 💳 **Premium Subscriptions** - Advanced features with Paystack integration
+For Job Seekers
+-  **AI-Powered Job Matching** - Intelligent recommendations based on skills, experience, and preferences
+-  **Smart Resume Analysis** - AI-driven resume optimization and keyword matching
+-  **Personalized Job Alerts** - Real-time notifications for relevant opportunities
+-  **Application Tracking** - Complete application lifecycle management
+-  **Career Analytics** - Track your job search progress and success metrics
+-  **Premium Subscriptions** - Advanced features with Paystack integration
 
-### For Employers
-- 🏢 **Company Profiles** - Showcase your organization and culture
-- 📝 **Job Posting Management** - Easy-to-use job creation and management tools
-- 👥 **Candidate Screening** - AI-assisted candidate evaluation and ranking
-- 📈 **Hiring Analytics** - Track job performance and candidate quality
-- 💰 **Flexible Pricing** - Pay-per-post or subscription models
+ For Employers
+-  **Company Profiles** - Showcase your organization and culture
+-  **Job Posting Management** - Easy-to-use job creation and management tools
+-  **Candidate Screening** - AI-assisted candidate evaluation and ranking
+-  **Hiring Analytics** - Track job performance and candidate quality
+-  **Flexible Pricing** - Pay-per-post or subscription models
 
-### For Administrators
-- 🛠 **Platform Management** - Complete admin dashboard for system oversight
-- 📊 **Advanced Analytics** - User engagement, job performance, and revenue metrics
-- 🔐 **User Management** - Account administration and support tools
-- 💸 **Payment Oversight** - Transaction monitoring and financial reporting
+ For Administrators
+-  **Platform Management** - Complete admin dashboard for system oversight
+-  **Advanced Analytics** - User engagement, job performance, and revenue metrics
+-  **User Management** - Account administration and support tools
+-  **Payment Oversight** - Transaction monitoring and financial reporting
 
-## 🏗 Architecture
+Architecture
 
 This is a **monorepo** built with modern technologies and best practices:
 
@@ -47,7 +47,7 @@ aijobchommie-platform/
 └── .github/workflows # CI/CD pipelines
 ```
 
-## 🛠 Technology Stack
+Technology Stack
 
 ### Backend (`packages/api`)
 - **Runtime**: Node.js 18+ with TypeScript
@@ -83,7 +83,7 @@ aijobchommie-platform/
 - **Utilities**: Common functions and helpers
 - **Validation**: Zod schemas for data validation
 
-## 🚀 Quick Start
+Quick Start
 
 ### Prerequisites
 - Node.js 18.17.0 or higher
@@ -133,7 +133,7 @@ This will start:
 npm run docker:dev
 ```
 
-## 📚 Development
+Development
 
 ### Available Scripts
 
@@ -187,7 +187,7 @@ packages/
     └── utils/          # Common utilities
 ```
 
-## 🌍 South African Market Focus
+South African Market Focus
 
 This platform is specifically designed for the South African job market:
 
@@ -197,7 +197,7 @@ This platform is specifically designed for the South African job market:
 - **Local Employment Laws**: Compliance with SA labor regulations
 - **Mobile-First Design**: Optimized for South African mobile usage patterns
 
-## 🔒 Security Features
+Security Features
 
 - **Authentication**: JWT tokens with refresh mechanisms
 - **Authorization**: Role-based access control (RBAC)
@@ -208,7 +208,7 @@ This platform is specifically designed for the South African job market:
 - **File Upload Security**: Type validation and size limits
 - **Password Security**: Bcrypt hashing with strong policies
 
-## 📈 Performance Optimizations
+Performance Optimizations
 
 - **Caching Strategy**: Redis for session and data caching
 - **Database Indexing**: Optimized queries with proper indexing
@@ -217,7 +217,7 @@ This platform is specifically designed for the South African job market:
 - **Bundle Analysis**: Webpack bundle analyzer integration
 - **Lazy Loading**: Components and routes loaded on demand
 
-## 🧪 Testing
+Testing
 
 We maintain high test coverage across all packages:
 
@@ -235,7 +235,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-## 🚀 Deployment
+Deployment
 
 ### Production Build
 
@@ -260,7 +260,7 @@ See `.env.example` for required environment variables:
 - **Storage**: File upload configurations
 - **Email**: SMTP settings for notifications
 
-## 🤝 Contributing
+Contributing
 
 We welcome contributions! Please see our [Contributing Guide](./docs/CONTRIBUTING.md) for details.
 
@@ -271,17 +271,17 @@ We welcome contributions! Please see our [Contributing Guide](./docs/CONTRIBUTIN
 5. Ensure all tests pass
 6. Submit a pull request
 
-## 📝 License
+License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+Support
 
 - **Documentation**: [docs/](./docs/)
 - **Issues**: [GitHub Issues](https://github.com/FernandoSteyn/aijobchommie-platform/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/FernandoSteyn/aijobchommie-platform/discussions)
 
-## 🏆 Acknowledgments
+Acknowledgments
 
 - Built with ❤️ for the South African job market
 - Powered by cutting-edge AI technology
