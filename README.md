@@ -172,7 +172,7 @@ DELETE /files/:id              # Delete file
 POST   /files/analyze-resume   # AI resume analysis
 ```
 
-#### ⚙ **Admin Endpoints**
+####  **Admin Endpoints**
 ```http
 GET    /admin/dashboard        # Admin dashboard data
 GET    /admin/users            # Manage users
@@ -289,7 +289,7 @@ GET /api/v1/jobs/search?q=react+developer&location=cape+town&salary_min=40000&ai
 | 429  | Too Many Requests | Rate limit exceeded |
 | 500  | Internal Server Error | Server error |
 
-### 🛡 **API Security & Rate Limiting**
+###  **API Security & Rate Limiting**
 
 - **Rate Limits**: 1000 requests per 15 minutes per IP
 - **Authentication**: JWT with 24h access tokens, 7d refresh tokens
@@ -336,7 +336,7 @@ Technology Stack
 
 ##  **Quick Start**
 
-### ⚙ **Prerequisites**
+###  **Prerequisites**
 - **Node.js** 18.17.0+ ([Download](https://nodejs.org/))
 - **npm** 9.6.7+ (comes with Node.js)
 - **Docker** (optional) ([Download](https://docker.com/))
@@ -377,7 +377,7 @@ Your world-class AI job platform is now running:
 -  **Web App**: http://localhost:3000 - Main SaaS application
 -  **API Server**: http://localhost:3001 - RESTful API with AI features
 -  **API Docs**: http://localhost:3001/api/v1 - Interactive API documentation
-- ⚙ **Health Check**: http://localhost:3001/health - System status
+-  **Health Check**: http://localhost:3001/health - System status
 
 ###  **Docker Quick Start**
 
