@@ -1,0 +1,376 @@
+/* 🎯 STRATEGIC ADVERTISEMENT BANNER STYLES */
+/* God-tier ad placement with cyberpunk aesthetics */
+
+.ad-banner {
+  font-family: var(--font-primary);
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* Hero Overlay Ad - Prime Real Estate */
+.ad-hero-overlay {
+  animation: heroAdEntrance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  backdrop-filter: blur(20px) saturate(150%);
+}
+
+@keyframes heroAdEntrance {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.ad-hero-overlay:hover {
+  transform: translate(-50%, -5px) scale(1.02) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 255, 255, 0.4),
+    0 0 80px rgba(255, 0, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Floating Corner Ad - Always Visible */
+.ad-floating-corner {
+  animation: floatingPulse 3s ease-in-out infinite alternate;
+  backdrop-filter: blur(15px) saturate(130%);
+  box-shadow: 
+    -10px -10px 30px rgba(0, 255, 255, 0.1),
+    10px 10px 30px rgba(255, 0, 255, 0.1);
+}
+
+@keyframes floatingPulse {
+  0% {
+    transform: translateY(0px) scale(1);
+    box-shadow: 
+      -10px -10px 30px rgba(0, 255, 255, 0.1),
+      10px 10px 30px rgba(255, 0, 255, 0.1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      -15px -15px 40px rgba(0, 255, 255, 0.2),
+      15px 15px 40px rgba(255, 0, 255, 0.2);
+  }
+}
+
+.ad-floating-corner:hover {
+  animation-play-state: paused;
+  transform: translateY(-12px) scale(1.05) rotateX(5deg) !important;
+}
+
+/* Section Break Ad - Content Integration */
+.ad-section-break {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 40, 80, 0.9) 0%,
+    rgba(20, 0, 60, 0.8) 50%,
+    rgba(0, 40, 80, 0.9) 100%
+  );
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(25px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ad-section-break::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--primary-cyan),
+    var(--primary-magenta),
+    var(--accent-lime),
+    var(--accent-violet)
+  );
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+.ad-section-break:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 255, 255, 0.3),
+    0 0 100px rgba(255, 0, 255, 0.2);
+}
+
+/* Sidebar Sticky Ad - Professional Sidebar */
+.ad-sidebar-sticky {
+  background: linear-gradient(
+    145deg,
+    rgba(10, 25, 40, 0.95) 0%,
+    rgba(25, 10, 40, 0.9) 100%
+  );
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.ad-sidebar-sticky:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  transform: translateX(-5px);
+  box-shadow: 5px 0 25px rgba(0, 255, 255, 0.3);
+}
+
+/* Footer Promo Ad - Call to Action */
+.ad-footer-promo {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 20, 40, 0.8) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 2.5rem;
+  backdrop-filter: blur(30px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-footer-promo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.ad-footer-promo:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  transform: scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 255, 255, 0.4),
+    inset 0 0 40px rgba(255, 0, 255, 0.1);
+}
+
+/* Mobile Banner Ad - Mobile Optimized */
+.ad-mobile-banner {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 20, 40, 0.9) 100%
+  );
+  border-top: 2px solid rgba(0, 255, 255, 0.4);
+  backdrop-filter: blur(20px) saturate(150%);
+  padding: 0.75rem;
+  animation: mobileSlideUp 0.5s ease-out;
+}
+
+@keyframes mobileSlideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ad-mobile-banner .ad-container {
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Ad Content Styling */
+.ad-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(10, 20, 30, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ad-container:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+}
+
+.ad-container h3 {
+  font-family: var(--font-heading);
+  color: var(--primary-cyan);
+  text-shadow: 0 0 10px currentColor;
+  margin-bottom: 0.5rem;
+}
+
+.ad-container p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.ad-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ad-container a:hover h3 {
+  text-shadow: 
+    0 0 15px currentColor,
+    0 0 25px currentColor;
+}
+
+/* CTA Button Styling */
+.ad-container span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ad-container span:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* Icon Styling */
+.ad-container .flex-shrink-0 {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.ad-container:hover .flex-shrink-0 {
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ad-hero-overlay {
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    transform: none;
+    z-index: 45;
+  }
+  
+  .ad-hero-overlay:hover {
+    transform: translateY(-3px) !important;
+  }
+  
+  .ad-floating-corner {
+    width: 280px;
+    bottom: 80px;
+    right: 10px;
+  }
+  
+  .ad-section-break {
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+  
+  .ad-footer-promo {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ad-hero-overlay {
+    top: 70px;
+    left: 5px;
+    right: 5px;
+  }
+  
+  .ad-floating-corner {
+    width: 260px;
+    bottom: 70px;
+    right: 5px;
+  }
+  
+  .ad-container h3 {
+    font-size: 1rem;
+  }
+  
+  .ad-container p {
+    font-size: 0.8rem;
+  }
+  
+  .ad-container span {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* High Performance Optimizations */
+.ad-banner {
+  contain: layout style paint;
+  will-change: transform, opacity, box-shadow;
+}
+
+.ad-container {
+  contain: layout style;
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
+}
+
+/* Accessibility Enhancements */
+.ad-banner:focus-within {
+  outline: 3px solid var(--primary-cyan);
+  outline-offset: 3px;
+}
+
+.ad-container a:focus {
+  outline: 2px solid var(--primary-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .ad-hero-overlay,
+  .ad-floating-corner,
+  .ad-section-break,
+  .ad-mobile-banner {
+    animation: none !important;
+  }
+  
+  .ad-banner {
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* Print Styles - Hide ads in print */
+@media print {
+  .ad-banner {
+    display: none !important;
+  }
+}
