@@ -1,6 +1,9 @@
-/* 🔥 AI JOB CHOMMIE - GOD-TIER 3D NEON CYBERPUNK EXPERIENCE 🔥 */
-/* ⚡ SOUTH AFRICAN PRIDE - WORLD-CLASS PROGRAMMING ⚡ */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@100;300;400;500;700;900&family=Rajdhani:wght@200;300;400;500;600;700&family=Share+Tech+Mono:wght@400&display=swap');
+/* 🔥 AI JOB CHOMMIE - WORLD-CLASS PREMIUM METALLIC EXPERIENCE 🔥 */
+/* ⚡ SOUTH AFRICAN PRIDE - ENTERPRISE-GRADE DESIGN SYSTEM ⚡ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Orbitron:wght@100;300;400;500;700;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@import './premium-theme.css';
+@import './micro-interactions.css';
+@import './responsive.css';
 @import './enhancedHero.css';
 
 :root {

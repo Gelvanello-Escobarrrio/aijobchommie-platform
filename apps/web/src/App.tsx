@@ -34,6 +34,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 // Core Components
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingScreen from './components/LoadingScreen';
+import Navigation from './components/Navigation';
 
 // Loading fallback for page transitions
 const PageLoadingFallback = () => (
