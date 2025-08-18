@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://github.com/FernandoSteyn/aijobchommie-platform/assets/logos/aijobchommie-logo.png" alt="AI Job Chommie" width="200" height="200" />
   
-  # 🚀 AI Job Chommie Platform
+  #  AI Job Chommie Platform
   
   ### **World-Class AI-Powered Job Search Platform for South Africa**
   
@@ -18,59 +18,59 @@
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
   [![Made in South Africa](https://img.shields.io/badge/Made%20in-South%20Africa-green?style=for-the-badge&flag=🇿🇦)](https://en.wikipedia.org/wiki/South_Africa)
   
-  [🌟 **Live Demo**](https://aijobchommie.co.za) • [📚 **API Docs**](#-restful-api-documentation) • [🚀 **Get Started**](#-quick-start) • [📖 **Full Docs**](./docs/)
+  [ **Live Demo**](https://aijobchommie.co.za) • [📚 **API Docs**](#-restful-api-documentation) • [🚀 **Get Started**](#-quick-start) • [📖 **Full Docs**](./docs/)
   
 </div>
 
 ---
 
-## 🌍 **Overview**
+##  **Overview**
 
 AI Job Chommie Platform is a **world-class, enterprise-grade SaaS solution** that revolutionizes job searching and recruitment in South Africa. Built with cutting-edge AI technology and modern web architecture, this platform serves three distinct user groups with tailored experiences:
 
-- 🔍 **Job Seekers**: AI-powered job matching, resume optimization, and career insights
-- 🏢 **Employers**: Intelligent candidate screening, job posting management, and hiring analytics
-- ⚙️ **Administrators**: Comprehensive platform management with advanced analytics
+-  **Job Seekers**: AI-powered job matching, resume optimization, and career insights
+-  **Employers**: Intelligent candidate screening, job posting management, and hiring analytics
+- ⚙ **Administrators**: Comprehensive platform management with advanced analytics
 
-### 🎯 **Why AI Job Chommie?**
+###  **Why AI Job Chommie?**
 
 - **🇿🇦 South African Focus**: Built specifically for the SA job market with local payment integration (Paystack)
-- **🤖 AI-Powered**: Advanced OpenAI and Hugging Face integration for intelligent job matching
-- **⚡ Lightning Fast**: Modern React + TypeScript frontend with optimized performance
-- **🛡️ Enterprise Security**: JWT authentication, role-based access, and comprehensive data protection
-- **📱 Mobile-First**: Responsive design optimized for South African mobile usage patterns
-- **🚀 Production-Ready**: Complete Docker infrastructure with monitoring and analytics
+- ** AI-Powered**: Advanced OpenAI and Hugging Face integration for intelligent job matching
+- ** Lightning Fast**: Modern React + TypeScript frontend with optimized performance
+- ** Enterprise Security**: JWT authentication, role-based access, and comprehensive data protection
+- ** Mobile-First**: Responsive design optimized for South African mobile usage patterns
+- ** Production-Ready**: Complete Docker infrastructure with monitoring and analytics
 
-## ✨ **World-Class Features**
+##  **World-Class Features**
 
-### 🔍 **For Job Seekers**
-- 🤖 **AI-Powered Job Matching** - Intelligent recommendations using OpenAI and Hugging Face
-- 📄 **Smart Resume Analysis** - AI-driven resume optimization and keyword matching
-- 🔔 **Personalized Job Alerts** - Real-time notifications for relevant opportunities
-- 📊 **Application Tracking** - Complete application lifecycle with status updates
-- 📈 **Career Analytics** - Track job search progress and success metrics
-- 💳 **Premium Subscriptions** - Advanced features with Paystack ZAR integration
-- 🎯 **One-Click Apply** - Streamlined application process with auto-fill
-- 📱 **Mobile Optimization** - Perfect experience on all South African networks
+###  **For Job Seekers**
+-  **AI-Powered Job Matching** - Intelligent recommendations using OpenAI and Hugging Face
+-  **Smart Resume Analysis** - AI-driven resume optimization and keyword matching
+-  **Personalized Job Alerts** - Real-time notifications for relevant opportunities
+-  **Application Tracking** - Complete application lifecycle with status updates
+-  **Career Analytics** - Track job search progress and success metrics
+-  **Premium Subscriptions** - Advanced features with Paystack ZAR integration
+-  **One-Click Apply** - Streamlined application process with auto-fill
+-  **Mobile Optimization** - Perfect experience on all South African networks
 
-### 🏢 **For Employers**
-- 🏆 **Company Profiles** - Showcase organization culture and values
-- ⚡ **Job Posting Management** - Easy-to-use creation and management tools
-- 🧠 **AI Candidate Screening** - Intelligent candidate evaluation and ranking
-- 📊 **Hiring Analytics** - Track job performance and candidate quality metrics
-- 💰 **Flexible Pricing** - Pay-per-post or subscription models in ZAR
-- 🔍 **Advanced Search** - Find candidates with specific skills and experience
-- 📧 **Communication Tools** - Built-in messaging and interview scheduling
+###  **For Employers**
+-  **Company Profiles** - Showcase organization culture and values
+-  **Job Posting Management** - Easy-to-use creation and management tools
+-  **AI Candidate Screening** - Intelligent candidate evaluation and ranking
+-  **Hiring Analytics** - Track job performance and candidate quality metrics
+-  **Flexible Pricing** - Pay-per-post or subscription models in ZAR
+-  **Advanced Search** - Find candidates with specific skills and experience
+-  **Communication Tools** - Built-in messaging and interview scheduling
 
-### ⚙️ **For Administrators**
-- 🖥️ **Platform Management** - Complete admin dashboard with real-time monitoring
-- 📊 **Advanced Analytics** - User engagement, job performance, and revenue insights
-- 👥 **User Management** - Account administration and comprehensive support tools
-- 💳 **Payment Oversight** - Transaction monitoring and financial reporting
-- 🛡️ **Security Dashboard** - Monitor security events and system health
-- 📈 **Business Intelligence** - Advanced reporting and data visualization
+### ⚙ **For Administrators**
+-  **Platform Management** - Complete admin dashboard with real-time monitoring
+-  **Advanced Analytics** - User engagement, job performance, and revenue insights
+-  **User Management** - Account administration and comprehensive support tools
+-  **Payment Oversight** - Transaction monitoring and financial reporting
+-  **Security Dashboard** - Monitor security events and system health
+-  **Business Intelligence** - Advanced reporting and data visualization
 
-## 🏗️ **World-Class Architecture**
+##  **World-Class Architecture**
 
 Built as a **production-grade monorepo** using cutting-edge technologies and enterprise best practices:
 
@@ -87,17 +87,17 @@ aijobchommie-platform/
 └── .github/workflows     # CI/CD pipelines with GitHub Actions
 ```
 
-## 🌐 **RESTful API Documentation**
+##  **RESTful API Documentation**
 
 Our **world-class REST API** powers the entire platform with enterprise-grade features:
 
-### 🚀 **API Base URL**
+###  **API Base URL**
 ```
 Development:  http://localhost:3001/api/v1
 Production:   https://api.aijobchommie.co.za/api/v1
 ```
 
-### 🔐 **Authentication**
+###  **Authentication**
 The API uses **JWT Bearer tokens** with refresh token rotation for maximum security:
 
 ```bash
@@ -106,9 +106,9 @@ Authorization: Bearer <your-access-token>
 Content-Type: application/json
 ```
 
-### 📚 **Core API Endpoints**
+###  **Core API Endpoints**
 
-#### 🔑 **Authentication Endpoints**
+####  **Authentication Endpoints**
 ```http
 POST   /auth/register          # Register new user
 POST   /auth/login             # User login
@@ -119,7 +119,7 @@ POST   /auth/forgot-password   # Request password reset
 POST   /auth/reset-password    # Reset password with token
 ```
 
-#### 💼 **Job Management Endpoints**
+####  **Job Management Endpoints**
 ```http
 GET    /jobs                   # List all jobs (with filters)
 POST   /jobs                   # Create new job (employers only)
@@ -133,7 +133,7 @@ POST   /jobs/:id/apply         # Apply to job
 GET    /jobs/stats             # Job statistics (admin only)
 ```
 
-#### 👤 **User Management Endpoints**
+####  **User Management Endpoints**
 ```http
 GET    /users/profile          # Get user profile
 PUT    /users/profile          # Update user profile
@@ -144,7 +144,7 @@ POST   /users/save-job/:id     # Save/unsave job
 GET    /users/analytics        # User career analytics
 ```
 
-#### 📄 **Application Management**
+####  **Application Management**
 ```http
 GET    /applications           # List applications (filtered by user)
 POST   /applications           # Submit job application
@@ -153,7 +153,7 @@ PUT    /applications/:id       # Update application status
 DELETE /applications/:id       # Withdraw application
 ```
 
-#### 💳 **Payment & Subscription Endpoints**
+####  **Payment & Subscription Endpoints**
 ```http
 POST   /payments/initialize    # Initialize Paystack payment
 POST   /payments/verify        # Verify payment status
@@ -163,7 +163,7 @@ GET    /subscriptions          # Get user subscriptions
 POST   /subscriptions/upgrade  # Upgrade subscription plan
 ```
 
-#### 📁 **File Upload Endpoints**
+####  **File Upload Endpoints**
 ```http
 POST   /files/upload           # Upload files (resume, images)
 GET    /files/download/:id     # Download file
@@ -172,7 +172,7 @@ DELETE /files/:id              # Delete file
 POST   /files/analyze-resume   # AI resume analysis
 ```
 
-#### ⚙️ **Admin Endpoints**
+####  **Admin Endpoints**
 ```http
 GET    /admin/dashboard        # Admin dashboard data
 GET    /admin/users            # Manage users
@@ -182,7 +182,7 @@ GET    /admin/payments         # Payment overview
 POST   /admin/users/:id/ban    # Ban/unban users
 ```
 
-### 📊 **API Request/Response Examples**
+###  **API Request/Response Examples**
 
 #### **Create Job Posting**
 ```http
@@ -261,20 +261,20 @@ GET /api/v1/jobs/search?q=react+developer&location=cape+town&salary_min=40000&ai
 }
 ```
 
-### 🔥 **Advanced API Features**
+###  **Advanced API Features**
 
-- **🤖 AI Integration**: OpenAI and Hugging Face powered job matching
-- **🔍 Advanced Search**: Elasticsearch-powered semantic search
-- **📊 Real-time Analytics**: Live job performance and user metrics
-- **💳 Paystack Integration**: Complete ZAR payment processing
-- **📁 File Processing**: AI-powered resume parsing and analysis
-- **🔔 Real-time Notifications**: WebSocket-based live updates
-- **📧 Email Integration**: Automated notifications and alerts
-- **📱 SMS Integration**: South African SMS providers support
-- **🔐 Enterprise Security**: Rate limiting, CORS, validation, monitoring
-- **📈 Comprehensive Logging**: Winston with structured logging
+- ** AI Integration**: OpenAI and Hugging Face powered job matching
+- ** Advanced Search**: Elasticsearch-powered semantic search
+- ** Real-time Analytics**: Live job performance and user metrics
+- ** Paystack Integration**: Complete ZAR payment processing
+- ** File Processing**: AI-powered resume parsing and analysis
+- ** Real-time Notifications**: WebSocket-based live updates
+- ** Email Integration**: Automated notifications and alerts
+- ** SMS Integration**: South African SMS providers support
+- ** Enterprise Security**: Rate limiting, CORS, validation, monitoring
+- ** Comprehensive Logging**: Winston with structured logging
 
-### 📋 **API Status Codes**
+###  **API Status Codes**
 
 | Code | Status | Description |
 |------|---------|-------------|
@@ -289,7 +289,7 @@ GET /api/v1/jobs/search?q=react+developer&location=cape+town&salary_min=40000&ai
 | 429  | Too Many Requests | Rate limit exceeded |
 | 500  | Internal Server Error | Server error |
 
-### 🛡️ **API Security & Rate Limiting**
+###  **API Security & Rate Limiting**
 
 - **Rate Limits**: 1000 requests per 15 minutes per IP
 - **Authentication**: JWT with 24h access tokens, 7d refresh tokens
@@ -334,16 +334,16 @@ Technology Stack
 - **Utilities**: Common functions and helpers
 - **Validation**: Zod schemas for data validation
 
-## 🚀 **Quick Start**
+##  **Quick Start**
 
-### ⚙️ **Prerequisites**
+###  **Prerequisites**
 - **Node.js** 18.17.0+ ([Download](https://nodejs.org/))
 - **npm** 9.6.7+ (comes with Node.js)
 - **Docker** (optional) ([Download](https://docker.com/))
 - **PostgreSQL** or **Supabase** account ([Get Started](https://supabase.com/))
 - **Redis** (optional, for caching)
 
-### 💻 **Installation**
+###  **Installation**
 
 ```bash
 # 1️⃣ Clone the repository
@@ -370,16 +370,16 @@ npm run db:migrate     # Run database migrations
 npm run dev
 ```
 
-### 🎆 **You're Ready!**
+###  **You're Ready!**
 
 Your world-class AI job platform is now running:
 
-- 🌐 **Web App**: http://localhost:3000 - Main SaaS application
-- 📡 **API Server**: http://localhost:3001 - RESTful API with AI features
-- 📊 **API Docs**: http://localhost:3001/api/v1 - Interactive API documentation
-- ⚙️ **Health Check**: http://localhost:3001/health - System status
+-  **Web App**: http://localhost:3000 - Main SaaS application
+-  **API Server**: http://localhost:3001 - RESTful API with AI features
+-  **API Docs**: http://localhost:3001/api/v1 - Interactive API documentation
+-  **Health Check**: http://localhost:3001/health - System status
 
-### 🐳 **Docker Quick Start**
+###  **Docker Quick Start**
 
 ```bash
 # Start entire development stack with Docker
