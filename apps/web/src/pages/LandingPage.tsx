@@ -1,20 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { 
-  MetallicCard, 
-  MetallicButton, 
-  SectionHeading, 
-  MetallicStat, 
-  MetallicBadge,
-  MetallicFeaturesGrid,
-  AmbientLighting,
-  ChromeSeparator 
-} from '../components/ui/MetallicComponents';
-import '../styles/premium-theme.css';
-import Logo from '../components/ui/Logo';
-
-// Import icons from Lucide React
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Brain, 
   Target, 
@@ -30,19 +16,31 @@ import {
   Play,
   Award,
   Rocket,
-  Lock,
   Clock,
   Sparkles,
-  Map,
-  MessageSquare,
-  Database,
-  Cpu,
   Menu,
   X,
-  Flag,
+  MessageSquare,
   Heart,
-  ChevronDown
+  Map,
+  Cpu,
+  Flag
 } from 'lucide-react';
+
+// Import metallic components
+import {
+  MetallicButton,
+  MetallicCard,
+  MetallicBadge,
+  MetallicStat,
+  MetallicFeaturesGrid,
+  SectionHeading,
+  AmbientLighting,
+  ChromeSeparator
+} from '../components/ui/MetallicComponents';
+
+// Import premium theme
+import '../styles/premium-theme.css';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -398,7 +396,7 @@ const LandingPage: React.FC = () => {
         
         <motion.div
           className="absolute bottom-1/4 right-10 w-32 h-32 opacity-10"
-          style={{ rotate: parallaxRotate, rotateDirection: 'reverse' }}
+          style={{ rotate: parallaxRotate }}
         >
           <div className="w-full h-full border border-tech-cyan rounded-lg rotate-45"></div>
         </motion.div>
@@ -557,17 +555,17 @@ const LandingPage: React.FC = () => {
             align="center"
           />
           
-          <div className="grid-responsive-3 gap-8 max-w-4xl mx-auto">
-            {/* Free Plan */}
+          <div className="grid-responsive-2 gap-8 max-w-3xl mx-auto">
+            {/* Basic Plan - R8 */}
             <MetallicCard className="text-center relative">
               <MetallicBadge variant="muted" className="mb-4">Basic</MetallicBadge>
-              <div className="text-4xl font-heading font-bold text-chrome mb-2">Free</div>
-              <div className="text-text-tertiary mb-6">Forever</div>
+              <div className="text-4xl font-heading font-bold text-chrome mb-2">R8</div>
+              <div className="text-text-tertiary mb-6">per month</div>
               
               <ul className="space-y-3 mb-8 text-left">
                 <li className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-state-success mr-3" />
-                  <span className="text-text-secondary">5 AI job matches/day</span>
+                  <span className="text-text-secondary">10 AI job matches/day</span>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-state-success mr-3" />
@@ -577,21 +575,25 @@ const LandingPage: React.FC = () => {
                   <CheckCircle className="w-5 h-5 text-state-success mr-3" />
                   <span className="text-text-secondary">Email notifications</span>
                 </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
+                  <span className="text-text-secondary">Standard support</span>
+                </li>
               </ul>
               
               <MetallicButton variant="outline" fullWidth>
-                Get Started Free
+                Choose Basic
               </MetallicButton>
             </MetallicCard>
 
-            {/* Pro Plan */}
+            {/* Premium Plan - R17 */}
             <MetallicCard className="text-center relative border-glow" glow="intense">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 <MetallicBadge variant="tech" animated>Most Popular</MetallicBadge>
               </div>
               
-              <MetallicBadge variant="chrome" className="mb-4 mt-2">Professional</MetallicBadge>
-              <div className="text-4xl font-heading font-bold text-chrome mb-2">R149</div>
+              <MetallicBadge variant="chrome" className="mb-4 mt-2">Premium</MetallicBadge>
+              <div className="text-4xl font-heading font-bold text-chrome mb-2">R17</div>
               <div className="text-text-tertiary mb-6">per month</div>
               
               <ul className="space-y-3 mb-8 text-left">
@@ -611,40 +613,18 @@ const LandingPage: React.FC = () => {
                   <CheckCircle className="w-5 h-5 text-state-success mr-3" />
                   <span className="text-text-secondary">Application tracking</span>
                 </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
+                  <span className="text-text-secondary">CV optimization</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
+                  <span className="text-text-secondary">Interview preparation</span>
+                </li>
               </ul>
               
               <MetallicButton variant="tech" fullWidth>
                 Start Free Trial
-              </MetallicButton>
-            </MetallicCard>
-
-            {/* Enterprise Plan */}
-            <MetallicCard className="text-center relative">
-              <MetallicBadge variant="default" className="mb-4">Enterprise</MetallicBadge>
-              <div className="text-4xl font-heading font-bold text-chrome mb-2">Custom</div>
-              <div className="text-text-tertiary mb-6">Contact us</div>
-              
-              <ul className="space-y-3 mb-8 text-left">
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
-                  <span className="text-text-secondary">Everything in Pro</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
-                  <span className="text-text-secondary">Custom integrations</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
-                  <span className="text-text-secondary">Dedicated support</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-state-success mr-3" />
-                  <span className="text-text-secondary">Team management</span>
-                </li>
-              </ul>
-              
-              <MetallicButton variant="secondary" fullWidth>
-                Contact Sales
               </MetallicButton>
             </MetallicCard>
           </div>
@@ -785,7 +765,6 @@ const LandingPage: React.FC = () => {
             {/* Brand */}
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <Logo size="md" />
                 <div className="w-10 h-10 bg-gradient-chrome rounded-lg flex items-center justify-center">
                   <Brain className="w-5 h-5 text-void-black" />
                 </div>
