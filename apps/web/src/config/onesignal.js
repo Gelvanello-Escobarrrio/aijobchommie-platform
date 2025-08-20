@@ -7,21 +7,21 @@ export const ONESIGNAL_CONFIG = {
   // App Configuration
   appId: process.env.REACT_APP_ONESIGNAL_APP_ID || '',
   safariWebId: process.env.REACT_APP_ONESIGNAL_SAFARI_WEB_ID || '',
-  
+
   // Environment Settings
   allowLocalhostAsSecureOrigin: process.env.NODE_ENV === 'development',
   autoRegister: false, // We handle permissions manually
-  
+
   // UI Configuration
   notifyButton: {
     enable: false // We use custom UI
   },
-  
+
   // Welcome Notification
   welcomeNotification: {
     disable: true // Custom welcome flow
   },
-  
+
   // Prompt Configuration
   promptOptions: {
     slidedown: {
@@ -30,7 +30,7 @@ export const ONESIGNAL_CONFIG = {
           type: 'push',
           autoPrompt: false,
           text: {
-            actionMessage: "🚀 Get instant job alerts from AI Job Chommie!",
+            actionMessage: " Get instant job alerts from AI Job Chommie!",
             acceptButton: "Yes, notify me!",
             cancelButton: "Not now"
           }
@@ -38,7 +38,7 @@ export const ONESIGNAL_CONFIG = {
       ]
     }
   },
-  
+
   // Debug mode
   debug: process.env.REACT_APP_DEBUG_ONESIGNAL === 'true'
 };
@@ -46,7 +46,7 @@ export const ONESIGNAL_CONFIG = {
 // Notification Templates for Different Types
 export const NOTIFICATION_TEMPLATES = {
   JOB_ALERT: {
-    title: "🎯 New Job Match Found!",
+    title: " New Job Match Found!",
     body: "{company} is hiring for {title} in {location}",
     icon: "/logos/logo-192.png",
     badge: "/logos/logo-72.png",
@@ -55,9 +55,9 @@ export const NOTIFICATION_TEMPLATES = {
       type: "job_alert"
     }
   },
-  
+
   APPLICATION_UPDATE: {
-    title: "📋 Application Update",
+    title: " Application Update",
     body: "Your application for {title} at {company} has been updated",
     icon: "/logos/logo-192.png",
     badge: "/logos/logo-72.png",
@@ -66,9 +66,9 @@ export const NOTIFICATION_TEMPLATES = {
       type: "application_update"
     }
   },
-  
+
   AI_RECOMMENDATION: {
-    title: "🤖 AI Job Recommendation",
+    title: " AI Job Recommendation",
     body: "Based on your profile, we found {count} new jobs perfect for you!",
     icon: "/logos/logo-192.png",
     badge: "/logos/logo-72.png",
@@ -77,9 +77,9 @@ export const NOTIFICATION_TEMPLATES = {
       type: "ai_recommendation"
     }
   },
-  
+
   WEEKLY_SUMMARY: {
-    title: "📊 Weekly Job Summary",
+    title: " Weekly Job Summary",
     body: "This week: {newJobs} new jobs, {applications} applications sent",
     icon: "/logos/logo-192.png",
     badge: "/logos/logo-72.png",
@@ -88,9 +88,9 @@ export const NOTIFICATION_TEMPLATES = {
       type: "weekly_summary"
     }
   },
-  
+
   PREMIUM_FEATURE: {
-    title: "⭐ Premium Feature Available",
+    title: " Premium Feature Available",
     body: "Upgrade to unlock AI-powered CV analysis and priority support",
     icon: "/logos/logo-192.png",
     badge: "/logos/logo-72.png",
@@ -99,9 +99,9 @@ export const NOTIFICATION_TEMPLATES = {
       type: "premium_feature"
     }
   },
-  
+
   SYSTEM_NOTIFICATION: {
-    title: "🔔 AI Job Chommie",
+    title: " AI Job Chommie",
     body: "{message}",
     icon: "/logos/logo-192.png",
     badge: "/logos/logo-72.png",

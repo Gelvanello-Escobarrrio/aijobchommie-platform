@@ -20,7 +20,7 @@ export const supabase = createClient(
     },
     global: {
       headers: {
-        'X-Client-Info': 'aijobchommie-pwa',
+        'X-Client-Info': 'aijobchommie-platform',
       },
     },
   }

@@ -1,405 +1,478 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import Navigation from '../components/Navigation';
-import { 
-  MetallicCard, 
-  SectionHeading, 
-  AmbientLighting,
-  MetallicButton 
-} from '../components/ui/MetallicComponents';
-import { 
-  RefreshCw, 
-  Clock, 
-  CreditCard, 
-  CheckCircle, 
-  AlertTriangle, 
-  DollarSign,
+import {
+  AlertTriangle,
   Calendar,
-  Phone,
+  CheckCircle,
+  Clock,
+  CreditCard,
+  DollarSign,
+  FileText,
   Mail,
-  Shield
+  Phone,
+  Shield,
+  Zap
 } from 'lucide-react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import {
+  AmbientLighting,
+  ChromeSeparator,
+  MetallicBadge,
+  MetallicButton,
+  MetallicCard,
+  SectionHeading
+} from '../components/ui/MetallicComponents';
 
 const RefundPage: React.FC = () => {
-  const refundScenarios = [
-    {
-      title: "30-Day Money-Back Guarantee",
-      description: "Full refund within 30 days of purchase if you're not satisfied with our Premium services.",
-      icon: <Clock />,
-      eligibility: ["Premium subscription purchased within last 30 days", "Less than 50 job applications submitted", "No evidence of service abuse"],
-      timeline: "3-5 business days",
-      action: "Automatic approval"
-    },
-    {
-      title: "Service Disruption Refund",
-      description: "Partial refund for service outages exceeding 24 hours in any billing period.",
-      icon: <AlertTriangle />,
-      eligibility: ["Documented service outage >24 hours", "Affected during your billing period", "Service disruption not due to maintenance"],
-      timeline: "5-7 business days",
-      action: "Prorated refund"
-    },
-    {
-      title: "Technical Issue Refund",
-      description: "Full or partial refund if technical issues prevent you from using our core features.",
-      icon: <RefreshCw />,
-      eligibility: ["Unresolved technical issue >14 days", "Core features unavailable", "Support team unable to resolve"],
-      timeline: "7-10 business days",
-      action: "Case-by-case review"
-    },
-    {
-      title: "Billing Error Refund",
-      description: "Immediate refund for incorrect charges, duplicate payments, or billing mistakes.",
-      icon: <CreditCard />,
-      eligibility: ["Documented billing error", "Unauthorized duplicate charge", "Incorrect subscription upgrade"],
-      timeline: "1-3 business days",
-      action: "Immediate processing"
-    }
-  ];
+  const navigate = useNavigate();
 
-  const steps = [
+  const refundSteps = [
     {
       step: "1",
-      title: "Review Eligibility",
-      description: "Check if your situation qualifies for a refund according to our policy.",
-      icon: <CheckCircle />
+      title: "Request Submitted",
+      description: "Submit your refund request through our support portal or email",
+      timeframe: "Within 30 days"
     },
     {
       step: "2",
-      title: "Submit Request",
-      description: "Contact our support team with your refund request and relevant details.",
-      icon: <Mail />
+      title: "Review Process",
+      description: "Our team reviews your request and account history",
+      timeframe: "1-2 business days"
     },
     {
       step: "3",
-      title: "Review Process",
-      description: "Our team will review your request within 2 business days.",
-      icon: <Clock />
+      title: "Refund Processed",
+      description: "If approved, refund is processed to your original payment method",
+      timeframe: "3-5 business days"
     },
     {
       step: "4",
-      title: "Refund Processing",
-      description: "Approved refunds are processed within 3-10 business days depending on the scenario.",
-      icon: <DollarSign />
+      title: "Confirmation",
+      description: "You receive confirmation email with transaction details",
+      timeframe: "Same day"
+    }
+  ];
+
+  const scenarios = [
+    {
+      icon: <CheckCircle />,
+      title: "Full Refund Eligible",
+      description: "Within 30 days, minimal usage, technical issues on our end",
+      color: "state-success"
+    },
+    {
+      icon: <AlertTriangle />,
+      title: "Partial Refund",
+      description: "Used service significantly but have valid concerns",
+      color: "state-warning"
+    },
+    {
+      icon: <Shield />,
+      title: "Service Credit",
+      description: "Alternative to cash refund for continued service improvements",
+      color: "tech-cyan"
     }
   ];
 
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary relative overflow-hidden">
+      {/* Ambient Lighting Effects */}
       <AmbientLighting />
-      <Navigation />
 
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="py-20 text-center">
-          <div className="responsive-container">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <SectionHeading
-                title="Refund Policy"
-                subtitle="We stand behind our service quality. If you're not completely satisfied with AI Job Chommie, we offer fair and transparent refund options designed to protect both your investment and our commitment to excellence."
-                align="center"
-              />
-              
-              <div className="flex items-center justify-center mt-8 space-x-8">
-                <div className="flex items-center space-x-2 text-text-tertiary">
-                  <Shield className="w-5 h-5 text-state-success" />
-                  <span>30-Day Guarantee</span>
-                </div>
-                <div className="flex items-center space-x-2 text-text-tertiary">
-                  <Clock className="w-5 h-5 text-tech-cyan" />
-                  <span>Fast Processing</span>
-                </div>
-                <div className="flex items-center space-x-2 text-text-tertiary">
-                  <CheckCircle className="w-5 h-5 text-state-success" />
-                  <span>Fair & Transparent</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+      {/* Hero Section */}
+      <section className="section-responsive flex items-center justify-center relative safe-area-top">
+        <motion.div
+          className="responsive-container text-center z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <MetallicBadge variant="tech" animated className="mb-8">
+            <Shield className="w-4 h-4 mr-2" />
+            Refund Policy
+          </MetallicBadge>
 
-        {/* Money-Back Guarantee Highlight */}
-        <section className="py-12 bg-gradient-to-r from-bg-secondary to-transparent">
-          <div className="responsive-container">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <MetallicCard glow="intense" className="border-l-4 border-l-state-success text-center">
-                <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                  <div className="text-state-success text-6xl">
-                    <Shield />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-3xl font-heading font-bold text-chrome mb-3">
-                      30-Day Money-Back Guarantee
-                    </h3>
-                    <p className="text-lg text-text-secondary mb-4">
-                      Try AI Job Chommie Premium risk-free for 30 days. If you're not completely satisfied 
-                      with your job search results, we'll refund your full subscription fee.
-                    </p>
-                    <div className="text-sm text-text-tertiary">
-                      Valid for new Premium subscriptions • No questions asked • Full refund
-                    </div>
-                  </div>
-                  <div>
-                    <MetallicButton variant="tech" size="lg">
-                      Claim Your Guarantee
-                    </MetallicButton>
-                  </div>
-                </div>
-              </MetallicCard>
-            </motion.div>
-          </div>
-        </section>
+          <h1 className="text-responsive-3xl font-heading font-black mb-6 text-chrome leading-none">
+            30-Day Money
+            <br />
+            <span className="bg-gradient-tech bg-clip-text text-transparent">
+              Back Guarantee
+            </span>
+          </h1>
 
-        {/* Refund Scenarios */}
-        <section className="py-20">
-          <div className="responsive-container">
-            <SectionHeading
-              title="Refund Scenarios"
-              subtitle="Different situations qualify for different types of refunds. Here's a comprehensive breakdown of when and how you can request a refund."
-              align="center"
-            />
+          <p className="text-responsive-lg text-text-secondary max-w-4xl mx-auto mb-8 leading-relaxed">
+            We're confident you'll love AI Job Chommie. If you're not completely satisfied
+            within 30 days, we'll refund your money. No questions asked.
+          </p>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              {refundScenarios.map((scenario, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                >
-                  <MetallicCard glow="medium" className="h-full">
-                    <div className="flex items-start space-x-4 mb-4">
-                      <div className="text-tech-cyan text-2xl">
-                        {scenario.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-heading font-bold text-chrome mb-2">
-                          {scenario.title}
-                        </h3>
-                        <p className="text-text-secondary mb-4">
-                          {scenario.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-heading font-semibold text-text-primary mb-2">Eligibility Criteria:</h4>
-                        <ul className="space-y-1">
-                          {scenario.eligibility.map((criteria, cIndex) => (
-                            <li key={cIndex} className="flex items-start space-x-2 text-sm">
-                              <CheckCircle className="w-4 h-4 text-state-success mt-0.5 flex-shrink-0" />
-                              <span className="text-text-secondary">{criteria}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="flex justify-between items-center pt-4 border-t border-border-light">
-                        <div>
-                          <div className="text-sm text-text-tertiary">Processing Time</div>
-                          <div className="font-medium text-tech-cyan">{scenario.timeline}</div>
-                        </div>
-                        <div>
-                          <div className="text-sm text-text-tertiary">Review Process</div>
-                          <div className="font-medium text-chrome">{scenario.action}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </MetallicCard>
-                </motion.div>
-              ))}
+          <div className="flex items-center justify-center space-x-6 text-text-tertiary text-sm">
+            <div className="flex items-center space-x-2">
+              <Clock className="w-4 h-4" />
+              <span>30-Day Window</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CreditCard className="w-4 h-4" />
+              <span>Full Refund Available</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CheckCircle className="w-4 h-4" />
+              <span>No Questions Asked</span>
             </div>
           </div>
-        </section>
+        </motion.div>
+      </section>
 
-        {/* Refund Process Steps */}
-        <section className="py-20 bg-gradient-to-b from-bg-secondary to-transparent">
-          <div className="responsive-container">
-            <SectionHeading
-              title="How to Request a Refund"
-              subtitle="Our streamlined refund process is designed to be quick, fair, and transparent. Follow these simple steps to request your refund."
-              align="center"
-            />
+      {/* Policy Overview */}
+      <section className="section-responsive bg-gradient-to-b from-transparent to-bg-secondary">
+        <div className="responsive-container">
+          <SectionHeading
+            title="Our Refund Promise"
+            subtitle="Simple, fair, and transparent refund policy designed with you in mind."
+            align="center"
+          />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                >
-                  <MetallicCard glow="subtle" className="text-center h-full relative">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="w-8 h-8 bg-gradient-tech rounded-full flex items-center justify-center text-white font-bold text-sm">
-                        {step.step}
-                      </div>
-                    </div>
-                    
-                    <div className="pt-6">
-                      <div className="text-tech-cyan text-3xl mb-4">
-                        {step.icon}
-                      </div>
-                      <h4 className="text-lg font-heading font-bold text-chrome mb-3">
-                        {step.title}
-                      </h4>
-                      <p className="text-text-secondary text-sm">
-                        {step.description}
-                      </p>
-                    </div>
-                  </MetallicCard>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Important Information */}
-        <section className="py-20">
-          <div className="responsive-container">
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid-responsive-3 gap-8 max-w-5xl mx-auto">
+            {scenarios.map((scenario, index) => (
               <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <MetallicCard className="text-center h-full">
+                  <div className={`text-4xl mb-4 text-${scenario.color}`}>
+                    {scenario.icon}
+                  </div>
+                  <h3 className="text-xl font-heading font-bold mb-3">{scenario.title}</h3>
+                  <p className="text-text-secondary">{scenario.description}</p>
+                </MetallicCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Refund Process */}
+      <section className="section-responsive">
+        <div className="responsive-container">
+          <SectionHeading
+            title="How Refunds Work"
+            subtitle="Our simple 4-step process ensures quick and hassle-free refunds."
+            align="center"
+          />
+
+          <div className="max-w-4xl mx-auto">
+            {refundSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                className="relative flex items-center mb-12 last:mb-0"
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <MetallicCard>
-                  <div className="flex items-start space-x-4">
-                    <div className="text-tech-cyan text-2xl">
-                      <CheckCircle />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-heading font-bold text-chrome mb-4">
-                        What's Included in Refunds
-                      </h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start space-x-2">
-                          <CheckCircle className="w-4 h-4 text-state-success mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Full subscription fees for eligible refunds</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <CheckCircle className="w-4 h-4 text-state-success mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Processing fees (where applicable)</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <CheckCircle className="w-4 h-4 text-state-success mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Prorated amounts for partial periods</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <CheckCircle className="w-4 h-4 text-state-success mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Transaction fees (minus payment processing costs)</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </MetallicCard>
-              </motion.div>
+                {/* Timeline line */}
+                {index < refundSteps.length - 1 && (
+                  <div className="absolute left-6 top-16 w-0.5 h-20 bg-gradient-to-b from-tech-cyan to-transparent" />
+                )}
 
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <MetallicCard>
-                  <div className="flex items-start space-x-4">
-                    <div className="text-state-warning text-2xl">
-                      <AlertTriangle />
+                {/* Step number */}
+                <div className="w-12 h-12 bg-gradient-tech rounded-full flex items-center justify-center mr-6 z-10 text-void-black font-bold">
+                  {step.step}
+                </div>
+
+                {/* Content */}
+                <MetallicCard className="flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="text-xl font-heading font-bold">{step.title}</h3>
+                    <MetallicBadge variant="chrome">{step.timeframe}</MetallicBadge>
+                  </div>
+                  <p className="text-text-secondary">{step.description}</p>
+                </MetallicCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Terms */}
+      <section className="section-responsive bg-gradient-to-b from-bg-secondary to-transparent">
+        <div className="responsive-container max-w-4xl mx-auto">
+
+          {/* Eligibility */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <MetallicCard>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-gradient-tech rounded-lg flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-6 h-6 text-void-black" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-heading font-bold mb-4">Refund Eligibility</h2>
+                  <div className="space-y-4 text-text-secondary">
+                    <p>
+                      <strong>30-Day Window:</strong> Refund requests must be submitted within 30 days of your initial purchase or subscription start date.
+                    </p>
+                    <p>
+                      <strong>Paid Plans Only:</strong> Refunds apply to our Professional and Premium Elite plans. Free accounts are not eligible for refunds.
+                    </p>
+                    <p>
+                      <strong>First-Time Customers:</strong> Full refunds are primarily available for first-time customers. Repeat refund requests may be reviewed on a case-by-case basis.
+                    </p>
+                    <p>
+                      <strong>Service Issues:</strong> If you experience technical difficulties or service disruptions caused by our platform, you're eligible for a full refund regardless of usage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </MetallicCard>
+          </motion.div>
+
+          {/* What's Covered */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <MetallicCard>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-gradient-chrome rounded-lg flex items-center justify-center flex-shrink-0">
+                  <DollarSign className="w-6 h-6 text-void-black" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-heading font-bold mb-4">What's Covered</h2>
+                  <div className="space-y-4 text-text-secondary">
+                    <div>
+                      <strong>Full Refunds:</strong>
+                      <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li>Unused subscriptions cancelled within 30 days</li>
+                        <li>Technical issues preventing service access</li>
+                        <li>Service doesn't meet advertised features</li>
+                        <li>Billing errors or duplicate charges</li>
+                      </ul>
                     </div>
                     <div>
-                      <h3 className="text-xl font-heading font-bold text-chrome mb-4">
-                        Refund Limitations
-                      </h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start space-x-2">
-                          <AlertTriangle className="w-4 h-4 text-state-warning mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Service abuse or policy violations void refund eligibility</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <AlertTriangle className="w-4 h-4 text-state-warning mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Refunds only to original payment method</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <AlertTriangle className="w-4 h-4 text-state-warning mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Free tier and promotional credits are non-refundable</span>
-                        </li>
-                        <li className="flex items-start space-x-2">
-                          <AlertTriangle className="w-4 h-4 text-state-warning mt-1 flex-shrink-0" />
-                          <span className="text-text-secondary text-sm">Third-party service fees may not be refundable</span>
-                        </li>
+                      <strong>Partial Refunds:</strong>
+                      <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li>Significant service disruptions during your billing period</li>
+                        <li>Downgrade requests with valid reasoning</li>
+                        <li>Prorated refunds for cancelled annual subscriptions</li>
                       </ul>
                     </div>
                   </div>
-                </MetallicCard>
-              </motion.div>
+                </div>
+              </div>
+            </MetallicCard>
+          </motion.div>
+
+          {/* Exclusions */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <MetallicCard>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-gradient-tech rounded-lg flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-void-black" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-heading font-bold mb-4">Refund Limitations</h2>
+                  <div className="space-y-4 text-text-secondary">
+                    <p>
+                      <strong>Usage-Based Limitations:</strong> Heavy usage of our AI matching services may affect refund eligibility. We consider factors like number of applications submitted and profile views.
+                    </p>
+                    <p>
+                      <strong>Policy Violations:</strong> Accounts suspended or terminated for violating our Terms of Service are not eligible for refunds.
+                    </p>
+                    <p>
+                      <strong>Third-Party Services:</strong> We cannot refund payments made to third-party services accessed through our platform.
+                    </p>
+                    <p>
+                      <strong>Processing Fees:</strong> Payment processing fees (typically 2-3%) may be deducted from refunds where applicable.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </MetallicCard>
+          </motion.div>
+
+          {/* How to Request */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <MetallicCard>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-gradient-chrome rounded-lg flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-6 h-6 text-void-black" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-heading font-bold mb-4">How to Request a Refund</h2>
+                  <div className="space-y-4 text-text-secondary">
+                    <div>
+                      <strong>Required Information:</strong>
+                      <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li>Your account email address</li>
+                        <li>Order number or transaction ID</li>
+                        <li>Reason for refund request</li>
+                        <li>Date of purchase</li>
+                        <li>Any relevant screenshots or documentation</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>Contact Methods:</strong>
+                      <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li>Email: refunds@aijobchommie.co.za</li>
+                        <li>Support portal through your account dashboard</li>
+                        <li>Phone: +27 (0) 21 XXX XXXX (business hours)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </MetallicCard>
+          </motion.div>
+
+          {/* Processing Times */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <MetallicCard>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-gradient-tech rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-void-black" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-heading font-bold mb-4">Processing Timeframes</h2>
+                  <div className="space-y-4 text-text-secondary">
+                    <p>
+                      <strong>Review Period:</strong> Most refund requests are reviewed within 1-2 business days of submission.
+                    </p>
+                    <p>
+                      <strong>Processing Time:</strong> Approved refunds are processed within 3-5 business days to your original payment method.
+                    </p>
+                    <p>
+                      <strong>Bank Processing:</strong> Depending on your bank, it may take an additional 1-3 business days for the refund to appear in your account.
+                    </p>
+                    <p>
+                      <strong>International Payments:</strong> Refunds to international cards may take 5-10 business days due to currency conversion and bank processing times.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </MetallicCard>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* Contact Support */}
+      <section className="section-responsive">
+        <div className="responsive-container">
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <MetallicCard glow="intense" className="p-12">
+              <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto mb-8">
+                <Mail className="w-10 h-10 text-void-black" />
+              </div>
+
+              <h2 className="text-responsive-2xl font-heading font-black text-chrome mb-6">
+                Need Help with a Refund?
+              </h2>
+
+              <p className="text-responsive-lg text-text-secondary mb-8">
+                Our support team is here to help. Contact us for any questions about
+                refunds, billing, or our refund policy.
+              </p>
+
+              <div className="grid-responsive-2 gap-6 max-w-2xl mx-auto mb-8">
+                <div className="flex items-center justify-center space-x-3 text-text-secondary">
+                  <Mail className="w-5 h-5 text-tech-cyan" />
+                  <span>refunds@aijobchommie.co.za</span>
+                </div>
+                <div className="flex items-center justify-center space-x-3 text-text-secondary">
+                  <Phone className="w-5 h-5 text-tech-cyan" />
+                  <span>+27 (0) 21 XXX XXXX</span>
+                </div>
+              </div>
+
+              <div className="flex-responsive-col gap-4 justify-center items-center">
+                <MetallicButton
+                  variant="tech"
+                  size="lg"
+                  onClick={() => navigate('/contact')}
+                  icon={<Zap />}
+                  iconPosition="right"
+                >
+                  Contact Support
+                </MetallicButton>
+
+                <MetallicButton
+                  variant="outline"
+                  size="lg"
+                  onClick={() => navigate('/terms')}
+                >
+                  View Terms of Service
+                </MetallicButton>
+              </div>
+
+              <div className="text-sm text-text-tertiary mt-6">
+                Average response time: Under 24 hours • Available Monday-Friday, 8AM-6PM SAST
+              </div>
+            </MetallicCard>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer Note */}
+      <section className="section-responsive bg-gradient-to-t from-bg-secondary to-transparent">
+        <div className="responsive-container">
+          <motion.div
+            className="text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl font-heading font-bold text-chrome mb-4">
+              Our Commitment to You
+            </h3>
+
+            <p className="text-text-secondary leading-relaxed">
+              At AI Job Chommie, we believe in the quality of our service and your satisfaction.
+              Our refund policy reflects our commitment to providing value and ensuring every
+              South African has access to the best AI-powered job search experience possible.
+            </p>
+
+            <div className="mt-6 flex justify-center">
+              <MetallicBadge variant="tech" size="lg">
+                <Calendar className="w-4 h-4 mr-2" />
+                Last Updated: January 2024
+              </MetallicBadge>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Contact Information */}
-        <section className="py-20 bg-gradient-to-t from-bg-secondary to-transparent">
-          <div className="responsive-container">
-            <motion.div
-              className="text-center max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <MetallicCard glow="medium">
-                <h2 className="text-3xl font-heading font-bold text-chrome mb-6">
-                  Need Help with a Refund?
-                </h2>
-                <p className="text-lg text-text-secondary mb-8">
-                  Our customer success team is here to help you through the refund process. 
-                  We're committed to resolving your concerns quickly and fairly.
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-6 text-left">
-                  <div className="text-center">
-                    <div className="text-tech-cyan text-3xl mb-3">
-                      <Mail />
-                    </div>
-                    <h4 className="font-heading font-semibold mb-2">Email Support</h4>
-                    <p className="text-tech-cyan text-sm">refunds@aijobchommie.co.za</p>
-                    <p className="text-text-tertiary text-xs mt-1">Response within 24 hours</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-tech-cyan text-3xl mb-3">
-                      <Phone />
-                    </div>
-                    <h4 className="font-heading font-semibold mb-2">Phone Support</h4>
-                    <p className="text-tech-cyan text-sm">+27 (0) 11 123 4567</p>
-                    <p className="text-text-tertiary text-xs mt-1">Mon-Fri 9AM-5PM SAST</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-tech-cyan text-3xl mb-3">
-                      <Calendar />
-                    </div>
-                    <h4 className="font-heading font-semibold mb-2">Live Chat</h4>
-                    <p className="text-tech-cyan text-sm">Available 24/7</p>
-                    <p className="text-text-tertiary text-xs mt-1">Instant support online</p>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-border-light">
-                  <MetallicButton variant="tech" size="lg" className="mx-auto">
-                    Contact Support Now
-                  </MetallicButton>
-                </div>
-              </MetallicCard>
-            </motion.div>
-          </div>
-        </section>
-      </main>
+      {/* Footer Separator */}
+      <ChromeSeparator className="my-8" />
     </div>
   );
 };

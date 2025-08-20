@@ -1,492 +1,527 @@
-/**
- * 📞 COMPREHENSIVE CONTACT PAGE
- * 
- * Multi-channel contact page for AI Job Chommie
- * Professional support with South African contact details at Baywest Mall
- * CIPC Registration: AIJOBCHOMMIE (Pty) Ltd (2025/599261/07)
- */
-
+import { motion } from 'framer-motion';
+import {
+  Building,
+  CheckCircle,
+  Clock,
+  Globe,
+  HelpCircle,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send,
+  User,
+  Zap
+} from 'lucide-react';
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, MessageCircle, Shield, Users, Headphones, AlertCircle, CheckCircle, Send, Building, Globe, Navigation, ExternalLink, FileText } from 'lucide-react';
-import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
+
+import {
+  AmbientLighting,
+  ChromeSeparator,
+  MetallicBadge,
+  MetallicButton,
+  MetallicCard,
+  MetallicInput,
+  SectionHeading
+} from '../components/ui/MetallicComponents';
 
 const ContactPage: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    company: '',
-    category: '',
     subject: '',
     message: '',
-    urgency: 'normal'
+    type: 'general'
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
+    // Handle form submission here
+    console.log('Form submitted:', formData);
   };
+
+  const contactMethods = [
+    {
+      icon: <Mail />,
+      title: "Email Support",
+      description: "Get help via email with detailed responses",
+      contact: "support@aijobchommie.co.za",
+      response: "Within 24 hours",
+      available: "24/7"
+    },
+    {
+      icon: <Phone />,
+      title: "Phone Support",
+      description: "Speak directly with our support team",
+      contact: "+27 (0) 21 XXX XXXX",
+      response: "Immediate",
+      available: "Mon-Fri, 8AM-6PM SAST"
+    },
+    {
+      icon: <MessageSquare />,
+      title: "Live Chat",
+      description: "Real-time chat support through our platform",
+      contact: "Available in your dashboard",
+      response: "Real-time",
+      available: "Mon-Fri, 8AM-6PM SAST"
+    }
+  ];
+
+  const departments = [
+    {
+      icon: <HelpCircle />,
+      title: "General Support",
+      email: "support@aijobchommie.co.za",
+      description: "Account issues, technical problems, general questions"
+    },
+    {
+      icon: <Building />,
+      title: "Business Inquiries",
+      email: "business@aijobchommie.co.za",
+      description: "Enterprise solutions, partnerships, bulk accounts"
+    },
+    {
+      icon: <User />,
+      title: "Data Protection",
+      email: "privacy@aijobchommie.co.za",
+      description: "Privacy concerns, data requests, POPI Act compliance"
+    },
+    {
+      icon: <Zap />,
+      title: "Technical Issues",
+      email: "tech@aijobchommie.co.za",
+      description: "Platform bugs, API issues, integration problems"
+    }
+  ];
+
+  const faqs = [
+    {
+      question: "How do I reset my password?",
+      answer: "Click 'Forgot Password' on the login page, enter your email, and follow the instructions sent to your inbox."
+    },
+    {
+      question: "How does the AI job matching work?",
+      answer: "Our AI analyzes your profile, skills, and preferences to find relevant job opportunities that match your career goals."
+    },
+    {
+      question: "Can I cancel my subscription anytime?",
+      answer: "Yes, you can cancel your subscription at any time through your account settings. Refunds are available within 30 days."
+    },
+    {
+      question: "Do you support all South African provinces?",
+      answer: "Yes, we cover job opportunities across all nine provinces of South Africa with local market expertise."
+    },
+    {
+      question: "Is my personal data secure?",
+      answer: "Absolutely. We use enterprise-grade security and comply with the Protection of Personal Information Act (POPI Act)."
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>Contact Us | AI Job Chommie - Support & Business Inquiries</title>
-        <meta name="description" content="Contact AI Job Chommie for support, partnerships, or business inquiries. CIPC registered company located in Baywest Mall, Port Elizabeth with fast response times." />
-        <meta name="keywords" content="contact, support, AI Job Chommie, customer service, business inquiries, Baywest Mall, Port Elizabeth, Eastern Cape, CIPC registered" />
-      </Helmet>
+    <div className="min-h-screen bg-bg-primary text-text-primary relative overflow-hidden">
+      {/* Ambient Lighting Effects */}
+      <AmbientLighting />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white bg-opacity-20 rounded-full mb-8">
-              <MessageCircle className="h-10 w-10" />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get in Touch</h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-4">
-              We're here to help you succeed in your career journey
-            </p>
-            <p className="text-lg text-blue-200 max-w-3xl mx-auto">
-              Whether you need technical support, have business inquiries, or want to partner with us, 
-              our dedicated team at Baywest Mall is ready to assist you. Choose the best way to reach us based on your needs.
-            </p>
-            <div className="mt-8 grid md:grid-cols-4 gap-4">
-              <div className="p-4 bg-white bg-opacity-10 rounded-lg">
-                <Clock className="h-8 w-8 mx-auto mb-2" />
-                <p className="text-sm font-medium">Quick Response</p>
-                <p className="text-xs text-blue-200">Within 24 hours</p>
-              </div>
-              <div className="p-4 bg-white bg-opacity-10 rounded-lg">
-                <Users className="h-8 w-8 mx-auto mb-2" />
-                <p className="text-sm font-medium">Expert Team</p>
-                <p className="text-xs text-blue-200">Dedicated specialists</p>
-              </div>
-              <div className="p-4 bg-white bg-opacity-10 rounded-lg">
-                <MapPin className="h-8 w-8 mx-auto mb-2" />
-                <p className="text-sm font-medium">Baywest Mall</p>
-                <p className="text-xs text-blue-200">Port Elizabeth, EC</p>
-              </div>
-              <div className="p-4 bg-white bg-opacity-10 rounded-lg">
-                <FileText className="h-8 w-8 mx-auto mb-2" />
-                <p className="text-sm font-medium">CIPC Registered</p>
-                <p className="text-xs text-blue-200">2025/599261/07</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <section className="section-responsive flex items-center justify-center relative safe-area-top">
+        <motion.div
+          className="responsive-container text-center z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <MetallicBadge variant="tech" animated className="mb-8">
+            <MessageSquare className="w-4 h-4 mr-2" />
+            Get in Touch
+          </MetallicBadge>
 
-      {/* Company Registration Notice */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 border-l-4 border-green-400 p-6 rounded-r-lg">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <Shield className="h-6 w-6 text-green-600" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-green-900 mb-2">Officially Registered South African Company</h3>
-                <div className="text-green-800 space-y-2">
-                  <p className="font-medium">
-                    AIJOBCHOMMIE (Pty) Ltd is a legally registered private company in South Africa, 
-                    fully compliant with all regulatory requirements.
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-4 mt-4">
-                    <div className="bg-green-100 rounded-lg p-4">
-                      <h4 className="font-semibold text-green-900 mb-2">CIPC Registration</h4>
-                      <div className="text-sm text-green-800 space-y-1">
-                        <p><strong>Company Name:</strong> AIJOBCHOMMIE (Pty) Ltd</p>
-                        <p><strong>Registration Number:</strong> 2025/599261/07</p>
-                        <p><strong>Status:</strong> Active & Compliant</p>
-                        <p><strong>Entity Type:</strong> Private Company</p>
-                      </div>
-                    </div>
-                    <div className="bg-blue-100 rounded-lg p-4">
-                      <h4 className="font-semibold text-blue-900 mb-2">Business Details</h4>
-                      <div className="text-sm text-blue-800 space-y-1">
-                        <p><strong>Industry:</strong> Employment & Recruitment Services</p>
-                        <p><strong>Province:</strong> Eastern Cape, South Africa</p>
-                        <p><strong>Compliance:</strong> POPIA, B-BBEE, SARS</p>
-                        <p><strong>Founded:</strong> 2025</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <h1 className="text-responsive-3xl font-heading font-black mb-6 text-chrome leading-none">
+            We're Here
+            <br />
+            <span className="bg-gradient-tech bg-clip-text text-transparent">
+              to Help
+            </span>
+          </h1>
+
+          <p className="text-responsive-lg text-text-secondary max-w-4xl mx-auto mb-8 leading-relaxed">
+            Have questions about AI Job Chommie? Need technical support? Want to explore
+            enterprise solutions? Our team is ready to assist you every step of the way.
+          </p>
+
+          <div className="flex items-center justify-center space-x-6 text-text-tertiary text-sm">
+            <div className="flex items-center space-x-2">
+              <Clock className="w-4 h-4" />
+              <span>24hr Response Time</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Globe className="w-4 h-4" />
+              <span>South African Team</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CheckCircle className="w-4 h-4" />
+              <span>Expert Support</span>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </section>
 
       {/* Contact Methods */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        
-        {/* Quick Contact Options */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Choose Your Preferred Contact Method</h2>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Email Support */}
-            <div className="bg-white rounded-xl border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Mail className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Email Support</h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <p className="font-medium text-gray-700">Primary Contact</p>
-                  <a href="mailto:admin@aijobchommie.co.za" className="text-blue-600 hover:text-blue-700 break-words">
-                    admin@aijobchommie.co.za
-                  </a>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">General Inquiries</p>
-                  <a href="mailto:hello@aijobchommie.co.za" className="text-blue-600 hover:text-blue-700">
-                    hello@aijobchommie.co.za
-                  </a>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">Technical Support</p>
-                  <a href="mailto:support@aijobchommie.co.za" className="text-blue-600 hover:text-blue-700">
-                    support@aijobchommie.co.za
-                  </a>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">Business & Partnerships</p>
-                  <a href="mailto:business@aijobchommie.co.za" className="text-blue-600 hover:text-blue-700">
-                    business@aijobchommie.co.za
-                  </a>
-                </div>
-              </div>
-              <div className="mt-6 p-3 bg-blue-50 rounded-lg">
-                <p className="text-xs text-blue-800">
-                  <strong>Response Time:</strong> Within 24 hours
-                </p>
-              </div>
-            </div>
+      <section className="section-responsive bg-gradient-to-b from-transparent to-bg-secondary">
+        <div className="responsive-container">
+          <SectionHeading
+            title="Get Support Your Way"
+            subtitle="Choose the contact method that works best for you."
+            align="center"
+          />
 
-            {/* Phone Support */}
-            <div className="bg-white rounded-xl border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Phone className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Phone Support</h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <p className="font-medium text-gray-700">Primary Contact</p>
-                  <a href="tel:0683015006" className="text-green-600 hover:text-green-700 font-mono text-lg">
-                    068 301 5006
-                  </a>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">WhatsApp</p>
-                  <a href="https://wa.me/27683015006" className="text-green-600 hover:text-green-700 font-mono">
-                    +27 68 301 5006
-                  </a>
-                </div>
-                <div>
-                  <p className="font-medium text-gray-700">International</p>
-                  <a href="tel:+27683015006" className="text-green-600 hover:text-green-700 font-mono">
-                    +27 68 301 5006
-                  </a>
-                </div>
-              </div>
-              <div className="mt-6 p-3 bg-green-50 rounded-lg">
-                <p className="text-xs text-green-800">
-                  <strong>Hours:</strong> Mon-Fri, 8:00-17:00 SAST<br/>
-                  <strong>SMS:</strong> Available 24/7
-                </p>
-              </div>
-            </div>
+          <div className="grid-responsive-3 gap-8 max-w-5xl mx-auto">
+            {contactMethods.map((method, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <MetallicCard glow="subtle" className="text-center h-full">
+                  <div className="text-tech-cyan text-4xl mb-4">{method.icon}</div>
+                  <h3 className="text-xl font-heading font-bold mb-3">{method.title}</h3>
+                  <p className="text-text-secondary mb-4">{method.description}</p>
 
-            {/* Live Chat */}
-            <div className="bg-white rounded-xl border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Headphones className="h-8 w-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Live Chat</h3>
-              <div className="space-y-3 text-sm text-gray-600">
-                <p>Get instant help from our support team through our website chat widget.</p>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>Available Now</span>
+                  <div className="space-y-2 mb-4">
+                    <div className="font-mono text-sm text-chrome">{method.contact}</div>
+                    <div className="text-xs text-text-tertiary">Response: {method.response}</div>
+                    <div className="text-xs text-text-tertiary">{method.available}</div>
                   </div>
-                  <p className="text-xs">Average response: 2-3 minutes</p>
-                  <p className="text-xs text-gray-500">Business hours: Mon-Fri 8:00-17:00</p>
-                </div>
-              </div>
-              <div className="mt-6">
-                <button className="w-full px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-semibold">
-                  Start Chat
-                </button>
-              </div>
-            </div>
 
-            {/* Office Visit */}
-            <div className="bg-white rounded-xl border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Building className="h-8 w-8 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Visit Our Office</h3>
-              <div className="space-y-3 text-sm text-gray-600">
+                  <MetallicBadge variant="tech" size="sm">
+                    {method.title.split(' ')[0]}
+                  </MetallicBadge>
+                </MetallicCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form & Departments */}
+      <section className="section-responsive">
+        <div className="responsive-container">
+          <div className="grid-responsive-2 gap-12 max-w-6xl mx-auto">
+
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <MetallicCard glow="medium" className="p-8">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-10 bg-gradient-tech rounded-lg flex items-center justify-center">
+                    <Send className="w-6 h-6 text-void-black" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold">Send us a Message</h2>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid-responsive-2 gap-4">
+                    <MetallicInput
+                      label="Full Name"
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="John Doe"
+                      required
+                      icon={<User />}
+                    />
+
+                    <MetallicInput
+                      label="Email Address"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="john@example.com"
+                      required
+                      icon={<Mail />}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-text-secondary text-sm font-medium mb-2">
+                      Inquiry Type
+                    </label>
+                    <select
+                      name="type"
+                      value={formData.type}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 bg-void-shadow border border-border-light rounded-md focus:border-tech-cyan focus:ring-1 focus:ring-tech-cyan transition-all text-text-primary"
+                    >
+                      <option value="general">General Support</option>
+                      <option value="technical">Technical Issue</option>
+                      <option value="business">Business Inquiry</option>
+                      <option value="privacy">Privacy/Data Protection</option>
+                      <option value="billing">Billing Question</option>
+                    </select>
+                  </div>
+
+                  <MetallicInput
+                    label="Subject"
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    placeholder="How can we help you?"
+                    required
+                  />
+
+                  <div>
+                    <label className="block text-text-secondary text-sm font-medium mb-2">
+                      Message <span className="text-state-error">*</span>
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Please describe your question or issue in detail..."
+                      required
+                      rows={6}
+                      className="w-full px-4 py-2 bg-void-shadow border border-border-light rounded-md focus:border-tech-cyan focus:ring-1 focus:ring-tech-cyan transition-all text-text-primary resize-vertical"
+                    />
+                  </div>
+
+                  <MetallicButton
+                    type="submit"
+                    variant="tech"
+                    size="lg"
+                    fullWidth
+                    icon={<Send />}
+                    iconPosition="right"
+                  >
+                    Send Message
+                  </MetallicButton>
+
+                  <p className="text-xs text-text-tertiary text-center">
+                    We typically respond within 24 hours during business days
+                  </p>
+                </form>
+              </MetallicCard>
+            </motion.div>
+
+            {/* Departments */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-6">
                 <div>
-                  <p className="font-medium text-gray-700">Address</p>
-                  <p className="leading-relaxed">
-                    Baywest Mall<br />
-                    100 Baywest Boulevard<br />
-                    Baywest City<br />
-                    Port Elizabeth, 6025<br />
-                    Eastern Cape
+                  <h2 className="text-2xl font-heading font-bold mb-4">Contact Departments</h2>
+                  <p className="text-text-secondary">
+                    Reach out to the right team for faster, more specialized assistance.
                   </p>
                 </div>
-                <div>
-                  <p className="font-medium text-gray-700">Office Hours</p>
-                  <p>Monday - Friday<br />9:00 AM - 5:00 PM SAST<br/>Saturday: 10:00 AM - 2:00 PM</p>
-                </div>
+
+                {departments.map((dept, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <MetallicCard>
+                      <div className="flex items-start space-x-4">
+                        <div className="w-10 h-10 bg-gradient-chrome rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="text-void-black text-lg">{dept.icon}</div>
+                        </div>
+                        <div>
+                          <h3 className="font-heading font-bold mb-1">{dept.title}</h3>
+                          <div className="text-tech-cyan text-sm font-mono mb-2">{dept.email}</div>
+                          <p className="text-text-secondary text-sm">{dept.description}</p>
+                        </div>
+                      </div>
+                    </MetallicCard>
+                  </motion.div>
+                ))}
               </div>
-              <div className="mt-6 space-y-2">
-                <button 
-                  onClick={() => window.open('https://maps.google.com/?q=Baywest+Mall+Port+Elizabeth', '_blank')}
-                  className="w-full px-3 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 text-sm font-semibold flex items-center justify-center gap-2"
-                >
-                  <Navigation className="h-4 w-4" />
-                  Get Directions
-                </button>
-                <div className="p-2 bg-orange-50 rounded-lg">
-                  <p className="text-xs text-orange-800">
-                    <strong>Note:</strong> Appointments recommended for meetings
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Information */}
+      <section className="section-responsive bg-gradient-to-b from-bg-secondary to-transparent">
+        <div className="responsive-container">
+          <div className="grid-responsive-2 gap-12 max-w-5xl mx-auto">
+
+            {/* Office Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <MetallicCard className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-tech rounded-full flex items-center justify-center mx-auto mb-6">
+                  <MapPin className="w-8 h-8 text-void-black" />
+                </div>
+
+                <h3 className="text-xl font-heading font-bold mb-4">Our Office</h3>
+
+                <div className="space-y-3 text-text-secondary">
+                  <p>AI Job Chommie (Pty) Ltd</p>
+                  <p>Cape Town, Western Cape<br />South Africa</p>
+                  <p>Registration: XXXX/XXXXXX/XX</p>
+                </div>
+
+                <div className="mt-6 space-y-2">
+                  <MetallicBadge variant="tech">South African Owned</MetallicBadge>
+                  <MetallicBadge variant="chrome">POPI Act Compliant</MetallicBadge>
+                </div>
+              </MetallicCard>
+            </motion.div>
+
+            {/* Business Hours */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <MetallicCard className="p-8">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-10 bg-gradient-chrome rounded-lg flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-void-black" />
+                  </div>
+                  <h3 className="text-xl font-heading font-bold">Business Hours</h3>
+                </div>
+
+                <div className="space-y-3 text-text-secondary">
+                  <div className="flex justify-between">
+                    <span>Monday - Friday</span>
+                    <span className="text-tech-cyan">8:00 AM - 6:00 PM SAST</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Saturday</span>
+                    <span className="text-text-tertiary">Email support only</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Sunday</span>
+                    <span className="text-text-tertiary">Email support only</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Public Holidays</span>
+                    <span className="text-text-tertiary">Limited support</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-3 bg-void-shadow rounded-lg">
+                  <p className="text-sm text-text-secondary">
+                    <strong>Emergency Support:</strong> For urgent technical issues affecting
+                    platform availability, email tech@aijobchommie.co.za with "URGENT" in the subject line.
                   </p>
                 </div>
-              </div>
-            </div>
+              </MetallicCard>
+            </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Location Details */}
-        <div className="mb-16">
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                <MapPin className="h-8 w-8" />
-                Our Location at Baywest Mall
-              </h3>
-              <p className="text-blue-100">
-                Visit us at the premier shopping destination in Port Elizabeth, Eastern Cape. 
-                Easy parking and convenient access to public transport.
-              </p>
-            </div>
-            
-            <div className="p-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-4">Complete Business Address</h4>
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-                    <div className="text-sm space-y-1">
-                      <p className="font-semibold text-blue-900">AIJOBCHOMMIE (Pty) Ltd</p>
-                      <p className="text-xs text-gray-600">Registration: 2025/599261/07</p>
-                      <div className="mt-2 pt-2 border-t border-gray-300">
-                        <p>Baywest Mall</p>
-                        <p>100 Baywest Boulevard</p>
-                        <p>Baywest City</p>
-                        <p>Port Elizabeth, 6025</p>
-                        <p>Eastern Cape, South Africa</p>
-                      </div>
-                    </div>
-                  </div>
+      {/* FAQ Section */}
+      <section className="section-responsive">
+        <div className="responsive-container">
+          <SectionHeading
+            title="Frequently Asked Questions"
+            subtitle="Quick answers to common questions. Can't find what you're looking for? Contact us directly."
+            align="center"
+          />
 
-                  <h4 className="font-bold text-gray-900 mb-4">Getting There</h4>
-                  <div className="space-y-3 text-sm text-gray-600">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-blue-600 text-xs font-bold">🚗</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">By Car</p>
-                        <p>Free parking available at Baywest Mall. Take the M4 to Baywest Boulevard exit. GPS coordinates available on request.</p>
-                      </div>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <MetallicCard>
+                  <details className="group">
+                    <summary className="flex items-center justify-between cursor-pointer list-none">
+                      <h3 className="font-heading font-semibold text-lg">{faq.question}</h3>
+                      <HelpCircle className="w-5 h-5 text-tech-cyan transition-transform group-open:rotate-90" />
+                    </summary>
+                    <div className="mt-4 pt-4 border-t border-border-light">
+                      <p className="text-text-secondary">{faq.answer}</p>
                     </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-green-600 text-xs font-bold">🚌</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">Public Transport</p>
-                        <p>Regular bus services to Baywest Mall. Uber and Bolt readily available. Local taxi services also operate in the area.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 text-xs font-bold">✈️</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">From Airport</p>
-                        <p>Port Elizabeth Airport (Chief Dawid Stuurman International Airport) is 15 minutes away. Airport shuttles and rental cars available.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-gray-900 mb-4">Mall Amenities & Services</h4>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Free WiFi</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Food Court</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Banking Services</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Wheelchair Access</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Air Conditioning</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>24/7 Security</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Coffee Shops</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600" />
-                        <span>Meeting Facilities</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h5 className="font-semibold text-blue-900 mb-2">Mall Operating Hours</h5>
-                    <div className="text-sm text-blue-800 space-y-1">
-                      <p><strong>Mon-Fri:</strong> 9:00 AM - 9:00 PM</p>
-                      <p><strong>Saturday:</strong> 9:00 AM - 6:00 PM</p>
-                      <p><strong>Sunday:</strong> 10:00 AM - 6:00 PM</p>
-                      <p><strong>Public Holidays:</strong> 10:00 AM - 4:00 PM</p>
-                    </div>
-                    <p className="text-xs text-blue-700 mt-2">
-                      *Our office hours may differ from mall hours - please call ahead
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <div className="flex flex-wrap gap-4">
-                  <button 
-                    onClick={() => window.open('https://maps.google.com/?q=Baywest+Mall+Port+Elizabeth', '_blank')}
-                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold"
-                  >
-                    <ExternalLink className="h-5 w-5" />
-                    View on Google Maps
-                  </button>
-                  <button 
-                    onClick={() => window.open('https://www.baywestmall.co.za', '_blank')}
-                    className="flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-semibold"
-                  >
-                    <Globe className="h-5 w-5" />
-                    Baywest Mall Website
-                  </button>
-                  <a 
-                    href="tel:0683015006"
-                    className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-semibold"
-                  >
-                    <Phone className="h-5 w-5" />
-                    Call Now: 068 301 5006
-                  </a>
-                </div>
-              </div>
-            </div>
+                  </details>
+                </MetallicCard>
+              </motion.div>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Contact Form and Additional Information sections remain the same... */}
-        {/* I'll continue with the form in the next part due to length */}
+      {/* CTA Section */}
+      <section className="section-responsive bg-gradient-to-t from-bg-secondary to-transparent">
+        <div className="responsive-container">
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-responsive-2xl font-heading font-black text-chrome mb-6">
+              Still Have Questions?
+            </h2>
 
-        {/* Business Information Footer */}
-        <div className="mt-16 pt-12 border-t border-gray-200">
-          <div className="bg-gradient-to-br from-gray-900 to-blue-900 text-white rounded-xl p-8">
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold mb-4">Officially Registered Business</h3>
-              <p className="text-lg text-blue-100">
-                Trust and transparency in every interaction - fully compliant with South African regulations
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FileText className="h-8 w-8" />
-                </div>
-                <h4 className="font-semibold mb-3">CIPC Registration</h4>
-                <div className="text-sm space-y-1 text-gray-300">
-                  <p><strong>Company:</strong> AIJOBCHOMMIE (Pty) Ltd</p>
-                  <p><strong>Registration:</strong> 2025/599261/07</p>
-                  <p><strong>Status:</strong> Active</p>
-                </div>
-              </div>
+            <p className="text-responsive-lg text-text-secondary mb-8">
+              Our support team is here to help you succeed. Don't hesitate to reach out
+              for personalized assistance with your AI Job Chommie experience.
+            </p>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-8 w-8" />
-                </div>
-                <h4 className="font-semibold mb-3">Compliance</h4>
-                <div className="text-sm space-y-1 text-gray-300">
-                  <p>POPIA Compliant</p>
-                  <p>SARS Registered</p>
-                  <p>B-BBEE Aligned</p>
-                </div>
-              </div>
+            <div className="flex-responsive-col gap-4 justify-center items-center">
+              <MetallicButton
+                variant="tech"
+                size="lg"
+                onClick={() => window.location.href = 'mailto:support@aijobchommie.co.za'}
+                icon={<Mail />}
+                iconPosition="right"
+                className="min-w-56"
+              >
+                Email Support
+              </MetallicButton>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="h-8 w-8" />
-                </div>
-                <h4 className="font-semibold mb-3">Location</h4>
-                <div className="text-sm space-y-1 text-gray-300">
-                  <p>Eastern Cape, South Africa</p>
-                  <p>Baywest Mall, Port Elizabeth</p>
-                  <p>Professional Business Address</p>
-                </div>
-              </div>
+              <MetallicButton
+                variant="outline"
+                size="lg"
+                onClick={() => navigate('/about')}
+                className="min-w-56"
+              >
+                Learn More About Us
+              </MetallicButton>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white border-opacity-20 text-center">
-              <p className="text-gray-400 text-sm">
-                All business communications are conducted under the legal framework of South African law. 
-                Our registration details can be verified through the CIPC (Companies and Intellectual Property Commission) database.
-              </p>
-            </div>
-          </div>
+            <p className="text-sm text-text-tertiary mt-6">
+              Average response time: Under 24 hours • South African support team
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-      </div>
+      {/* Footer Separator */}
+      <ChromeSeparator className="my-8" />
     </div>
   );
 };
