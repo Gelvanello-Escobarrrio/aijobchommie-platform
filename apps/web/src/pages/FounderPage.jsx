@@ -106,7 +106,7 @@ const FounderPage = () => {
 
           <div className="grid grid-2" style={{ gap: 'var(--space-4xl)' }}>
             <div className="card hover-card">
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>🏗️</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-md)' }}>Early Life & Trade Skills</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 Growing up in Port Elizabeth, Fernando learned the value of hard work and craftsmanship early. His journey into welding 
@@ -114,22 +114,22 @@ const FounderPage = () => {
               </p>
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>⚡</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   Certified welder with 8+ years experience
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>⚡</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   Worked across construction and manufacturing sectors
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>⚡</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   Deep understanding of blue-collar employment challenges
                 </li>
               </ul>
             </div>
 
             <div className="card hover-card">
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>📚</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-md)' }}>Education & Self-Development</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 Never one to accept limitations, Fernando pursued continuous learning alongside his trade work. 
@@ -137,22 +137,22 @@ const FounderPage = () => {
               </p>
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)' }}>🎓</span>
+                  <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)' }}></span>
                   Self-taught programmer (Python, JavaScript, AI/ML)
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)' }}>🎓</span>
+                  <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)' }}></span>
                   Completed online courses in machine learning
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)' }}>🎓</span>
+                  <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)' }}></span>
                   Passionate advocate for accessible education
                 </li>
               </ul>
             </div>
 
             <div className="card hover-card">
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>💡</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-md)' }}>The Unemployment Experience</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 When Fernando faced unemployment despite his skills and experience, he witnessed firsthand how broken 
@@ -160,22 +160,22 @@ const FounderPage = () => {
               </p>
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>🔍</span>
+                  <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                   Months of unsuccessful job applications
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>🔍</span>
+                  <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                   Witnessed systemic barriers in hiring processes
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>🔍</span>
+                  <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                   Recognized the need for AI-powered solutions
                 </li>
               </ul>
             </div>
 
             <div className="card hover-card">
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>❤️</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--accent-violet)', marginBottom: 'var(--space-md)' }}>Family Values & Legacy</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 Fernando carries forward the values instilled by his late mother – compassion, perseverance, and the belief 
@@ -183,15 +183,15 @@ const FounderPage = () => {
               </p>
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-magenta)', marginRight: 'var(--space-sm)' }}>💝</span>
+                  <span style={{ color: 'var(--primary-magenta)', marginRight: 'var(--space-sm)' }}></span>
                   Dedicated to his late mother's memory
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-magenta)', marginRight: 'var(--space-sm)' }}>💝</span>
+                  <span style={{ color: 'var(--primary-magenta)', marginRight: 'var(--space-sm)' }}></span>
                   Strong community and family orientation
                 </li>
                 <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-magenta)', marginRight: 'var(--space-sm)' }}>💝</span>
+                  <span style={{ color: 'var(--primary-magenta)', marginRight: 'var(--space-sm)' }}></span>
                   Believes in lifting others while climbing
                 </li>
               </ul>
@@ -223,7 +223,7 @@ const FounderPage = () => {
             </div>
             
             <div className="card" style={{ background: 'linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 255, 0.1))' }}>
-              <h3 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-md)' }}>🚀 Technical Achievements</h3>
+              <h3 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-md)' }}> Technical Achievements</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                 <div style={{ padding: 'var(--space-md)', background: 'rgba(0, 0, 0, 0.2)', borderRadius: 'var(--radius-md)' }}>
                   <h4 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-sm)' }}>AI Job Matching Algorithm</h4>
@@ -265,25 +265,25 @@ const FounderPage = () => {
                 <h3 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-md)' }}>The Problem I Witnessed</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>❌</span>
+                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Skills vs. Opportunities Mismatch:</strong> Talented people couldn't find work that matched their abilities
                     </div>
                   </li>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>❌</span>
+                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Expensive Recruitment Fees:</strong> Job boards and agencies charging fees that many couldn't afford
                     </div>
                   </li>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>❌</span>
+                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Biased Hiring Processes:</strong> Good candidates overlooked due to systemic barriers and unconscious bias
                     </div>
                   </li>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>❌</span>
+                    <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Information Asymmetry:</strong> Job seekers lacked insights into what employers really wanted
                     </div>
@@ -295,25 +295,25 @@ const FounderPage = () => {
                 <h3 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-md)' }}>My AI-Powered Solution</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>✅</span>
+                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Intelligent Matching:</strong> AI analyzes skills, experience, and potential for perfect job-candidate fit
                     </div>
                   </li>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>✅</span>
+                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Affordable Access:</strong> Premium features starting at R17/month with free trials for everyone
                     </div>
                   </li>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>✅</span>
+                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Bias-Free Algorithms:</strong> AI focuses on skills and potential, not demographics or connections
                     </div>
                   </li>
                   <li style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'flex-start' }}>
-                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}>✅</span>
+                    <span style={{ color: 'var(--accent-violet)', marginRight: 'var(--space-sm)', marginTop: '2px' }}></span>
                     <div>
                       <strong>Data-Driven Insights:</strong> Real-time market intelligence helps job seekers make informed decisions
                     </div>
@@ -337,7 +337,7 @@ const FounderPage = () => {
 
           <div className="grid grid-2" style={{ gap: 'var(--space-4xl)' }}>
             <div className="card hover-card" style={{ border: '2px solid var(--primary-cyan)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>🤝</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-md)' }}>People-First Technology</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 "Technology should amplify human potential, not replace it. Every feature we build starts with a simple question: 
@@ -349,7 +349,7 @@ const FounderPage = () => {
             </div>
 
             <div className="card hover-card" style={{ border: '2px solid var(--primary-magenta)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>🔬</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-md)' }}>Continuous Innovation</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 "In the rapidly evolving world of AI, standing still means falling behind. We must constantly learn, 
@@ -361,7 +361,7 @@ const FounderPage = () => {
             </div>
 
             <div className="card hover-card" style={{ border: '2px solid var(--accent-lime)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>💎</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-md)' }}>Radical Transparency</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 "Users deserve to understand how our AI makes decisions about their careers. Black-box algorithms have no place 
@@ -373,7 +373,7 @@ const FounderPage = () => {
             </div>
 
             <div className="card hover-card" style={{ border: '2px solid var(--accent-violet)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}>🌍</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center' }}></div>
               <h3 style={{ color: 'var(--accent-violet)', marginBottom: 'var(--space-md)' }}>Community Impact</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 "Success isn't measured in downloads or revenue – it's measured in lives changed, families fed, 
@@ -391,7 +391,7 @@ const FounderPage = () => {
       <section className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
           <div className="card" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', background: 'linear-gradient(135deg, rgba(157, 0, 255, 0.1), rgba(0, 255, 255, 0.1))' }}>
-            <div style={{ fontSize: '4rem', marginBottom: 'var(--space-lg)' }}>💭</div>
+            <div style={{ fontSize: '4rem', marginBottom: 'var(--space-lg)' }}></div>
             <blockquote style={{ 
               fontSize: '1.4rem', 
               lineHeight: '1.6', 
@@ -438,10 +438,10 @@ const FounderPage = () => {
             </p>
             <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link to="/pricing" className="btn btn-primary" style={{ fontSize: '1.1rem' }}>
-                🚀 Start Your Journey
+                 Start Your Journey
               </Link>
               <Link to="/mission" className="btn btn-secondary" style={{ fontSize: '1.1rem' }}>
-                📚 Learn About Our Mission
+                 Learn About Our Mission
               </Link>
             </div>
           </div>

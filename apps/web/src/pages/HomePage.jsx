@@ -75,7 +75,7 @@ const HomePage = () => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-8"
       >
-        <h1 className="text-3xl mb-2">Welcome back, {user?.user_metadata?.full_name || 'Chommie'}! 👋</h1>
+        <h1 className="text-3xl mb-2">Welcome back, {user?.user_metadata?.full_name || 'Chommie'}! </h1>
         <p className="text-gray-400 text-lg italic">"{todaysQuote}"</p>
       </motion.div>
 

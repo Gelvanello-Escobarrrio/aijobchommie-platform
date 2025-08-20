@@ -5,8 +5,8 @@
  * Includes provinces, cities, job categories, companies, and sample jobs
  */
 
-import { db } from '../src/config/database';
-import { jobs, users, jobApplications, userProfiles } from '../src/models/schema';
+import { db } from '../../../apps/web/src/src/config/database';
+import { jobs, users, jobApplications, userProfiles } from '../../../apps/web/src/src/models/schema';
 import bcrypt from 'bcryptjs';
 
 // South African provinces with major cities
@@ -165,11 +165,11 @@ export const JOB_BENEFITS = [
  * Seed database with initial data
  */
 export async function seedDatabase() {
-  console.log('🌱 Starting database seed process...');
+  console.log(' Starting database seed process...');
   
   try {
     // Create sample admin user
-    console.log('👤 Creating admin user...');
+    console.log(' Creating admin user...');
     const hashedPassword = await bcrypt.hash('admin123!', 12);
     
     const [adminUser] = await db.insert(users).values({
@@ -187,7 +187,7 @@ export async function seedDatabase() {
     }).returning();
 
     // Create sample regular users
-    console.log('👥 Creating sample users...');
+    console.log(' Creating sample users...');
     const sampleUsers = [
       {
         email: 'john.doe@gmail.com',
@@ -227,7 +227,7 @@ export async function seedDatabase() {
     const createdUsers = await db.insert(users).values(sampleUsers).returning();
 
     // Create comprehensive job listings
-    console.log('💼 Creating sample job listings...');
+    console.log(' Creating sample job listings...');
     const sampleJobs = [];
 
     // Generate jobs for each category and location
@@ -314,11 +314,11 @@ export async function seedDatabase() {
     for (const batch of jobBatches) {
       const createdJobs = await db.insert(jobs).values(batch).returning();
       allCreatedJobs.push(...createdJobs);
-      console.log(`✅ Created ${createdJobs.length} jobs`);
+      console.log(` Created ${createdJobs.length} jobs`);
     }
 
     // Create sample user profiles
-    console.log('📄 Creating user profiles...');
+    console.log(' Creating user profiles...');
     for (const user of createdUsers) {
       await db.insert(userProfiles).values({
         userId: user.id,
@@ -345,7 +345,7 @@ export async function seedDatabase() {
     }
 
     // Create some sample job applications
-    console.log('📝 Creating sample job applications...');
+    console.log(' Creating sample job applications...');
     const sampleApplications = [];
     const someJobs = allCreatedJobs.slice(0, 20); // Apply to first 20 jobs
     
@@ -368,8 +368,8 @@ export async function seedDatabase() {
 
     await db.insert(jobApplications).values(sampleApplications);
 
-    console.log('🎉 Database seeding completed successfully!');
-    console.log(`✅ Created:`);
+    console.log(' Database seeding completed successfully!');
+    console.log(` Created:`);
     console.log(`   - 1 admin user`);
     console.log(`   - ${createdUsers.length} regular users`);
     console.log(`   - ${allCreatedJobs.length} job listings`);
@@ -377,7 +377,7 @@ export async function seedDatabase() {
     console.log(`   - ${sampleApplications.length} job applications`);
 
   } catch (error) {
-    console.error('❌ Database seeding failed:', error);
+    console.error(' Database seeding failed:', error);
     throw error;
   }
 }
@@ -523,11 +523,11 @@ ${firstName}`;
 if (require.main === module) {
   seedDatabase()
     .then(() => {
-      console.log('✅ Seeding completed successfully');
+      console.log(' Seeding completed successfully');
       process.exit(0);
     })
     .catch((error) => {
-      console.error('❌ Seeding failed:', error);
+      console.error(' Seeding failed:', error);
       process.exit(1);
     });
 }

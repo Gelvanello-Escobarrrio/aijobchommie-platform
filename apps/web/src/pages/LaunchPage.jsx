@@ -102,7 +102,7 @@ const LaunchPage = () => {
             {isLaunched ? (
               <div className="launch-cta">
                 <h3 style={{ color: 'var(--accent-lime)', marginBottom: '20px' }}>
-                  🎉 WE'RE LIVE! 🎉
+                   WE'RE LIVE! 
                 </h3>
                 <Link to="/app-download" className="btn btn-primary launch-btn">
                   Download PWA Now
@@ -130,32 +130,32 @@ const LaunchPage = () => {
           </h2>
           <div className="grid grid-3">
             <div className="card fade-in">
-              <div className="feature-icon">📱</div>
+              <div className="feature-icon"></div>
               <h3>Native App Experience</h3>
               <p>Install directly from your browser. Works offline, loads instantly, and feels like a native mobile app.</p>
             </div>
             <div className="card fade-in">
-              <div className="feature-icon">🤖</div>
+              <div className="feature-icon"></div>
               <h3>AI Job Matching</h3>
               <p>Our advanced AI analyzes your skills, experience, and preferences to match you with perfect opportunities.</p>
             </div>
             <div className="card fade-in">
-              <div className="feature-icon">⚡</div>
+              <div className="feature-icon"></div>
               <h3>Lightning Fast</h3>
               <p>Optimized for South African network conditions. Works on 2G, 3G, 4G, and 5G with smart caching.</p>
             </div>
             <div className="card fade-in">
-              <div className="feature-icon">🏆</div>
+              <div className="feature-icon"></div>
               <h3>Local Market Focus</h3>
               <p>Built specifically for South African job market with local company insights and salary benchmarks.</p>
             </div>
             <div className="card fade-in">
-              <div className="feature-icon">💰</div>
+              <div className="feature-icon"></div>
               <h3>Affordable Plans</h3>
               <p>Start at just R8/month with 3-day free trial. No setup fees, cancel anytime.</p>
             </div>
             <div className="card fade-in">
-              <div className="feature-icon">🔔</div>
+              <div className="feature-icon"></div>
               <h3>Smart Notifications</h3>
               <p>Get instant alerts for matching jobs, application updates, and interview invitations.</p>
             </div>
@@ -214,7 +214,7 @@ const LaunchPage = () => {
         <div className="container">
           <Logo size={40} />
           <p style={{ margin: '20px 0' }}>
-            © 2025 AI Job Chommie. All rights reserved.
+             2025 AI Job Chommie. All rights reserved.
           </p>
           <p style={{ margin: '20px 0', fontSize: '0.9rem', opacity: '0.8' }}>
             Made from the heart for all South African job seekers by yours truly, with love, Fernando Steyn

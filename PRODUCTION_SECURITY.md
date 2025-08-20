@@ -1,4 +1,4 @@
-# 🔒 Production Security Configuration
+#  Production Security Configuration
 
 ## Overview
 This document outlines comprehensive security configurations and hardening measures for the AI Job Chommie platform in production.
@@ -501,7 +501,7 @@ send_alert() {
     
     # Send Slack alert
     curl -X POST -H 'Content-type: application/json' \
-        --data "{\"text\":\"🚨 [$severity] $message\"}" \
+        --data "{\"text\":\" [$severity] $message\"}" \
         "$SLACK_WEBHOOK"
 }
 

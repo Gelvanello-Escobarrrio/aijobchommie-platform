@@ -1,5 +1,5 @@
 /**
- * 🔐 AUTHENTICATION CONTEXT
+ *  AUTHENTICATION CONTEXT
  * 
  * Provides authentication state and methods throughout the app
  * Integrates with Supabase and custom JWT authentication
@@ -192,7 +192,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.setItem('user', JSON.stringify(userData));
         setUser(userData);
 
-        toast.success('Welcome to AI Job Chommie! 🎉');
+        toast.success('Welcome to AI Job Chommie! ');
       } else {
         throw new Error(response.data.message || 'Registration failed');
       }
@@ -227,7 +227,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.setItem('user', JSON.stringify(userData));
         setUser(userData);
 
-        toast.success(`Welcome back, ${userData.firstName}! 👋`);
+        toast.success(`Welcome back, ${userData.firstName}! `);
       } else {
         throw new Error(response.data.message || 'Login failed');
       }

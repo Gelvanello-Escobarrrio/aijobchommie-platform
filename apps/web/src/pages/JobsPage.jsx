@@ -49,7 +49,7 @@ const JobsPage = () => {
     const unsubscribe = subscribeToJobUpdates((update) => {
       if (update.type === 'new_jobs') {
         setJobs(prevJobs => [...prevJobs, ...update.jobs]);
-        toast.success(`${update.jobs.length} new jobs found! 🎉`);
+        toast.success(`${update.jobs.length} new jobs found! `);
       } else if (update.type === 'scraping_progress') {
         setScrapingStatus(update.status);
       }
@@ -172,7 +172,7 @@ const JobsPage = () => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="text-8xl mb-8"
           >
-            🚧
+            
           </motion.div>
           
           <h1 className="text-3xl font-bold text-neon-cyan mb-4">Coming Soon!</h1>
@@ -183,11 +183,11 @@ const JobsPage = () => {
           <div className="bg-gray-800/50 p-6 rounded-lg border border-neon-cyan/30 mb-8">
             <h3 className="text-xl font-semibold text-neon-pink mb-3">What's Coming:</h3>
             <ul className="text-left space-y-2 text-gray-300">
-              <li>🔍 AI-powered job search</li>
-              <li>⚡ Instant job matching</li>
-              <li>📱 Quick apply system</li>
-              <li>🎯 Personalized job alerts</li>
-              <li>📊 Career analytics</li>
+              <li> AI-powered job search</li>
+              <li> Instant job matching</li>
+              <li> Quick apply system</li>
+              <li> Personalized job alerts</li>
+              <li> Career analytics</li>
             </ul>
           </div>
           

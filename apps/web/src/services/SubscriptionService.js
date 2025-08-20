@@ -1,5 +1,5 @@
 /**
- * 🎯 SUBSCRIPTION SERVICE - PREMIUM JOB SEARCH GATING
+ *  SUBSCRIPTION SERVICE - PREMIUM JOB SEARCH GATING
  * Manages premium subscriptions and feature access for AI Job Chommie
  */
 
@@ -15,7 +15,7 @@ class SubscriptionService {
   }
 
   /**
-   * 🚀 Initialize subscription service
+   *  Initialize subscription service
    */
   async init() {
     try {
@@ -29,7 +29,7 @@ class SubscriptionService {
   }
 
   /**
-   * 📊 Load current subscriber count and progress
+   *  Load current subscriber count and progress
    */
   async loadSubscriberCount() {
     try {
@@ -53,7 +53,7 @@ class SubscriptionService {
   }
 
   /**
-   * 👤 Load current user's subscription data
+   *  Load current user's subscription data
    */
   async loadUserSubscription() {
     try {
@@ -88,7 +88,7 @@ class SubscriptionService {
   }
 
   /**
-   * 🔐 Setup feature access based on subscription and subscriber count
+   *  Setup feature access based on subscription and subscriber count
    */
   setupFeatureAccess() {
     const isPremium = this.isPremiumUser();
@@ -138,7 +138,7 @@ class SubscriptionService {
   }
 
   /**
-   * 💎 Check if user has premium subscription
+   *  Check if user has premium subscription
    */
   isPremiumUser() {
     if (!this.subscriptionData) return false;
@@ -149,7 +149,7 @@ class SubscriptionService {
   }
 
   /**
-   * 🎯 Get progress towards 10k subscribers
+   *  Get progress towards 10k subscribers
    */
   getSubscriberProgress() {
     const progress = Math.min((this.subscriberCount / this.targetSubscribers) * 100, 100);
@@ -166,14 +166,14 @@ class SubscriptionService {
   }
 
   /**
-   * 🔓 Check if specific feature is accessible
+   *  Check if specific feature is accessible
    */
   hasFeatureAccess(category, feature) {
     return this.featureAccess[category]?.[feature] || false;
   }
 
   /**
-   * 🚫 Get feature restriction message
+   *  Get feature restriction message
    */
   getRestrictionMessage(category, feature) {
     const isPremium = this.isPremiumUser();
@@ -187,7 +187,7 @@ class SubscriptionService {
       if (progress.isUnlocked) {
         return {
           type: 'api_limit',
-          title: '🎉 Job Search Unlocked!',
+          title: ' Job Search Unlocked!',
           message: `Amazing! We've reached ${this.targetSubscribers.toLocaleString()} subscribers! Job search is now available to everyone.`,
           action: null
         };
@@ -195,7 +195,7 @@ class SubscriptionService {
       
       return {
         type: 'subscriber_gate',
-        title: '🚀 Almost There!',
+        title: ' Almost There!',
         message: `Job search unlocks at ${this.targetSubscribers.toLocaleString()} subscribers. We're at ${this.subscriberCount.toLocaleString()} (${progress.percentage})`,
         action: 'upgrade_or_share',
         cta: 'Get Premium Access Now',
@@ -207,7 +207,7 @@ class SubscriptionService {
     if (category === 'premium_features') {
       return {
         type: 'premium_required',
-        title: '💎 Premium Feature',
+        title: ' Premium Feature',
         message: 'This feature is available with a Premium subscription.',
         action: 'upgrade',
         cta: 'Upgrade to Premium',
@@ -224,37 +224,37 @@ class SubscriptionService {
   }
 
   /**
-   * 💎 Get premium subscription benefits
+   *  Get premium subscription benefits
    */
   getPremiumBenefits() {
     return [
       {
-        icon: '🔍',
+        icon: '',
         title: 'Unlimited Job Search',
         description: 'Search jobs instantly without waiting for 10k subscribers'
       },
       {
-        icon: '🤖',
+        icon: '',
         title: 'Advanced AI Features',
         description: 'Unlimited CV analysis, career consultations, and AI job matching'
       },
       {
-        icon: '📊',
+        icon: '',
         title: 'Premium Analytics',
         description: 'Track your applications, salary insights, and career progress'
       },
       {
-        icon: '⚡',
+        icon: '',
         title: 'Priority Support',
         description: 'Get help when you need it with premium customer support'
       },
       {
-        icon: '🚫',
+        icon: '',
         title: 'Ad-Free Experience',
         description: 'Enjoy AI Job Chommie without any advertisements'
       },
       {
-        icon: '💼',
+        icon: '',
         title: 'Interview Prep Tools',
         description: 'AI-powered interview preparation and company insights'
       }
@@ -262,7 +262,7 @@ class SubscriptionService {
   }
 
   /**
-   * 📈 Get subscription plans with pricing
+   *  Get subscription plans with pricing
    */
   getSubscriptionPlans() {
     return [
@@ -311,7 +311,7 @@ class SubscriptionService {
         price: 'R17',
         period: 'month',
         features: [
-          '🔥 Instant job search access',
+          ' Instant job search access',
           'Unlimited CV analysis',
           'Advanced AI job matching',
           'Priority customer support',
@@ -328,14 +328,14 @@ class SubscriptionService {
   }
 
   /**
-   * 🎯 Create compelling upgrade prompts
+   *  Create compelling upgrade prompts
    */
   createUpgradePrompt(context = 'general') {
     const progress = this.getSubscriberProgress();
     
     const prompts = {
       job_search: {
-        title: '🚀 Unlock Job Search Today!',
+        title: ' Unlock Job Search Today!',
         subtitle: `Don't wait for ${progress.remaining.toLocaleString()} more subscribers`,
         message: 'Get instant access to thousands of SA jobs with Premium',
         urgency: 'Start with Basic plan R8/month or Premium R17/month',
@@ -350,7 +350,7 @@ class SubscriptionService {
       },
       
       cv_analysis: {
-        title: '📄 Unlimited CV Analysis',
+        title: ' Unlimited CV Analysis',
         subtitle: 'You\'ve used your free analyses',
         message: 'Get unlimited CV improvements with Premium',
         benefits: [
@@ -364,7 +364,7 @@ class SubscriptionService {
       },
 
       general: {
-        title: '💎 Unlock Your Career Potential',
+        title: ' Unlock Your Career Potential',
         subtitle: 'Join thousands of SA professionals',
         message: 'Get premium career tools designed for South Africa',
         benefits: [
@@ -382,7 +382,7 @@ class SubscriptionService {
   }
 
   /**
-   * 💳 Handle subscription upgrade
+   *  Handle subscription upgrade
    */
   async upgradeSubscription(planId, paymentMethod = 'paystack') {
     try {
@@ -418,7 +418,7 @@ class SubscriptionService {
   }
 
   /**
-   * 🔄 Track API usage for SerAPI limits
+   *  Track API usage for SerAPI limits
    */
   trackApiUsage(endpoint, cost = 1) {
     this.apiCallsRemaining = Math.max(0, this.apiCallsRemaining - cost);
@@ -440,7 +440,7 @@ class SubscriptionService {
   }
 
   /**
-   * ⚠️ Trigger API limit warning
+   *  Trigger API limit warning
    */
   triggerApiLimitWarning() {
     const event = new CustomEvent('api_limit_warning', {
@@ -455,7 +455,7 @@ class SubscriptionService {
   }
 
   /**
-   * 🔄 Start periodic updates
+   *  Start periodic updates
    */
   startPeriodicUpdates() {
     // Update subscriber count every 5 minutes
@@ -471,7 +471,7 @@ class SubscriptionService {
   }
 
   /**
-   * 📱 Get mobile-optimized subscription UI data
+   *  Get mobile-optimized subscription UI data
    */
   getMobileSubscriptionData() {
     const progress = this.getSubscriberProgress();
@@ -486,7 +486,7 @@ class SubscriptionService {
       progress: {
         ...progress,
         message: progress.isUnlocked 
-          ? '🎉 Job search unlocked for everyone!' 
+          ? ' Job search unlocked for everyone!' 
           : `${progress.remaining.toLocaleString()} more subscribers needed`
       },
       api: {
@@ -500,15 +500,15 @@ class SubscriptionService {
   }
 
   /**
-   * 🎁 Generate referral incentives for reaching 10k
+   *  Generate referral incentives for reaching 10k
    */
   getReferralIncentives() {
     return {
       individual: [
-        { referrals: 1, reward: '1 week Premium free', icon: '🎁' },
-        { referrals: 5, reward: '1 month Premium free', icon: '💎' },
-        { referrals: 10, reward: '3 months Premium free', icon: '🏆' },
-        { referrals: 25, reward: '1 year Premium free', icon: '👑' }
+        { referrals: 1, reward: '1 week Premium free', icon: '' },
+        { referrals: 5, reward: '1 month Premium free', icon: '' },
+        { referrals: 10, reward: '3 months Premium free', icon: '' },
+        { referrals: 25, reward: '1 year Premium free', icon: '' }
       ],
       community: [
         { milestone: 5000, reward: 'Basic job search preview', progress: (this.subscriberCount / 5000) * 100 },

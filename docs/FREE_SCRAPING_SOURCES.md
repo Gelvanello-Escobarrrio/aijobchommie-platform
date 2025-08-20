@@ -1,9 +1,9 @@
-# 🆓 Free and Low-Cost Scraping Sources for AI Job Chommie
+#  Free and Low-Cost Scraping Sources for AI Job Chommie
 
 ## Overview
 Complete guide to scraping job opportunities without breaking your R100/month budget. Your platform can automatically scrape these sources 2x daily with minimal to zero costs.
 
-## 🎯 **100% FREE SOURCES (R0 cost)**
+##  **100% FREE SOURCES (R0 cost)**
 
 ### 1. **Facebook Job Groups & Marketplace** 
 - **Cost**: FREE (Unlimited)
@@ -90,7 +90,7 @@ Complete guide to scraping job opportunities without breaking your R100/month bu
   ```
 - **Expected Yield**: 5-10 jobs per session
 
-## 💰 **Low-Cost API Sources (Under R50/month)**
+##  **Low-Cost API Sources (Under R50/month)**
 
 ### 1. **SerpAPI (Google Jobs)**
 - **Cost**: $5/month for 100 searches (~R95)
@@ -105,7 +105,7 @@ Complete guide to scraping job opportunities without breaking your R100/month bu
 - **Quality**: Good for specific site scraping
 - **Strategy**: Use free tier only
 
-## 🛠️ **Technical Implementation**
+##  **Technical Implementation**
 
 ### Facebook Scraping Code Example:
 ```javascript
@@ -245,7 +245,7 @@ async function scrapeJobSites() {
 }
 ```
 
-## 📊 **Expected Results (Per Day)**
+##  **Expected Results (Per Day)**
 
 ### Free Sources Only:
 - **Facebook**: 30-60 jobs with contact info
@@ -262,7 +262,7 @@ async function scrapeJobSites() {
 - **Monthly**: 3,000-5,850 jobs  
 - **Cost**: ~R50/month
 
-## 🚀 **Deployment Steps**
+##  **Deployment Steps**
 
 1. **Install the scraping configuration**:
    ```bash
@@ -288,7 +288,7 @@ async function scrapeJobSites() {
    - Monitor via logs in `production-scraping.log`
    - Check stats via `/api/v1/scraper/status`
 
-## ⚡ **Performance Optimization**
+##  **Performance Optimization**
 
 ### Anti-Detection Measures:
 - Rotate User Agents
@@ -304,7 +304,7 @@ async function scrapeJobSites() {
 - Monitor memory usage
 - Auto-restart on errors
 
-## 📈 **Success Metrics**
+##  **Success Metrics**
 
 - **Target**: 100+ jobs with contact info per day
 - **Budget**: Under R100/month
@@ -312,7 +312,7 @@ async function scrapeJobSites() {
 - **Contact Rate**: 60%+ of jobs have contact info
 - **Data Quality**: 95%+ valid job postings
 
-## 🔧 **Monitoring & Maintenance**
+##  **Monitoring & Maintenance**
 
 ### Daily Monitoring:
 - Check scraping logs

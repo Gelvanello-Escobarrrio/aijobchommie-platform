@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==========================================
-# 🔧 DATABASE MAINTENANCE & BACKUP SCRIPTS
+#  DATABASE MAINTENANCE & BACKUP SCRIPTS
 # ==========================================
 
 set -e

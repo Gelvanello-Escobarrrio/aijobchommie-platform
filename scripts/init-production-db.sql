@@ -1,5 +1,5 @@
 -- ==========================================
--- 🗄️ AI JOB CHOMMIE - PRODUCTION DATABASE
+--  AI JOB CHOMMIE - PRODUCTION DATABASE
 -- ==========================================
 
 -- Create production database

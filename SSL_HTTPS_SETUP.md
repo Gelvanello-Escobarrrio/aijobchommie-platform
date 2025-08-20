@@ -1,4 +1,4 @@
-# 🔒 SSL Certificate & HTTPS Setup Guide
+#  SSL Certificate & HTTPS Setup Guide
 
 ## Overview
 This guide covers setting up SSL certificates and HTTPS for the AI Job Chommie platform across all domains and subdomains.

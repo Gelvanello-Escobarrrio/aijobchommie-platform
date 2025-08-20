@@ -73,32 +73,32 @@ export const performHealthCheck = () => {
 // Display health check results in console
 export const logHealthCheck = () => {
   const results = performHealthCheck();
-  console.group('🏥 Frontend Health Check');
+  console.group(' Frontend Health Check');
   
-  console.group('🌍 Environment');
+  console.group(' Environment');
   console.table(results.environment);
   console.groupEnd();
   
-  console.group('🌐 Network');
+  console.group(' Network');
   console.table(results.network);
   console.groupEnd();
   
-  console.group('💾 Storage');
+  console.group(' Storage');
   console.table(results.storage);
   console.groupEnd();
   
-  console.group('🔐 Permissions');
+  console.group(' Permissions');
   console.table(results.permissions);
   console.groupEnd();
   
   if (results.errors.length > 0) {
-    console.group('❌ Errors');
+    console.group(' Errors');
     results.errors.forEach(error => console.error(error));
     console.groupEnd();
   }
   
   if (results.recentErrors && results.recentErrors.length > 0) {
-    console.group('📝 Recent Errors');
+    console.group(' Recent Errors');
     results.recentErrors.forEach(error => console.error(error));
     console.groupEnd();
   }
@@ -113,31 +113,31 @@ export const getRecommendations = (healthCheck) => {
   const recommendations = [];
   
   if (!healthCheck.environment.supabaseUrl) {
-    recommendations.push('⚠️  Missing REACT_APP_SUPABASE_URL environment variable');
+    recommendations.push('  Missing REACT_APP_SUPABASE_URL environment variable');
   }
   
   if (!healthCheck.environment.supabaseKey) {
-    recommendations.push('⚠️  Missing REACT_APP_SUPABASE_ANON_KEY environment variable');
+    recommendations.push('  Missing REACT_APP_SUPABASE_ANON_KEY environment variable');
   }
   
   if (!healthCheck.network.online) {
-    recommendations.push('🔌 You are offline. Check your internet connection.');
+    recommendations.push(' You are offline. Check your internet connection.');
   }
   
   if (!healthCheck.storage.localStorage) {
-    recommendations.push('💾 localStorage is not available. Some features may not work.');
+    recommendations.push(' localStorage is not available. Some features may not work.');
   }
   
   if (!healthCheck.permissions.serviceWorker) {
-    recommendations.push('⚙️  Service Workers not supported. PWA features unavailable.');
+    recommendations.push('  Service Workers not supported. PWA features unavailable.');
   }
   
   if (healthCheck.recentErrors && healthCheck.recentErrors.length > 0) {
-    recommendations.push('🐛 Recent errors detected. Check console for details.');
+    recommendations.push(' Recent errors detected. Check console for details.');
   }
   
   if (recommendations.length === 0) {
-    recommendations.push('✅ All checks passed! Everything looks good.');
+    recommendations.push(' All checks passed! Everything looks good.');
   }
   
   return recommendations;

@@ -1,5 +1,5 @@
 /**
- * 🔥 REAL-TIME WEBSOCKET SERVICE
+ *  REAL-TIME WEBSOCKET SERVICE
  * Handles all live connections, updates, and notifications
  */
 
@@ -22,7 +22,7 @@ class WebSocketService {
   }
 
   /**
-   * 🚀 Initialize WebSocket connection
+   *  Initialize WebSocket connection
    */
   connect(userId, token) {
     if (this.isConnecting || (this.socket && this.socket.readyState === this.OPEN)) {
@@ -36,17 +36,17 @@ class WebSocketService {
       this.socket = new WebSocket(`${wsUrl}?userId=${userId}&token=${token}`);
       this.setupEventHandlers();
     } catch (error) {
-      console.error('❌ WebSocket connection failed:', error);
+      console.error(' WebSocket connection failed:', error);
       this.handleReconnect();
     }
   }
 
   /**
-   * ⚡ Setup WebSocket event handlers
+   *  Setup WebSocket event handlers
    */
   setupEventHandlers() {
     this.socket.onopen = (event) => {
-      console.log('✅ WebSocket connected successfully');
+      console.log(' WebSocket connected successfully');
       this.isConnecting = false;
       this.reconnectAttempts = 0;
       this.startHeartbeat();
@@ -63,12 +63,12 @@ class WebSocketService {
         const data = JSON.parse(event.data);
         this.handleMessage(data);
       } catch (error) {
-        console.error('❌ Error parsing WebSocket message:', error);
+        console.error(' Error parsing WebSocket message:', error);
       }
     };
 
     this.socket.onclose = (event) => {
-      console.log('🔌 WebSocket connection closed:', event.code, event.reason);
+      console.log(' WebSocket connection closed:', event.code, event.reason);
       this.isConnecting = false;
       this.stopHeartbeat();
       
@@ -86,13 +86,13 @@ class WebSocketService {
     };
 
     this.socket.onerror = (error) => {
-      console.error('❌ WebSocket error:', error);
+      console.error(' WebSocket error:', error);
       this.emit('connection_error', { error, timestamp: new Date() });
     };
   }
 
   /**
-   * 💬 Handle incoming messages
+   *  Handle incoming messages
    */
   handleMessage(data) {
     const { type, payload, timestamp } = data;
@@ -117,7 +117,7 @@ class WebSocketService {
         this.handleHeartbeat(payload);
         break;
       default:
-        console.log('📨 Unknown message type:', type);
+        console.log(' Unknown message type:', type);
     }
 
     // Emit to specific listeners
@@ -126,14 +126,14 @@ class WebSocketService {
   }
 
   /**
-   * 🚨 Handle live job alerts
+   *  Handle live job alerts
    */
   handleJobAlert(payload) {
     const { job, matchScore, alertType } = payload;
     
     // Show browser notification if permission granted
     if (Notification.permission === 'granted') {
-      new Notification('🔥 New Job Alert!', {
+      new Notification(' New Job Alert!', {
         body: `${job.title} at ${job.company} - ${matchScore}% match`,
         icon: '/icons/job-alert-192.png',
         badge: '/icons/badge-72.png',
@@ -149,11 +149,11 @@ class WebSocketService {
     // Store in local storage for offline access
     this.storeNotification('job_alert', payload);
     
-    console.log('🚨 Live Job Alert:', job.title, `${matchScore}% match`);
+    console.log(' Live Job Alert:', job.title, `${matchScore}% match`);
   }
 
   /**
-   * 📄 Handle application status updates
+   *  Handle application status updates
    */
   handleApplicationUpdate(payload) {
     const { applicationId, status, company, position } = payload;
@@ -163,11 +163,11 @@ class WebSocketService {
       const statusMessages = {
         'viewed': `Your application for ${position} at ${company} has been viewed!`,
         'interview': `Interview scheduled for ${position} at ${company}!`,
-        'offer': `Job offer received from ${company}! 🎉`,
+        'offer': `Job offer received from ${company}! `,
         'rejected': `Update on your ${position} application at ${company}`
       };
 
-      new Notification('📄 Application Update', {
+      new Notification(' Application Update', {
         body: statusMessages[status] || `Application status updated: ${status}`,
         icon: '/icons/application-192.png',
         tag: `app_${applicationId}`,
@@ -175,18 +175,18 @@ class WebSocketService {
       });
     }
 
-    console.log('📄 Application Update:', applicationId, status);
+    console.log(' Application Update:', applicationId, status);
   }
 
   /**
-   * 💬 Handle recruiter messages
+   *  Handle recruiter messages
    */
   handleRecruiterMessage(payload) {
     const { senderId, senderName, message, company } = payload;
     
     // Show message notification
     if (Notification.permission === 'granted') {
-      new Notification(`💬 Message from ${senderName}`, {
+      new Notification(` Message from ${senderName}`, {
         body: `${company}: ${message.substring(0, 100)}...`,
         icon: '/icons/message-192.png',
         tag: `msg_${senderId}`,
@@ -201,21 +201,21 @@ class WebSocketService {
     // Store message
     this.storeMessage(payload);
     
-    console.log('💬 New recruiter message:', senderName, company);
+    console.log(' New recruiter message:', senderName, company);
   }
 
   /**
-   * 📍 Handle location-based jobs
+   *  Handle location-based jobs
    */
   handleLocationJobs(payload) {
     const { jobs, location, radius } = payload;
     
     if (jobs.length > 0) {
-      console.log(`📍 ${jobs.length} new jobs found near ${location} (${radius}km radius)`);
+      console.log(` ${jobs.length} new jobs found near ${location} (${radius}km radius)`);
       
       // Show location-based notification
       if (Notification.permission === 'granted') {
-        new Notification('📍 Jobs Near You!', {
+        new Notification(' Jobs Near You!', {
           body: `${jobs.length} new jobs found within ${radius}km of ${location}`,
           icon: '/icons/location-192.png',
           tag: 'location_jobs',
@@ -226,12 +226,12 @@ class WebSocketService {
   }
 
   /**
-   * 🔔 Handle system notifications
+   *  Handle system notifications
    */
   handleSystemNotification(payload) {
     const { title, message, priority, category } = payload;
     
-    console.log('🔔 System notification:', title, message);
+    console.log(' System notification:', title, message);
     
     // Show high-priority system notifications
     if (priority === 'high' && Notification.permission === 'granted') {
@@ -245,7 +245,7 @@ class WebSocketService {
   }
 
   /**
-   * 💓 Handle heartbeat
+   *  Handle heartbeat
    */
   handleHeartbeat(payload) {
     this.lastHeartbeat = new Date();
@@ -258,7 +258,7 @@ class WebSocketService {
   }
 
   /**
-   * 📤 Send message to server
+   *  Send message to server
    */
   send(type, payload = {}) {
     if (this.socket && this.socket.readyState === this.OPEN) {
@@ -272,12 +272,12 @@ class WebSocketService {
       return true;
     }
     
-    console.warn('⚠️ Cannot send message - WebSocket not connected');
+    console.warn(' Cannot send message - WebSocket not connected');
     return false;
   }
 
   /**
-   * 🔄 Subscribe to job alerts
+   *  Subscribe to job alerts
    */
   subscribeToJobAlerts(preferences) {
     return this.send('subscribe_job_alerts', {
@@ -292,7 +292,7 @@ class WebSocketService {
   }
 
   /**
-   * 📍 Subscribe to location-based jobs
+   *  Subscribe to location-based jobs
    */
   subscribeToLocationJobs(latitude, longitude, radius = 25) {
     return this.send('subscribe_location_jobs', {
@@ -303,7 +303,7 @@ class WebSocketService {
   }
 
   /**
-   * 💬 Send recruiter message
+   *  Send recruiter message
    */
   sendRecruiterMessage(recruiterId, message) {
     return this.send('recruiter_message', {
@@ -314,7 +314,7 @@ class WebSocketService {
   }
 
   /**
-   * 📄 Subscribe to application updates
+   *  Subscribe to application updates
    */
   subscribeToApplicationUpdates(applicationIds = []) {
     return this.send('subscribe_application_updates', {
@@ -323,25 +323,25 @@ class WebSocketService {
   }
 
   /**
-   * 🔔 Request notification permissions
+   *  Request notification permissions
    */
   async requestNotificationPermission() {
     if ('Notification' in window) {
       const permission = await Notification.requestPermission();
-      console.log('🔔 Notification permission:', permission);
+      console.log(' Notification permission:', permission);
       return permission === 'granted';
     }
     return false;
   }
 
   /**
-   * 📱 Register service worker for push notifications
+   *  Register service worker for push notifications
    */
   async registerServiceWorker() {
     if ('serviceWorker' in navigator && 'PushManager' in window) {
       try {
         const registration = await navigator.serviceWorker.register('/sw.js');
-        console.log('📱 Service Worker registered:', registration);
+        console.log(' Service Worker registered:', registration);
         
         // Subscribe to push notifications
         const subscription = await registration.pushManager.subscribe({
@@ -358,13 +358,13 @@ class WebSocketService {
         
         return registration;
       } catch (error) {
-        console.error('❌ Service Worker registration failed:', error);
+        console.error(' Service Worker registration failed:', error);
       }
     }
   }
 
   /**
-   * 🔄 Start heartbeat
+   *  Start heartbeat
    */
   startHeartbeat() {
     this.heartbeatInterval = setInterval(() => {
@@ -375,7 +375,7 @@ class WebSocketService {
   }
 
   /**
-   * ⏹️ Stop heartbeat
+   *  Stop heartbeat
    */
   stopHeartbeat() {
     if (this.heartbeatInterval) {
@@ -385,17 +385,17 @@ class WebSocketService {
   }
 
   /**
-   * 🔄 Handle reconnection
+   *  Handle reconnection
    */
   handleReconnect() {
     if (this.reconnectAttempts >= this.maxReconnectAttempts) {
-      console.error('❌ Max reconnection attempts reached');
+      console.error(' Max reconnection attempts reached');
       this.emit('max_reconnect_attempts_reached');
       return;
     }
 
     const delay = this.reconnectDelay * Math.pow(2, this.reconnectAttempts);
-    console.log(`🔄 Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts + 1})`);
+    console.log(` Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts + 1})`);
     
     setTimeout(() => {
       this.reconnectAttempts++;
@@ -409,7 +409,7 @@ class WebSocketService {
   }
 
   /**
-   * 👂 Add event listener
+   *  Add event listener
    */
   on(eventType, callback) {
     if (!this.listeners.has(eventType)) {
@@ -419,7 +419,7 @@ class WebSocketService {
   }
 
   /**
-   * 🔇 Remove event listener
+   *  Remove event listener
    */
   off(eventType, callback) {
     const listeners = this.listeners.get(eventType);
@@ -432,7 +432,7 @@ class WebSocketService {
   }
 
   /**
-   * 📢 Emit event
+   *  Emit event
    */
   emit(eventType, data) {
     const listeners = this.listeners.get(eventType);
@@ -441,14 +441,14 @@ class WebSocketService {
         try {
           callback(data);
         } catch (error) {
-          console.error('❌ Error in event listener:', error);
+          console.error(' Error in event listener:', error);
         }
       });
     }
   }
 
   /**
-   * 💾 Store notification locally
+   *  Store notification locally
    */
   storeNotification(type, payload) {
     const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
@@ -469,7 +469,7 @@ class WebSocketService {
   }
 
   /**
-   * 💬 Store message locally
+   *  Store message locally
    */
   storeMessage(payload) {
     const messages = JSON.parse(localStorage.getItem('messages') || '[]');
@@ -488,7 +488,7 @@ class WebSocketService {
   }
 
   /**
-   * 🔧 Utility function for VAPID key conversion
+   *  Utility function for VAPID key conversion
    */
   urlBase64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -506,7 +506,7 @@ class WebSocketService {
   }
 
   /**
-   * 🔌 Disconnect WebSocket
+   *  Disconnect WebSocket
    */
   disconnect() {
     this.stopHeartbeat();
@@ -521,7 +521,7 @@ class WebSocketService {
   }
 
   /**
-   * 📊 Get connection status
+   *  Get connection status
    */
   getStatus() {
     if (!this.socket) return 'disconnected';
@@ -536,7 +536,7 @@ class WebSocketService {
   }
 
   /**
-   * 🏃‍♂️ Check if connection is alive
+   * ‍ Check if connection is alive
    */
   isAlive() {
     if (!this.lastHeartbeat) return false;

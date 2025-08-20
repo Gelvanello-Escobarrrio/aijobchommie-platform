@@ -1,4 +1,4 @@
-# 🌐 Domain DNS Configuration Guide
+#  Domain DNS Configuration Guide
 
 ## Overview
 This guide will help you configure DNS records to link your existing `aijobchommie-website` domain to the new AI Job Chommie Platform.

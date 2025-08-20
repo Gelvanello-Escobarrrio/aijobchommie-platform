@@ -24,7 +24,7 @@ class FreePushNotificationService {
   async initialize() {
     try {
       if (!this.isSupported) {
-        console.warn('🚫 Push notifications are not supported on this device');
+        console.warn(' Push notifications are not supported on this device');
         return false;
       }
 
@@ -32,7 +32,7 @@ class FreePushNotificationService {
 
       // Register service worker
       this.registration = await navigator.serviceWorker.register('/sw.js');
-      console.log('✅ Service Worker registered');
+      console.log(' Service Worker registered');
 
       // Initialize OneSignal if app ID is available
       if (this.oneSignalAppId) {
@@ -42,7 +42,7 @@ class FreePushNotificationService {
       this.isInitialized = true;
       return true;
     } catch (error) {
-      console.error('❌ Failed to initialize push notifications:', error);
+      console.error(' Failed to initialize push notifications:', error);
       return false;
     }
   }
@@ -76,9 +76,9 @@ class FreePushNotificationService {
         });
       });
 
-      console.log('✅ OneSignal initialized');
+      console.log(' OneSignal initialized');
     } catch (error) {
-      console.error('❌ OneSignal initialization failed:', error);
+      console.error(' OneSignal initialization failed:', error);
     }
   }
 
@@ -97,18 +97,18 @@ class FreePushNotificationService {
       const permission = await Notification.requestPermission();
       
       if (permission === 'granted') {
-        console.log('✅ Push notification permission granted');
+        console.log(' Push notification permission granted');
         
         // Subscribe to push notifications
         await this.subscribeToPush(userId);
         
         return true;
       } else {
-        console.log('❌ Push notification permission denied');
+        console.log(' Push notification permission denied');
         return false;
       }
     } catch (error) {
-      console.error('❌ Error requesting permission:', error);
+      console.error(' Error requesting permission:', error);
       return false;
     }
   }
@@ -131,10 +131,10 @@ class FreePushNotificationService {
         await this.saveSubscription(userId, this.subscription);
       }
 
-      console.log('✅ Successfully subscribed to push notifications');
+      console.log(' Successfully subscribed to push notifications');
       return this.subscription;
     } catch (error) {
-      console.error('❌ Failed to subscribe to push notifications:', error);
+      console.error(' Failed to subscribe to push notifications:', error);
       throw error;
     }
   }
@@ -162,9 +162,9 @@ class FreePushNotificationService {
 
       if (error) throw error;
       
-      console.log('✅ Push subscription saved to database');
+      console.log(' Push subscription saved to database');
     } catch (error) {
-      console.error('❌ Failed to save subscription:', error);
+      console.error(' Failed to save subscription:', error);
     }
   }
 
@@ -190,7 +190,7 @@ class FreePushNotificationService {
         return notification;
       }
     } catch (error) {
-      console.error('❌ Error sending local notification:', error);
+      console.error(' Error sending local notification:', error);
     }
   }
 
@@ -217,11 +217,11 @@ class FreePushNotificationService {
 
       if (error) throw error;
 
-      console.log('🚨 Job alerts configured:', preferences);
+      console.log(' Job alerts configured:', preferences);
       
       // Send confirmation notification
       await this.sendLocalNotification(
-        '🚀 Job Alerts Activated!',
+        ' Job Alerts Activated!',
         {
           body: `You'll receive notifications for ${preferences.jobTypes?.join(', ') || 'all'} jobs in ${preferences.location || 'South Africa'}`,
           tag: 'job-alerts-setup'
@@ -229,7 +229,7 @@ class FreePushNotificationService {
       );
 
     } catch (error) {
-      console.error('❌ Error setting up job alerts:', error);
+      console.error(' Error setting up job alerts:', error);
     }
   }
 
@@ -239,9 +239,9 @@ class FreePushNotificationService {
   async testNotification() {
     try {
       await this.sendLocalNotification(
-        '🧪 Test Notification',
+        ' Test Notification',
         {
-          body: 'Push notifications are working perfectly! 🎉',
+          body: 'Push notifications are working perfectly! ',
           tag: 'test-notification',
           actions: [
             {
@@ -253,7 +253,7 @@ class FreePushNotificationService {
         }
       );
     } catch (error) {
-      console.error('❌ Test notification failed:', error);
+      console.error(' Test notification failed:', error);
     }
   }
 
@@ -263,7 +263,7 @@ class FreePushNotificationService {
   async sendJobFoundNotification(job) {
     try {
       const notification = await this.sendLocalNotification(
-        `🎯 New Job Match: ${job.title}`,
+        ` New Job Match: ${job.title}`,
         {
           body: `${job.company} • ${job.location} • ${job.salary || 'Competitive salary'}`,
           tag: `job-${job.id}`,
@@ -296,7 +296,7 @@ class FreePushNotificationService {
       }
 
     } catch (error) {
-      console.error('❌ Failed to send job notification:', error);
+      console.error(' Failed to send job notification:', error);
     }
   }
 
@@ -337,9 +337,9 @@ class FreePushNotificationService {
         if (error) throw error;
       }
 
-      console.log('🔇 Successfully unsubscribed from push notifications');
+      console.log(' Successfully unsubscribed from push notifications');
     } catch (error) {
-      console.error('❌ Error unsubscribing:', error);
+      console.error(' Error unsubscribing:', error);
     }
   }
 
@@ -420,10 +420,10 @@ class FreePushNotificationService {
         );
       `;
 
-      console.log('📋 Database table creation SQL ready:', tables);
+      console.log(' Database table creation SQL ready:', tables);
       return tables;
     } catch (error) {
-      console.error('❌ Error creating database tables:', error);
+      console.error(' Error creating database tables:', error);
     }
   }
 }

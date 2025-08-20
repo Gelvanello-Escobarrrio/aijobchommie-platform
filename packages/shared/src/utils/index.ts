@@ -9,36 +9,7 @@ export * from './validation';
 export * from './date';
 
 // String utilities
-export * from './string';
-
-// Array utilities
-export * from './array';
-
-// API utilities
-export * from './api';
-
-// Re-export commonly used utilities with aliases
-export {
-  isValidEmail,
-  isValidSAPhoneNumber,
-  validatePasswordStrength,
-  isValidSAIdNumber,
-  isValidUrl,
-  validateResumeFile,
-  validateImageFile
-} from './validation';
-
-export {
-  formatDate,
-  formatDateTime,
-  formatRelativeTime,
-  getSATime,
-  isToday,
-  isThisWeek,
-  isThisMonth,
-  calculateAge
-} from './date';
-
+// Re-export selected string utilities to avoid name collisions (e.g., isEmpty)
 export {
   capitalize,
   toTitleCase,
@@ -51,16 +22,10 @@ export {
   sanitizeInput
 } from './string';
 
-export {
-  unique,
-  groupBy,
-  sortBy,
-  paginate,
-  chunk,
-  shuffle,
-  flatten
-} from './array';
+// Array utilities
+export * from './array';
 
+// Only export api helpers once; keep the main API helpers here
 export {
   createSuccessResponse,
   createErrorResponse,

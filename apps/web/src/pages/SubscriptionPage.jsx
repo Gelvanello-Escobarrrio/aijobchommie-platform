@@ -264,7 +264,7 @@ const SubscriptionPage = () => {
         transition={{ delay: 1.6 }}
         className="text-center text-sm text-gray-400 mt-4"
       >
-        🔒 Secure payment powered by Paystack
+         Secure payment powered by Paystack
       </motion.p>
 
       {/* Floating Money Animation */}
@@ -289,7 +289,7 @@ const SubscriptionPage = () => {
               ease: "linear"
             }}
           >
-            💰
+            
           </motion.div>
         ))}
       </div>

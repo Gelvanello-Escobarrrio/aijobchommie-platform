@@ -176,7 +176,7 @@ const DashboardPage: React.FC = () => {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h1 className="text-3xl font-heading font-bold text-chrome mb-2">
-                  Welcome back, {user.name}! 👋
+                  Welcome back, {user.name}! 
                 </h1>
                 <p className="text-text-secondary">
                   Here's what's happening with your job search today.

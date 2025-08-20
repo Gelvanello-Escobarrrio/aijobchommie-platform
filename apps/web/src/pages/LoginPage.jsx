@@ -24,7 +24,7 @@ const LoginPage = () => {
 
       if (error) throw error;
 
-      toast.success('Welcome back, chommie! 🎉');
+      toast.success('Welcome back, chommie! ');
       navigate('/dashboard');
     } catch (error) {
       toast.error(error.message);

@@ -73,7 +73,7 @@ function Test-Requirements {
     # Check Node.js
     if (Test-NodeVersion "18.0.0") {
         $nodeVersion = (node --version)
-        Write-Status "Node.js version: $nodeVersion ✅"
+        Write-Status "Node.js version: $nodeVersion "
     }
     else {
         Write-ErrorMessage "Node.js 18.0.0 or higher is required. Please install from https://nodejs.org/"
@@ -83,7 +83,7 @@ function Test-Requirements {
     # Check npm
     if (Test-Command "npm") {
         $npmVersion = (npm --version)
-        Write-Status "npm version: $npmVersion ✅"
+        Write-Status "npm version: $npmVersion "
     }
     else {
         Write-ErrorMessage "npm is not installed"
@@ -93,7 +93,7 @@ function Test-Requirements {
     # Check Git
     if (Test-Command "git") {
         $gitVersion = (git --version).Split(" ")[2]
-        Write-Status "Git version: $gitVersion ✅"
+        Write-Status "Git version: $gitVersion "
     }
     else {
         Write-ErrorMessage "Git is required but not installed"
@@ -103,7 +103,7 @@ function Test-Requirements {
     # Check Docker (optional)
     if (-not $SkipDocker -and (Test-Command "docker")) {
         $dockerVersion = (docker --version).Split(" ")[2].TrimEnd(",")
-        Write-Status "Docker version: $dockerVersion ✅"
+        Write-Status "Docker version: $dockerVersion "
         $script:DockerAvailable = $true
     }
     else {
@@ -115,7 +115,7 @@ function Test-Requirements {
     
     # Check PowerShell version
     $psVersion = $PSVersionTable.PSVersion
-    Write-Status "PowerShell version: $psVersion ✅"
+    Write-Status "PowerShell version: $psVersion "
 }
 
 function Install-Dependencies {
@@ -134,7 +134,7 @@ function Install-Dependencies {
         exit 1
     }
     
-    Write-Status "Dependencies installed successfully ✅"
+    Write-Status "Dependencies installed successfully "
 }
 
 function Set-Environment {
@@ -193,10 +193,10 @@ WEB_PORT=3000
 ADMIN_PORT=3002
 "@ | Out-File -FilePath ".env" -Encoding UTF8
         }
-        Write-Status "Root environment file created ✅"
+        Write-Status "Root environment file created "
     }
     else {
-        Write-Status "Root .env file already exists ✅"
+        Write-Status "Root .env file already exists "
     }
     
     # API package .env
@@ -215,7 +215,7 @@ RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=1000
 CORS_ORIGIN=http://localhost:3000,http://localhost:3002
 "@ | Out-File -FilePath "packages/api/.env" -Encoding UTF8
-        Write-Status "API environment file created ✅"
+        Write-Status "API environment file created "
     }
     
     # Web package .env.local
@@ -238,7 +238,7 @@ NEXT_PUBLIC_HOTJAR_ID=
 NEXT_PUBLIC_ENABLE_AI_FEATURES=true
 NEXT_PUBLIC_ENABLE_PREMIUM_FEATURES=true
 "@ | Out-File -FilePath "packages/web/.env.local" -Encoding UTF8
-        Write-Status "Web environment file created ✅"
+        Write-Status "Web environment file created "
     }
     
     # Admin package .env.local
@@ -253,10 +253,10 @@ NEXT_PUBLIC_ADMIN_SESSION_TIMEOUT=3600000
 NEXT_PUBLIC_ENABLE_SYSTEM_LOGS=true
 NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING=true
 "@ | Out-File -FilePath "packages/admin/.env.local" -Encoding UTF8
-        Write-Status "Admin environment file created ✅"
+        Write-Status "Admin environment file created "
     }
     
-    Write-Warning "🔐 Remember to update the environment files with your actual API keys and secrets!"
+    Write-Warning " Remember to update the environment files with your actual API keys and secrets!"
 }
 
 function Set-Databases {
@@ -268,7 +268,7 @@ function Set-Databases {
         if (Test-Path "docker-compose.dev.yml") {
             docker-compose -f docker-compose.dev.yml up -d postgres redis
             Start-Sleep -Seconds 5
-            Write-Status "PostgreSQL and Redis started via Docker ✅"
+            Write-Status "PostgreSQL and Redis started via Docker "
         }
         else {
             Write-Warning "docker-compose.dev.yml not found, skipping Docker setup"
@@ -295,7 +295,7 @@ function Set-DatabaseSchema {
                 Write-Status "Running database migrations..."
                 npx prisma db push
                 
-                Write-Status "Database schema setup complete ✅"
+                Write-Status "Database schema setup complete "
             }
             else {
                 Write-Warning "Prisma not found in API package, skipping database setup"
@@ -328,7 +328,7 @@ function Install-DevTools {
         }
     }
     
-    Write-Status "Development tools setup complete ✅"
+    Write-Status "Development tools setup complete "
 }
 
 function Test-Setup {
@@ -339,7 +339,7 @@ function Test-Setup {
     try {
         npm run type-check 2>$null | Out-Null
         if ($LASTEXITCODE -eq 0) {
-            Write-Status "TypeScript type checking passed ✅"
+            Write-Status "TypeScript type checking passed "
         }
         else {
             Write-Warning "TypeScript type checking failed - check your configuration"
@@ -354,7 +354,7 @@ function Test-Setup {
     try {
         npm run lint 2>$null | Out-Null
         if ($LASTEXITCODE -eq 0) {
-            Write-Status "Linting passed ✅"
+            Write-Status "Linting passed "
         }
         else {
             Write-Warning "Linting failed - some code quality issues may exist"
@@ -369,7 +369,7 @@ function Test-Setup {
     try {
         npm run build 2>$null | Out-Null
         if ($LASTEXITCODE -eq 0) {
-            Write-Status "Build process successful ✅"
+            Write-Status "Build process successful "
         }
         else {
             Write-Warning "Build process failed - check package configurations"
@@ -381,32 +381,32 @@ function Test-Setup {
 }
 
 function Show-NextSteps {
-    Write-Header "🎉 Development environment setup complete!"
+    Write-Header " Development environment setup complete!"
     
     Write-Host ""
     Write-Host "Next steps:" -ForegroundColor $Green
-    Write-Host "  1. 📝 Update environment files with your API keys:" -ForegroundColor $Yellow
+    Write-Host "  1.  Update environment files with your API keys:" -ForegroundColor $Yellow
     Write-Host "     - .env (root configuration)"
     Write-Host "     - packages/api/.env (API configuration)"
     Write-Host "     - packages/web/.env.local (Web app configuration)"
     Write-Host "     - packages/admin/.env.local (Admin dashboard configuration)"
     Write-Host ""
-    Write-Host "  2. 🚀 Start the development servers:" -ForegroundColor $Yellow
+    Write-Host "  2.  Start the development servers:" -ForegroundColor $Yellow
     Write-Host "     npm run dev"
     Write-Host ""
-    Write-Host "  3. 🌐 Access the applications:" -ForegroundColor $Yellow
+    Write-Host "  3.  Access the applications:" -ForegroundColor $Yellow
     Write-Host "     - Web App: http://localhost:3000"
     Write-Host "     - API: http://localhost:3001"
     Write-Host "     - Admin Dashboard: http://localhost:3002"
     Write-Host ""
-    Write-Host "  4. 📚 Read the documentation in the docs/ folder" -ForegroundColor $Yellow
+    Write-Host "  4.  Read the documentation in the docs/ folder" -ForegroundColor $Yellow
     Write-Host ""
-    Write-Host "Happy coding! 🚀" -ForegroundColor $Green
+    Write-Host "Happy coding! " -ForegroundColor $Green
 }
 
 # Main execution
 function Main {
-    Write-Host "🚀 AI Job Chommie Platform - Development Setup (Windows)" -ForegroundColor $Blue
+    Write-Host " AI Job Chommie Platform - Development Setup (Windows)" -ForegroundColor $Blue
     Write-Host "=========================================================" -ForegroundColor $Cyan
     Write-Host ""
     

@@ -155,7 +155,7 @@ const LandingPage: React.FC = () => {
       company: "TechCorp SA",
       content: "Job Chommie didn't just find me a job - it TRANSFORMED my entire existence! From zero to CEO in 6 months. This is PURE MAGIC!",
       salaryJump: "R0 → R500K/month",
-      avatar: "🚀",
+      avatar: "",
       rating: 5,
       effect: "LIFE CHANGED FOREVER"
     },
@@ -165,7 +165,7 @@ const LandingPage: React.FC = () => {
       company: "AI Revolution Inc",
       content: "I didn't just get hired - I CONQUERED the tech industry! Job Chommie's AI saw my potential before I did. MIND-BLOWING!",
       salaryJump: "R25K → R200K/month",
-      avatar: "👑",
+      avatar: "",
       rating: 5,
       effect: "INDUSTRY DOMINATION"
     },
@@ -175,7 +175,7 @@ const LandingPage: React.FC = () => {
       company: "Future Dynamics",
       content: "Job Chommie turned me into a LEGEND! The AI matching is so powerful, it's almost supernatural. PURE BRILLIANCE!",
       salaryJump: "R40K → R300K/month",
-      avatar: "⚡",
+      avatar: "",
       rating: 5,
       effect: "LEGENDARY STATUS ACHIEVED"
     }
@@ -376,7 +376,7 @@ const LandingPage: React.FC = () => {
                 iconPosition="right"
                 className="relative min-w-96 text-2xl py-8 px-16 font-black tracking-wider shadow-2xl"
               >
-                🚀 DOMINATE JOBS NOW 🚀
+                 DOMINATE JOBS NOW 
               </MetallicButton>
             </motion.div>
 
@@ -393,7 +393,7 @@ const LandingPage: React.FC = () => {
                 icon={<Eye className="w-8 h-8" />}
                 className="relative min-w-80 text-2xl py-8 px-16 font-black tracking-wider border-4"
               >
-                👁️ WITNESS THE POWER
+                 WITNESS THE POWER
               </MetallicButton>
             </motion.div>
           </motion.div>
@@ -643,12 +643,12 @@ const LandingPage: React.FC = () => {
                 iconPosition="right"
                 className="relative min-w-[600px] text-3xl py-12 px-20 font-black tracking-widest shadow-2xl border-4 border-tech-cyan"
               >
-                🚀 UNLEASH MY CAREER DESTINY 🚀
+                 UNLEASH MY CAREER DESTINY 
               </MetallicButton>
             </motion.div>
 
             <p className="text-text-tertiary text-xl font-bold">
-              🔥 ZERO COST • INFINITE POWER • LEGENDARY RESULTS • WORLD DOMINATION 🔥
+               ZERO COST • INFINITE POWER • LEGENDARY RESULTS • WORLD DOMINATION 
             </p>
           </motion.div>
         </div>
@@ -678,14 +678,14 @@ const LandingPage: React.FC = () => {
               </p>
 
               <div className="flex flex-wrap gap-4 mb-6">
-                <MetallicBadge variant="tech" className="text-lg px-4 py-2">🧠 AI POWERED</MetallicBadge>
-                <MetallicBadge variant="chrome" className="text-lg px-4 py-2">🏆 WORLD-CLASS</MetallicBadge>
-                <MetallicBadge variant="default" className="text-lg px-4 py-2">🔒 FORTRESS SECURE</MetallicBadge>
+                <MetallicBadge variant="tech" className="text-lg px-4 py-2"> AI POWERED</MetallicBadge>
+                <MetallicBadge variant="chrome" className="text-lg px-4 py-2"> WORLD-CLASS</MetallicBadge>
+                <MetallicBadge variant="default" className="text-lg px-4 py-2"> FORTRESS SECURE</MetallicBadge>
               </div>
 
               <div className="bg-gradient-to-r from-tech-cyan/20 to-purple-600/20 rounded-lg p-6 border border-tech-cyan/30">
                 <p className="text-center text-tech-cyan font-bold text-lg">
-                  🚀 Engineered by <span className="text-chrome font-black">Fernando Steyn</span> 🚀
+                   Engineered by <span className="text-chrome font-black">Fernando Steyn</span> 
                   <br />
                   <span className="text-white text-xl font-black">Making South African careers LEGENDARY with AI</span>
                 </p>
@@ -697,10 +697,10 @@ const LandingPage: React.FC = () => {
               <h4 className="font-heading font-black text-chrome mb-6 text-2xl">DOMINATION HUB</h4>
               <ul className="space-y-4">
                 {[
-                  { name: '🔥 CONQUER JOBS', href: '/jobs' },
-                  { name: '⚡ COMMAND CENTER', href: '/dashboard' },
-                  { name: '👑 PROFILE POWER', href: '/profile' },
-                  { name: '🎯 VICTORY TRACKER', href: '/applications' }
+                  { name: ' CONQUER JOBS', href: '/jobs' },
+                  { name: ' COMMAND CENTER', href: '/dashboard' },
+                  { name: ' PROFILE POWER', href: '/profile' },
+                  { name: ' VICTORY TRACKER', href: '/applications' }
                 ].map((link) => (
                   <li key={link.name}>
                     <motion.a
@@ -721,11 +721,11 @@ const LandingPage: React.FC = () => {
               <h4 className="font-heading font-black text-chrome mb-6 text-2xl">SUPPORT FORTRESS</h4>
               <ul className="space-y-4">
                 {[
-                  { name: '🛡️ HELP STRONGHOLD', href: '/help' },
-                  { name: '📞 CONTACT LEGENDS', href: '/contact' },
-                  { name: '🌟 ABOUT POWER', href: '/about' },
-                  { name: '🔐 PRIVACY SHIELD', href: '/privacy' },
-                  { name: '⚖️ TERMS OF POWER', href: '/terms' }
+                  { name: ' HELP STRONGHOLD', href: '/help' },
+                  { name: ' CONTACT LEGENDS', href: '/contact' },
+                  { name: ' ABOUT POWER', href: '/about' },
+                  { name: ' PRIVACY SHIELD', href: '/privacy' },
+                  { name: ' TERMS OF POWER', href: '/terms' }
                 ].map((link) => (
                   <li key={link.name}>
                     <motion.a
@@ -752,7 +752,7 @@ const LandingPage: React.FC = () => {
               transition={{ duration: 1 }}
             >
               <span className="flex items-center justify-center md:justify-start gap-4 text-xl font-bold">
-                © 2025 AI Job Chommie. All rights reserved. Forged with
+                 2025 AI Job Chommie. All rights reserved. Forged with
                 <Heart className="w-6 h-6 text-red-500 animate-pulse" />
                 in South Africa
                 <Flag className="w-6 h-6 text-green-500" />

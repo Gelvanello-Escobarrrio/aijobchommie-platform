@@ -1,8 +1,8 @@
-# 🚀 Deployment Guide
+#  Deployment Guide
 
 This guide covers deploying the AI Job Chommie Platform to production and staging environments. Our platform is designed for high availability, scalability, and optimal performance for South African users.
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
@@ -15,7 +15,7 @@ This guide covers deploying the AI Job Chommie Platform to production and stagin
 - [Backup & Recovery](#backup--recovery)
 - [Troubleshooting](#troubleshooting)
 
-## 🌟 Overview
+##  Overview
 
 ### Architecture Overview
 
@@ -45,7 +45,7 @@ This guide covers deploying the AI Job Chommie Platform to production and stagin
 3. **Cloud Services** (Azure App Service, AWS ECS, Google Cloud Run)
 4. **VPS/Dedicated Server** (Manual configuration)
 
-## ✅ Prerequisites
+##  Prerequisites
 
 ### System Requirements
 
@@ -80,7 +80,7 @@ This guide covers deploying the AI Job Chommie Platform to production and stagin
   - `admin.aijobchommie.co.za` → Admin dashboard
   - `www.aijobchommie.co.za` → Web frontend
 
-## ⚙️ Environment Setup
+##  Environment Setup
 
 ### Production Environment Variables
 
@@ -158,7 +158,7 @@ DATABASE_URL=postgresql://username:password@staging-db-host:5432/aijobchommie_st
 LOG_LEVEL=debug
 ```
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 ### Production Docker Compose
 
@@ -362,7 +362,7 @@ docker-compose -f docker-compose.production.yml exec postgres \
 docker-compose -f docker-compose.production.yml up -d --scale api=3 --scale web=2
 ```
 
-## ☁️ Cloud Deployment
+##  Cloud Deployment
 
 ### Azure App Service
 
@@ -466,7 +466,7 @@ gcloud run deploy aijobchommie-api \
   --set-env-vars "NODE_ENV=production"
 ```
 
-## 🗄️ Database Setup
+##  Database Setup
 
 ### PostgreSQL Production Setup
 
@@ -559,7 +559,7 @@ find ${BACKUP_DIR} -name "aijobchommie_backup_*.dump" -mtime +7 -delete
 echo "Database backup completed: aijobchommie_backup_${DATE}.dump"
 ```
 
-## 🔒 Security Configuration
+##  Security Configuration
 
 ### SSL/TLS Setup with Let's Encrypt
 
@@ -706,7 +706,7 @@ sudo ufw allow from 10.0.0.0/8 to any port 6379  # Redis
 sudo ufw reload
 ```
 
-## 📊 Monitoring & Observability
+##  Monitoring & Observability
 
 ### Prometheus Configuration
 
@@ -855,7 +855,7 @@ if (process.env.NODE_ENV === 'production') {
 export { logger };
 ```
 
-## 🔄 Backup & Recovery
+##  Backup & Recovery
 
 ### Automated Backup Script
 
@@ -924,7 +924,7 @@ echo "Backup completed successfully at $(date)"
 # Send notification (optional)
 if [ ! -z "${SLACK_WEBHOOK_URL}" ]; then
   curl -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"✅ AI Job Chommie backup completed successfully\"}" \
+    --data "{\"text\":\" AI Job Chommie backup completed successfully\"}" \
     ${SLACK_WEBHOOK_URL}
 fi
 ```
@@ -975,7 +975,7 @@ curl -f http://localhost:3000 || echo "Web health check failed"
 echo "Restore completed"
 ```
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### Common Issues & Solutions
 
@@ -1051,7 +1051,7 @@ Set up alerts for critical metrics:
 
 ---
 
-## 📞 Support
+##  Support
 
 For deployment issues:
 - **Documentation**: Check our deployment docs
@@ -1061,6 +1061,6 @@ For deployment issues:
 
 ---
 
-**🇿🇦 Deployed with ❤️ for South African Job Seekers**
+**🇿🇦 Deployed with  for South African Job Seekers**
 
 *This deployment guide ensures your AI Job Chommie Platform is production-ready, secure, and scalable to serve South African job seekers effectively.*

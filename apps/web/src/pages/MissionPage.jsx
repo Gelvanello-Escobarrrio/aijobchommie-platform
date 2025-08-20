@@ -92,7 +92,7 @@ const MissionPage = () => {
             </div>
 
             <div className="card hover-card" style={{ border: '2px solid var(--primary-magenta)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center', color: 'var(--primary-magenta)' }}>⚒</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', textAlign: 'center', color: 'var(--primary-magenta)' }}></div>
               <h3 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-md)' }}>Skills Gap Bridging</h3>
               <p style={{ marginBottom: 'var(--space-md)' }}>
                 <strong>Goal:</strong> Use AI-powered insights to identify and bridge critical skills gaps 
@@ -216,7 +216,7 @@ const MissionPage = () => {
 
           <div className="grid grid-3" style={{ marginBottom: 'var(--space-4xl)' }}>
             <div className="card" style={{ textAlign: 'center', border: '2px solid var(--primary-cyan)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', color: 'var(--primary-cyan)' }}>↗</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', color: 'var(--primary-cyan)' }}></div>
               <h3 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-sm)' }}>Employment Rate</h3>
               <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary-cyan)', marginBottom: 'var(--space-sm)' }}>87%</div>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
@@ -234,7 +234,7 @@ const MissionPage = () => {
             </div>
 
             <div className="card" style={{ textAlign: 'center', border: '2px solid var(--accent-lime)' }}>
-              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', color: 'var(--accent-lime)' }}>⏱</div>
+              <div style={{ fontSize: '3rem', marginBottom: 'var(--space-md)', color: 'var(--accent-lime)' }}></div>
               <h3 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-sm)' }}>Time to Employment</h3>
               <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent-lime)', marginBottom: 'var(--space-sm)' }}>21</div>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>

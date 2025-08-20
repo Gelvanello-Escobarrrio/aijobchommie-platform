@@ -34,7 +34,7 @@ const RefundPage = () => {
             </p>
             <div style={{ padding: 'var(--space-md)', background: 'rgba(0, 255, 255, 0.1)', borderRadius: 'var(--radius-md)', maxWidth: '600px', margin: '0 auto' }}>
               <p style={{ color: 'var(--primary-cyan)', fontWeight: '600', margin: 0 }}>
-                💰 30-Day Money-Back Guarantee | Last Updated: {lastUpdated}
+                 30-Day Money-Back Guarantee | Last Updated: {lastUpdated}
               </p>
             </div>
           </div>
@@ -51,19 +51,19 @@ const RefundPage = () => {
                 <h3 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-md)' }}>What's Refundable</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>✅</span>
+                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                     Monthly subscription fees (within 30 days)
                   </li>
                   <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>✅</span>
+                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                     Unused portion of current billing period
                   </li>
                   <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>✅</span>
+                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                     Accidental duplicate payments
                   </li>
                   <li style={{ marginBottom: 'var(--space-sm)', display: 'flex', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}>✅</span>
+                    <span style={{ color: 'var(--primary-cyan)', marginRight: 'var(--space-sm)' }}></span>
                     Technical issues preventing service use
                   </li>
                 </ul>
@@ -187,7 +187,7 @@ const RefundPage = () => {
 
               <div className="grid grid-2" style={{ gap: 'var(--space-4xl)', marginBottom: 'var(--space-lg)' }}>
                 <div style={{ padding: 'var(--space-lg)', background: 'rgba(0, 255, 255, 0.1)', borderRadius: 'var(--radius-md)' }}>
-                  <h4 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-md)' }}>📧 Email Request (Recommended)</h4>
+                  <h4 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-md)' }}> Email Request (Recommended)</h4>
                   <div style={{ marginBottom: 'var(--space-md)' }}>
                     <p style={{ marginBottom: 'var(--space-sm)' }}><strong>Email:</strong> refunds@aijobchommie.co.za</p>
                     <p style={{ marginBottom: 'var(--space-sm)' }}><strong>Response Time:</strong> Within 24 hours</p>
@@ -198,7 +198,7 @@ const RefundPage = () => {
                   </p>
                 </div>
                 <div style={{ padding: 'var(--space-lg)', background: 'rgba(255, 0, 255, 0.1)', borderRadius: 'var(--radius-md)' }}>
-                  <h4 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-md)' }}>💬 Support Channels</h4>
+                  <h4 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-md)' }}> Support Channels</h4>
                   <div style={{ marginBottom: 'var(--space-md)' }}>
                     <p style={{ marginBottom: 'var(--space-sm)' }}><strong>Live Chat:</strong> Available in your account dashboard</p>
                     <p style={{ marginBottom: 'var(--space-sm)' }}><strong>WhatsApp:</strong> Premium users only</p>
@@ -284,19 +284,19 @@ const RefundPage = () => {
               
               <div className="grid grid-3" style={{ gap: 'var(--space-lg)', marginBottom: 'var(--space-lg)' }}>
                 <div style={{ padding: 'var(--space-md)', background: 'rgba(0, 255, 255, 0.1)', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>💳</div>
+                  <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}></div>
                   <h4 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-sm)' }}>Credit/Debit Cards</h4>
                   <p style={{ fontSize: '0.9rem', marginBottom: 'var(--space-sm)' }}>Refunded to original card</p>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>3-7 business days</p>
                 </div>
                 <div style={{ padding: 'var(--space-md)', background: 'rgba(255, 0, 255, 0.1)', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>🏦</div>
+                  <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}></div>
                   <h4 style={{ color: 'var(--primary-magenta)', marginBottom: 'var(--space-sm)' }}>EFT/Bank Transfer</h4>
                   <p style={{ fontSize: '0.9rem', marginBottom: 'var(--space-sm)' }}>Direct bank deposit</p>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>1-3 business days</p>
                 </div>
                 <div style={{ padding: 'var(--space-md)', background: 'rgba(0, 255, 65, 0.1)', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}>💰</div>
+                  <div style={{ fontSize: '2rem', marginBottom: 'var(--space-sm)' }}></div>
                   <h4 style={{ color: 'var(--accent-lime)', marginBottom: 'var(--space-sm)' }}>Alternative Methods</h4>
                   <p style={{ fontSize: '0.9rem', marginBottom: 'var(--space-sm)' }}>Account credit/Other</p>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>By arrangement</p>
@@ -564,14 +564,14 @@ const RefundPage = () => {
             </p>
             <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="mailto:refunds@aijobchommie.co.za" className="btn btn-primary" style={{ fontSize: '1rem' }}>
-                💰 Request Refund
+                 Request Refund
               </a>
               <Link to="/contact" className="btn btn-secondary" style={{ fontSize: '1rem' }}>
-                💬 General Support
+                 General Support
               </Link>
             </div>
             <p style={{ fontSize: '0.9rem', marginTop: 'var(--space-md)', color: 'var(--text-secondary)' }}>
-              🕐 24-hour response time • 💯 30-day money-back guarantee
+               24-hour response time •  30-day money-back guarantee
             </p>
           </div>
         </div>

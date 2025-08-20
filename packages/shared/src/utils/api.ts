@@ -37,7 +37,7 @@ export const createSuccessResponse = <T>(
 export const createErrorResponse = (
   error: string | ApiError,
   statusCode?: number
-): ApiResponse<null> => {
+): ApiResponse<any> => {
   const apiError: ApiError = typeof error === 'string' 
     ? { code: 'GENERIC_ERROR', message: error, statusCode }
     : error;
@@ -224,25 +224,30 @@ export const transformApiResponse = <TInput, TOutput>(
   response: ApiResponse<TInput>,
   transformer: (data: TInput) => TOutput
 ): ApiResponse<TOutput> => {
-  if (!response.success || !response.data) {
-    return response as ApiResponse<TOutput>;
-  }
-  
-  try {
-    const transformedData = transformer(response.data);
+  if (!response.success || response.data === undefined || response.data === null) {
+    // Return a compatible ApiResponse<TOutput> with undefined data
     return {
       ...response,
-      data: transformedData
+      data: undefined as unknown as TOutput
+    } as ApiResponse<TOutput>;
+  }
+
+  try {
+    const transformedData = transformer(response.data as TInput);
+    return {
+      ...response,
+      data: transformedData as unknown as TOutput
     };
   } catch (error) {
     return {
-      ...response,
       success: false,
-      data: undefined,
+      data: undefined as unknown as TOutput,
+      message: undefined,
       error: {
         code: 'TRANSFORMATION_ERROR',
         message: extractErrorMessage(error)
-      }
+      },
+      timestamp: new Date()
     };
   }
 };
@@ -270,8 +275,9 @@ export const mergeApiResponses = <T>(
       message: `Some requests failed: ${errors.join(', ')}`
     });
   }
-  
-  return createSuccessResponse(data, `Successfully merged ${data.length} responses`);
+
+  // createSuccessResponse expects a T, but here we have T[] so we call createApiResponse directly
+  return createApiResponse<T[]> (data, `Successfully merged ${data.length} responses`);
 };
 
 /**

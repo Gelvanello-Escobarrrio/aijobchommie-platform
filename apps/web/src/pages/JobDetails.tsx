@@ -1,5 +1,5 @@
 /**
- * 📋 JOB DETAILS PAGE
+ *  JOB DETAILS PAGE
  * 
  * Complete job details view with application functionality
  * South African job market focused with local context

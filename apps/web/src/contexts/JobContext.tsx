@@ -1,5 +1,5 @@
 /**
- * 💼 JOB CONTEXT
+ *  JOB CONTEXT
  * 
  * Provides job search state and methods throughout the app
  * Manages job listings, applications, and AI matching

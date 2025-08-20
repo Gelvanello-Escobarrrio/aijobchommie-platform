@@ -459,7 +459,7 @@ const AboutPage: React.FC = () => {
                   <MetallicBadge variant="chrome" size="sm">Employment Advocate</MetallicBadge>
                 </div>
                 <p className="text-xs text-text-tertiary">
-                  © 2025 Job Chommie Professional Platform | Created by Fernando Steyn
+                   2025 Job Chommie Professional Platform | Created by Fernando Steyn
                 </p>
               </div>
             </div>

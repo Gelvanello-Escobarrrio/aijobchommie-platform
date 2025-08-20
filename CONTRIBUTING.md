@@ -1,12 +1,12 @@
-# 🤝 Contributing to AI Job Chommie Platform
+#  Contributing to AI Job Chommie Platform
 
 Thank you for your interest in contributing to the AI Job Chommie Platform! This document provides guidelines and instructions for contributing to this world-class job search platform designed specifically for the South African market.
 
-## 🎯 Mission Statement
+##  Mission Statement
 
 Our mission is to empower every South African, especially entry-level job seekers, with AI-powered tools to find meaningful employment opportunities. Every contribution should align with this social impact goal.
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
@@ -19,7 +19,7 @@ Our mission is to empower every South African, especially entry-level job seeker
 - [Documentation](#documentation)
 - [Recognition](#recognition)
 
-## 📜 Code of Conduct
+##  Code of Conduct
 
 This project adheres to a code of conduct that fosters an inclusive and welcoming environment. By participating, you agree to:
 
@@ -29,7 +29,7 @@ This project adheres to a code of conduct that fosters an inclusive and welcomin
 - **Maintain professional communication** in all interactions
 - **Support accessibility** and inclusive design practices
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -62,7 +62,7 @@ Before contributing, ensure you have:
    .\scripts\dev-setup.ps1
    ```
 
-## 🛠️ Development Setup
+##  Development Setup
 
 ### Quick Start
 
@@ -104,7 +104,7 @@ npm run type-check   # TypeScript type checking
 npm run format       # Format code with Prettier
 ```
 
-## 🎯 Contribution Guidelines
+##  Contribution Guidelines
 
 ### Priority Areas
 
@@ -119,15 +119,15 @@ We especially welcome contributions in:
 
 ### Types of Contributions
 
-- **🐛 Bug fixes** - Fix issues and improve reliability
-- **✨ New features** - Add functionality that helps job seekers
-- **📚 Documentation** - Improve guides, comments, and examples
-- **🎨 UI/UX improvements** - Better design and user experience
-- **🚀 Performance** - Optimize speed and resource usage
-- **🧪 Testing** - Add tests to improve code quality
-- **🌍 Localization** - Add support for South African languages
+- ** Bug fixes** - Fix issues and improve reliability
+- ** New features** - Add functionality that helps job seekers
+- ** Documentation** - Improve guides, comments, and examples
+- ** UI/UX improvements** - Better design and user experience
+- ** Performance** - Optimize speed and resource usage
+- ** Testing** - Add tests to improve code quality
+- ** Localization** - Add support for South African languages
 
-## 📝 Pull Request Process
+##  Pull Request Process
 
 ### Before Creating a PR
 
@@ -186,7 +186,7 @@ How does this change improve the experience for South African job seekers?
 - [ ] Documentation updated
 ```
 
-## 🐛 Issue Reporting
+##  Issue Reporting
 
 ### Bug Reports
 
@@ -209,26 +209,26 @@ For new features, provide:
 - **Priority justification** - how it helps our mission
 - **Implementation considerations**
 
-## 💻 Coding Standards
+##  Coding Standards
 
 ### TypeScript Guidelines
 
 ```typescript
-// ✅ Good: Use explicit types
+//  Good: Use explicit types
 interface JobSearchParams {
   location: string;
   category: EntryLevelCategory;
   experience: ExperienceLevel;
 }
 
-// ❌ Avoid: Implicit any types
+//  Avoid: Implicit any types
 function searchJobs(params: any) { ... }
 ```
 
 ### React Components
 
 ```typescript
-// ✅ Good: Functional components with TypeScript
+//  Good: Functional components with TypeScript
 interface JobCardProps {
   job: Job;
   onApply: (jobId: string) => void;
@@ -246,7 +246,7 @@ export const JobCard: React.FC<JobCardProps> = ({ job, onApply }) => {
 ### API Endpoints
 
 ```typescript
-// ✅ Good: Proper error handling and validation
+//  Good: Proper error handling and validation
 export const searchEntryLevelJobs = async (
   req: Request,
   res: Response,
@@ -292,7 +292,7 @@ import { jobService } from '../services';
 import './JobCard.css';
 ```
 
-## 🧪 Testing Requirements
+##  Testing Requirements
 
 ### Test Coverage
 
@@ -304,7 +304,7 @@ import './JobCard.css';
 ### Testing Standards
 
 ```typescript
-// ✅ Good: Descriptive test names
+//  Good: Descriptive test names
 describe('Entry Level Job Search', () => {
   it('should prioritize urgent hiring opportunities', async () => {
     const results = await searchEntryLevelJobs({
@@ -333,7 +333,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-## 📚 Documentation
+##  Documentation
 
 ### Code Documentation
 
@@ -373,7 +373,7 @@ When adding features, update:
 - **Environment variable examples** for new config
 - **Deployment instructions** if infrastructure changes
 
-## 🏆 Recognition
+##  Recognition
 
 ### Contributor Hall of Fame
 
@@ -386,12 +386,12 @@ Contributors who make significant impacts will be:
 
 ### Contribution Levels
 
-- **🥉 Bronze**: First merged PR
-- **🥈 Silver**: 5+ merged PRs or significant feature
-- **🥇 Gold**: 15+ merged PRs or major architectural contribution
-- **💎 Diamond**: Long-term commitment and mentoring others
+- ** Bronze**: First merged PR
+- ** Silver**: 5+ merged PRs or significant feature
+- ** Gold**: 15+ merged PRs or major architectural contribution
+- ** Diamond**: Long-term commitment and mentoring others
 
-## 🤔 Questions?
+##  Questions?
 
 ### Getting Help
 
@@ -409,12 +409,12 @@ New contributors can request mentorship for:
 - **Career development advice**
 - **Open source best practices**
 
-## 🌟 Thank You!
+##  Thank You!
 
 Every contribution, no matter how small, helps create opportunities for South African job seekers. Thank you for being part of this mission to transform lives through technology.
 
 ---
 
-**Made with ❤️ for South African job seekers**
+**Made with  for South African job seekers**
 
 *By contributing to AI Job Chommie Platform, you're not just writing code - you're creating opportunities and changing lives.*

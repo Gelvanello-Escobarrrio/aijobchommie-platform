@@ -1,8 +1,8 @@
-# 🔒 Security Policy
+#  Security Policy
 
 The AI Job Chommie Platform takes security seriously. As a platform handling sensitive job seeker and employer data in South Africa, we are committed to maintaining the highest security standards to protect our users' information.
 
-## 🛡️ Our Security Commitment
+##  Our Security Commitment
 
 We are committed to:
 
@@ -13,17 +13,17 @@ We are committed to:
 - **Responding promptly** to security reports
 - **Transparent communication** about security matters
 
-## 📋 Supported Versions
+##  Supported Versions
 
 We actively maintain security updates for the following versions:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.x.x   | ✅ Fully supported |
-| 0.9.x   | ✅ Security fixes only |
-| < 0.9   | ❌ No longer supported |
+| 1.x.x   |  Fully supported |
+| 0.9.x   |  Security fixes only |
+| < 0.9   |  No longer supported |
 
-## 🚨 Reporting Security Vulnerabilities
+##  Reporting Security Vulnerabilities
 
 If you discover a security vulnerability, we appreciate your help in disclosing it to us responsibly.
 
@@ -52,35 +52,35 @@ Instead, please:
 - **Regular updates**: Weekly during investigation
 - **Resolution timeline**: Based on severity (see below)
 
-## ⚡ Severity Levels & Response Times
+##  Severity Levels & Response Times
 
-### 🔴 Critical (24-48 hours)
+###  Critical (24-48 hours)
 - Remote code execution
 - SQL injection vulnerabilities
 - Authentication bypass
 - Payment system vulnerabilities
 - Exposure of sensitive user data
 
-### 🟡 High (1-7 days)
+###  High (1-7 days)
 - Cross-site scripting (XSS)
 - Cross-site request forgery (CSRF)
 - Local file inclusion/traversal
 - Privilege escalation
 - Significant information disclosure
 
-### 🔵 Medium (1-30 days)
+###  Medium (1-30 days)
 - Business logic flaws
 - Information leakage
 - Denial of service vulnerabilities
 - Session management issues
 
-### 🟢 Low (30-90 days)
+###  Low (30-90 days)
 - Minor information disclosure
 - UI redressing/clickjacking
 - Rate limiting bypass
 - Non-critical configuration issues
 
-## 🎯 Security Focus Areas
+##  Security Focus Areas
 
 ### 1. User Data Protection
 - Personal information encryption
@@ -112,7 +112,7 @@ Instead, please:
 - Financial data protection
 - Fraud prevention measures
 
-## ✅ Security Best Practices
+##  Security Best Practices
 
 ### For Contributors
 
@@ -128,7 +128,7 @@ When contributing code, please:
 
 ### Example: Input Validation
 ```typescript
-// ✅ Good: Proper input validation
+//  Good: Proper input validation
 import { z } from 'zod';
 
 const userInputSchema = z.object({
@@ -144,7 +144,7 @@ export const validateUserInput = (data: unknown) => {
 
 ### Example: SQL Injection Prevention
 ```typescript
-// ✅ Good: Using parameterized queries
+//  Good: Using parameterized queries
 const getJobsByLocation = async (location: string) => {
   return await db.query(
     'SELECT * FROM jobs WHERE location = $1',
@@ -152,11 +152,11 @@ const getJobsByLocation = async (location: string) => {
   );
 };
 
-// ❌ Bad: String concatenation
+//  Bad: String concatenation
 const unsafeQuery = `SELECT * FROM jobs WHERE location = '${location}'`;
 ```
 
-## 🔍 Security Testing
+##  Security Testing
 
 ### Automated Security Checks
 
@@ -177,7 +177,7 @@ We perform:
 - **Third-party security audits** annually
 - **Compliance assessments** for POPIA/GDPR
 
-## 🚧 Security Measures in Place
+##  Security Measures in Place
 
 ### Application Security
 - Input validation using Zod schemas
@@ -202,7 +202,7 @@ We perform:
 - Suspicious activity alerts
 - Performance monitoring for DDoS detection
 
-## 📚 Security Resources
+##  Security Resources
 
 ### Documentation
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
@@ -216,7 +216,7 @@ We perform:
 - **Dependency Checking**: npm audit, Snyk
 - **Container Security**: Trivy, Clair
 
-## 🏆 Security Hall of Fame
+##  Security Hall of Fame
 
 We recognize security researchers who help improve our platform:
 
@@ -236,7 +236,7 @@ While we don't currently offer monetary bounties, we provide:
 - Contribution acknowledgment in our documentation
 - Priority consideration for employment opportunities
 
-## 📞 Contact Information
+##  Contact Information
 
 ### Security Team
 - **Email**: security@aijobchommie.co.za
@@ -248,7 +248,7 @@ While we don't currently offer monetary bounties, we provide:
 - **Community**: GitHub Discussions for general security best practices
 - **Updates**: Follow our security advisories on GitHub
 
-## 🔄 Updates to This Policy
+##  Updates to This Policy
 
 This security policy may be updated periodically. Significant changes will be:
 

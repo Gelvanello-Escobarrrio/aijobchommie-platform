@@ -1,4 +1,4 @@
-# 🏛️ Department of Labour Registration Guide
+#  Department of Labour Registration Guide
 ## Temporary Employment Agent (TEA) Registration for AI Job Chommie
 
 ### Overview
@@ -6,7 +6,7 @@ To legally operate as a recruitment/placement service in South Africa, you must 
 
 ---
 
-## 📋 **What is a Temporary Employment Agent (TEA)?**
+##  **What is a Temporary Employment Agent (TEA)?**
 
 A Temporary Employment Agent is defined in the Labour Relations Act as a person who provides workers to clients for temporary work. This includes:
 
@@ -16,37 +16,37 @@ A Temporary Employment Agent is defined in the Labour Relations Act as a person 
 - **Contract labor supply**
 - **Employment matching services**
 
-⚠️ **Important**: Operating without registration is illegal and can result in fines and criminal charges.
+ **Important**: Operating without registration is illegal and can result in fines and criminal charges.
 
 ---
 
-## 🎯 **Registration Requirements**
+##  **Registration Requirements**
 
 ### **1. Business Registration**
 You must have a registered business entity:
-- ✅ **Company Registration** (Pty Ltd recommended)
-- ✅ **Tax Registration** (SARS)
-- ✅ **BEE Certificate** (if applicable)
+-  **Company Registration** (Pty Ltd recommended)
+-  **Tax Registration** (SARS)
+-  **BEE Certificate** (if applicable)
 
 ### **2. Financial Requirements**
-- 💰 **Bank guarantee**: R500,000 minimum
-- 💰 **Audited financial statements** (if business > 1 year)
-- 💰 **Proof of financial stability**
+-  **Bank guarantee**: R500,000 minimum
+-  **Audited financial statements** (if business > 1 year)
+-  **Proof of financial stability**
 
 ### **3. Key Personnel**
-- 👤 **Responsible manager** (must pass fit and proper test)
-- 👤 **Clear criminal records** for all directors/managers
-- 👤 **Relevant experience** in employment services
+-  **Responsible manager** (must pass fit and proper test)
+-  **Clear criminal records** for all directors/managers
+-  **Relevant experience** in employment services
 
 ### **4. Compliance Requirements**
-- 📄 **Labour law compliance**
-- 📄 **Employment Equity Act compliance**
-- 📄 **Skills Development Act compliance**
-- 📄 **UIF and COIDA registration**
+-  **Labour law compliance**
+-  **Employment Equity Act compliance**
+-  **Skills Development Act compliance**
+-  **UIF and COIDA registration**
 
 ---
 
-## 📝 **Step-by-Step Registration Process**
+##  **Step-by-Step Registration Process**
 
 ### **Step 1: Prepare Documentation**
 
@@ -127,7 +127,7 @@ You must have a registered business entity:
 
 ---
 
-## 💰 **Costs Breakdown**
+##  **Costs Breakdown**
 
 | Item | Cost | Notes |
 |------|------|--------|
@@ -139,7 +139,7 @@ You must have a registered business entity:
 
 ---
 
-## ⏱️ **Timeline**
+##  **Timeline**
 
 | Phase | Duration | Notes |
 |-------|----------|--------|
@@ -150,7 +150,7 @@ You must have a registered business entity:
 
 ---
 
-## 🚨 **Common Rejection Reasons**
+##  **Common Rejection Reasons**
 
 1. **Insufficient Financial Resources**
    - Solution: Increase bank guarantee or show more capital
@@ -169,26 +169,26 @@ You must have a registered business entity:
 
 ---
 
-## ✅ **AI Job Chommie Specific Considerations**
+##  **AI Job Chommie Specific Considerations**
 
 ### **Business Model Classification:**
-- ✅ **Digital recruitment platform** = Temporary Employment Agent
-- ✅ **Job matching service** = Employment service
-- ✅ **Candidate placement** = Temporary employment
+-  **Digital recruitment platform** = Temporary Employment Agent
+-  **Job matching service** = Employment service
+-  **Candidate placement** = Temporary employment
 
 ### **Technology Considerations:**
-- 🤖 **AI matching algorithms** - Ensure transparency and fairness
-- 📱 **Digital platform** - Must comply with POPIA (data protection)
-- 🔍 **Automated screening** - Must not discriminate unfairly
+-  **AI matching algorithms** - Ensure transparency and fairness
+-  **Digital platform** - Must comply with POPIA (data protection)
+-  **Automated screening** - Must not discriminate unfairly
 
 ### **Compliance Requirements:**
-- 📊 **Record keeping** - All placements and communications
-- 🎯 **Employment equity** - Fair representation in placements
-- 💼 **Worker rights** - Ensure placed workers get full benefits
+-  **Record keeping** - All placements and communications
+-  **Employment equity** - Fair representation in placements
+-  **Worker rights** - Ensure placed workers get full benefits
 
 ---
 
-## 📞 **Department of Labour Contact Information**
+##  **Department of Labour Contact Information**
 
 ### **Head Office** (Pretoria)
 - **Address**: Laboria House, 215 Schoeman Street, Pretoria
@@ -213,7 +213,7 @@ You must have a registered business entity:
 
 ---
 
-## 💡 **Professional Assistance Recommendations**
+##  **Professional Assistance Recommendations**
 
 ### **Labour Law Attorneys**
 - **Cliffe Dekker Hofmeyr**
@@ -229,29 +229,29 @@ You must have a registered business entity:
 
 ---
 
-## 🎯 **Next Steps for AI Job Chommie**
+##  **Next Steps for AI Job Chommie**
 
 ### **Immediate Actions (Week 1-2):**
-1. ✅ Consult with labour law attorney
-2. ✅ Secure bank guarantee arrangements
-3. ✅ Begin document preparation
-4. ✅ Identify responsible manager candidate
+1.  Consult with labour law attorney
+2.  Secure bank guarantee arrangements
+3.  Begin document preparation
+4.  Identify responsible manager candidate
 
 ### **Short Term (Month 1-3):**
-1. ✅ Complete and submit TEA application
-2. ✅ Prepare for DoL inspection
-3. ✅ Implement compliance systems
-4. ✅ Update website with compliance notices
+1.  Complete and submit TEA application
+2.  Prepare for DoL inspection
+3.  Implement compliance systems
+4.  Update website with compliance notices
 
 ### **Medium Term (Month 3-6):**
-1. ✅ Receive TEA registration
-2. ✅ Launch full recruitment services
-3. ✅ Enable user job search features
-4. ✅ Begin commercial operations
+1.  Receive TEA registration
+2.  Launch full recruitment services
+3.  Enable user job search features
+4.  Begin commercial operations
 
 ---
 
-## ⚠️ **Legal Disclaimer**
+##  **Legal Disclaimer**
 
 This guide is for informational purposes only and does not constitute legal advice. Requirements may change, and specific circumstances may require different approaches. It is recommended to:
 
@@ -262,7 +262,7 @@ This guide is for informational purposes only and does not constitute legal advi
 
 ---
 
-## 🔄 **Updates & Changes**
+##  **Updates & Changes**
 
 - **Last Updated**: January 2024
 - **Next Review**: March 2024

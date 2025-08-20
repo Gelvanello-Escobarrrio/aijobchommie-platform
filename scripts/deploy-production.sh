@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==========================================
-# 🚀 AI JOB CHOMMIE - PRODUCTION DEPLOYMENT
+#  AI JOB CHOMMIE - PRODUCTION DEPLOYMENT
 # ==========================================
 
 set -e
@@ -45,7 +45,7 @@ info() {
 # Help function
 show_help() {
     cat << EOF
-🚀 AI Job Chommie Production Deployment Script
+ AI Job Chommie Production Deployment Script
 
 Usage: $0 [COMMAND] [OPTIONS]
 
@@ -355,7 +355,7 @@ post_deployment() {
     if [[ -n "$SLACK_WEBHOOK_URL" ]]; then
         log "Sending deployment notification..."
         curl -X POST -H 'Content-type: application/json' \
-            --data '{"text":"🚀 AI Job Chommie production deployment completed successfully!"}' \
+            --data '{"text":" AI Job Chommie production deployment completed successfully!"}' \
             "$SLACK_WEBHOOK_URL"
     fi
     
@@ -375,11 +375,11 @@ full_deployment() {
     setup_monitoring
     post_deployment
     
-    success "🎉 Production deployment completed successfully!"
-    info "🌐 Website: https://aijobchommie.co.za"
-    info "🔧 Admin: https://admin.aijobchommie.co.za"
-    info "📊 Monitoring: https://monitoring.aijobchommie.co.za"
-    info "📋 Logs: docker-compose -f docker-compose.prod.yml logs -f"
+    success " Production deployment completed successfully!"
+    info " Website: https://aijobchommie.co.za"
+    info " Admin: https://admin.aijobchommie.co.za"
+    info " Monitoring: https://monitoring.aijobchommie.co.za"
+    info " Logs: docker-compose -f docker-compose.prod.yml logs -f"
 }
 
 # Update deployment

@@ -14,7 +14,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🗣️ Load comprehensive SA slang dictionary
+   *  Load comprehensive SA slang dictionary
    */
   loadSlangDictionary() {
     this.slangDictionary.set('general', {
@@ -145,7 +145,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🗣️ Load contextual phrases and responses
+   *  Load contextual phrases and responses
    */
   loadContextualPhrases() {
     this.contextualPhrases.set('greetings', {
@@ -178,7 +178,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🌍 Load regional variations
+   *  Load regional variations
    */
   loadRegionalVariations() {
     this.regionalVariations.set('gauteng', {
@@ -201,7 +201,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🔍 Translate slang to formal English
+   *  Translate slang to formal English
    */
   translateSlangToFormal(text) {
     let formalText = text;
@@ -218,7 +218,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🗣️ Add local flavor to formal text
+   *  Add local flavor to formal text
    */
   addLocalFlavor(text, intensity = 'medium') {
     const flavorWords = {
@@ -245,7 +245,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🎯 Get contextual slang suggestions
+   *  Get contextual slang suggestions
    */
   getContextualSlang(context, situation = '') {
     const contextMap = {
@@ -260,7 +260,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🌍 Get regional slang for location
+   *  Get regional slang for location
    */
   getRegionalSlang(region) {
     const regionKey = region.toLowerCase().replace(/\s+/g, '_');
@@ -268,7 +268,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🔍 Check if text contains slang
+   *  Check if text contains slang
    */
   containsSlang(text) {
     const slangWords = [];
@@ -286,7 +286,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 📚 Get slang definition
+   *  Get slang definition
    */
   getSlangDefinition(word) {
     for (const [categoryName, category] of this.slangDictionary) {
@@ -302,7 +302,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🎲 Generate random SA greeting
+   *  Generate random SA greeting
    */
   generateRandomGreeting(timeOfDay = 'general') {
     const greetings = this.contextualPhrases.get('greetings');
@@ -311,7 +311,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🎉 Generate celebration message
+   *  Generate celebration message
    */
   generateCelebrationMessage(achievement) {
     const celebrations = {
@@ -326,7 +326,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 💬 Generate contextual response
+   *  Generate contextual response
    */
   generateContextualResponse(userInput, context = 'general') {
     const input = userInput.toLowerCase();
@@ -352,7 +352,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 🔤 Format text with SA spelling and conventions
+   *  Format text with SA spelling and conventions
    */
   formatSouthAfricanText(text) {
     // Convert to SA English spellings and conventions
@@ -375,7 +375,7 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 📱 Get mobile-friendly slang explanations
+   *  Get mobile-friendly slang explanations
    */
   getMobileSlangExplanation(word) {
     const definition = this.getSlangDefinition(word);
@@ -392,46 +392,46 @@ class SouthAfricanSlangService {
   }
 
   /**
-   * 😎 Get emoji for slang word
+   *  Get emoji for slang word
    */
   getSlangEmoji(word) {
     const emojiMap = {
-      'lekker': '👌',
-      'braai': '🔥',
-      'boet': '👊',
-      'china': '🤝',
-      'howzit': '👋',
-      'sharp': '✨',
-      'eish': '😤',
-      'shame': '😢',
-      'sho': '😲',
-      'tjo': '🤯',
-      'yoh': '😱',
-      'hectic': '🌪️',
-      'jol': '🎉',
-      'skinner': '🗣️',
-      'mamparra': '🤦‍♂️',
-      'lightie': '👶',
-      'fire': '🔥',
-      'slay': '💪',
-      'lit': '🔥',
-      'vibes': '✨',
-      'aweh': '🤙',
-      'sawubona': '🙏'
+      'lekker': '',
+      'braai': '',
+      'boet': '',
+      'china': '',
+      'howzit': '',
+      'sharp': '',
+      'eish': '',
+      'shame': '',
+      'sho': '',
+      'tjo': '',
+      'yoh': '',
+      'hectic': '',
+      'jol': '',
+      'skinner': '',
+      'mamparra': '‍',
+      'lightie': '',
+      'fire': '',
+      'slay': '',
+      'lit': '',
+      'vibes': '',
+      'aweh': '',
+      'sawubona': ''
     };
 
     return emojiMap[word.toLowerCase()] || '🇿🇦';
   }
 
   /**
-   * 🎯 Get all slang for category
+   *  Get all slang for category
    */
   getAllSlangForCategory(category) {
     return this.slangDictionary.get(category) || {};
   }
 
   /**
-   * 📊 Get slang statistics
+   *  Get slang statistics
    */
   getSlangStatistics() {
     let totalSlangWords = 0;

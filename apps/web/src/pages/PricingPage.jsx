@@ -75,11 +75,11 @@ const PricingPage = () => {
                       Platform development: Complete
                     </li>
                     <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
-                      <span style={{ color: 'var(--neon-orange)' }}>⏳</span>
+                      <span style={{ color: 'var(--neon-orange)' }}></span>
                       TEA registration: In progress
                     </li>
                     <li style={{ marginBottom: 'var(--space-xs)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
-                      <span style={{ color: 'var(--neon-orange)' }}>⏳</span>
+                      <span style={{ color: 'var(--neon-orange)' }}></span>
                       Job placement services: Pending approval
                     </li>
                   </ul>
@@ -168,9 +168,9 @@ const PricingPage = () => {
                 <li style={{ marginBottom: '10px' }}>
                   <NeonEmoji type="checkmark" size={16} color="lime" intensity="medium" /> Mobile PWA access
                 </li>
-                <li style={{ marginBottom: '10px', color: 'var(--text-muted)' }}>❌ Advanced analytics</li>
-                <li style={{ marginBottom: '10px', color: 'var(--text-muted)' }}>❌ Priority support</li>
-                <li style={{ marginBottom: '10px', color: 'var(--text-muted)' }}>❌ Personal career consultant</li>
+                <li style={{ marginBottom: '10px', color: 'var(--text-muted)' }}> Advanced analytics</li>
+                <li style={{ marginBottom: '10px', color: 'var(--text-muted)' }}> Priority support</li>
+                <li style={{ marginBottom: '10px', color: 'var(--text-muted)' }}> Personal career consultant</li>
               </ul>
               
               <Link to="#" className="btn btn-primary" style={{ width: '100%', marginBottom: '10px' }}>Start 3-Day Trial</Link>
@@ -266,18 +266,18 @@ const PricingPage = () => {
               
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-lg)', textAlign: 'left' }}>
                 <ul style={{ listStyle: 'none' }}>
-                  <li style={{ marginBottom: '10px' }}>✅ <strong>Unlimited</strong> job postings</li>
-                  <li style={{ marginBottom: '10px' }}>✅ AI-powered candidate screening</li>
-                  <li style={{ marginBottom: '10px' }}>✅ Advanced analytics dashboard</li>
-                  <li style={{ marginBottom: '10px' }}>✅ Custom integration APIs</li>
-                  <li style={{ marginBottom: '10px' }}>✅ Dedicated account manager</li>
+                  <li style={{ marginBottom: '10px' }}> <strong>Unlimited</strong> job postings</li>
+                  <li style={{ marginBottom: '10px' }}> AI-powered candidate screening</li>
+                  <li style={{ marginBottom: '10px' }}> Advanced analytics dashboard</li>
+                  <li style={{ marginBottom: '10px' }}> Custom integration APIs</li>
+                  <li style={{ marginBottom: '10px' }}> Dedicated account manager</li>
                 </ul>
                 <ul style={{ listStyle: 'none' }}>
-                  <li style={{ marginBottom: '10px' }}>✅ White-label solutions</li>
-                  <li style={{ marginBottom: '10px' }}>✅ Bulk candidate sourcing</li>
-                  <li style={{ marginBottom: '10px' }}>✅ Interview scheduling automation</li>
-                  <li style={{ marginBottom: '10px' }}>✅ Custom reporting</li>
-                  <li style={{ marginBottom: '10px' }}>✅ 24/7 priority support</li>
+                  <li style={{ marginBottom: '10px' }}> White-label solutions</li>
+                  <li style={{ marginBottom: '10px' }}> Bulk candidate sourcing</li>
+                  <li style={{ marginBottom: '10px' }}> Interview scheduling automation</li>
+                  <li style={{ marginBottom: '10px' }}> Custom reporting</li>
+                  <li style={{ marginBottom: '10px' }}> 24/7 priority support</li>
                 </ul>
               </div>
               
@@ -418,26 +418,26 @@ const PricingPage = () => {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>🔒</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   <span>256-bit SSL encryption for all data</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>🛡️</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   <span>POPI Act compliant data handling</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>💳</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   <span>PCI DSS secure payment processing</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}>🔄</span>
+                  <span style={{ color: 'var(--accent-lime)', marginRight: 'var(--space-sm)' }}></span>
                   <span>Regular security audits and updates</span>
                 </div>
               </div>
             </div>
             <div className="card" style={{ background: 'linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1))', textAlign: 'center' }}>
               <h3 style={{ color: 'var(--primary-cyan)', marginBottom: 'var(--space-md)' }}>7-Day Money-Back Guarantee</h3>
-              <div style={{ fontSize: '4rem', marginBottom: 'var(--space-md)' }}>💰</div>
+              <div style={{ fontSize: '4rem', marginBottom: 'var(--space-md)' }}></div>
               <p style={{ marginBottom: 'var(--space-lg)' }}>
                 Not satisfied with your results? Get a full refund within 7 days, no questions asked. 
                 We're confident you'll love the results, but your peace of mind is our priority.

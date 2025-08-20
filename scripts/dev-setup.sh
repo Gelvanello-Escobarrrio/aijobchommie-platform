@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🚀 AI Job Chommie Platform - Development Setup"
+echo " AI Job Chommie Platform - Development Setup"
 echo "==============================================="
 
 # Colors for output
@@ -44,7 +44,7 @@ check_requirements() {
             print_error "Node.js $REQUIRED_NODE or higher is required. Current version: $NODE_VERSION"
             exit 1
         fi
-        print_status "Node.js version: $NODE_VERSION ✅"
+        print_status "Node.js version: $NODE_VERSION "
     else
         print_error "Node.js is not installed. Please install Node.js 18+ from https://nodejs.org/"
         exit 1
@@ -53,7 +53,7 @@ check_requirements() {
     # Check npm version
     if command -v npm >/dev/null 2>&1; then
         NPM_VERSION=$(npm --version)
-        print_status "npm version: $NPM_VERSION ✅"
+        print_status "npm version: $NPM_VERSION "
     else
         print_error "npm is not installed"
         exit 1
@@ -62,7 +62,7 @@ check_requirements() {
     # Check Docker (optional)
     if command -v docker >/dev/null 2>&1; then
         DOCKER_VERSION=$(docker --version | cut -d' ' -f3 | cut -d',' -f1)
-        print_status "Docker version: $DOCKER_VERSION ✅"
+        print_status "Docker version: $DOCKER_VERSION "
         DOCKER_AVAILABLE=true
     else
         print_warning "Docker not found - optional for development but recommended"
@@ -72,7 +72,7 @@ check_requirements() {
     # Check Git
     if command -v git >/dev/null 2>&1; then
         GIT_VERSION=$(git --version | cut -d' ' -f3)
-        print_status "Git version: $GIT_VERSION ✅"
+        print_status "Git version: $GIT_VERSION "
     else
         print_error "Git is required but not installed"
         exit 1
@@ -91,7 +91,7 @@ install_dependencies() {
     print_status "Installing npm dependencies..."
     npm install
     
-    print_status "Dependencies installed successfully ✅"
+    print_status "Dependencies installed successfully "
 }
 
 # Set up environment files
@@ -150,9 +150,9 @@ WEB_PORT=3000
 ADMIN_PORT=3002
 EOF
         fi
-        print_status "Root environment file created ✅"
+        print_status "Root environment file created "
     else
-        print_status "Root .env file already exists ✅"
+        print_status "Root .env file already exists "
     fi
     
     # API package .env
@@ -171,7 +171,7 @@ RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=1000
 CORS_ORIGIN=http://localhost:3000,http://localhost:3002
 EOF
-        print_status "API environment file created ✅"
+        print_status "API environment file created "
     fi
     
     # Web package .env.local
@@ -194,7 +194,7 @@ NEXT_PUBLIC_HOTJAR_ID=
 NEXT_PUBLIC_ENABLE_AI_FEATURES=true
 NEXT_PUBLIC_ENABLE_PREMIUM_FEATURES=true
 EOF
-        print_status "Web environment file created ✅"
+        print_status "Web environment file created "
     fi
     
     # Admin package .env.local
@@ -209,10 +209,10 @@ NEXT_PUBLIC_ADMIN_SESSION_TIMEOUT=3600000
 NEXT_PUBLIC_ENABLE_SYSTEM_LOGS=true
 NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING=true
 EOF
-        print_status "Admin environment file created ✅"
+        print_status "Admin environment file created "
     fi
     
-    print_warning "🔐 Remember to update the environment files with your actual API keys and secrets!"
+    print_warning " Remember to update the environment files with your actual API keys and secrets!"
 }
 
 # Set up development databases
@@ -225,7 +225,7 @@ setup_databases() {
         if [ -f "docker-compose.dev.yml" ]; then
             docker-compose -f docker-compose.dev.yml up -d postgres redis
             sleep 5 # Wait for services to start
-            print_status "PostgreSQL and Redis started via Docker ✅"
+            print_status "PostgreSQL and Redis started via Docker "
         else
             print_warning "docker-compose.dev.yml not found, skipping Docker setup"
         fi
@@ -250,7 +250,7 @@ setup_database_schema() {
             print_status "Running database migrations..."
             npx prisma db push
             
-            print_status "Database schema setup complete ✅"
+            print_status "Database schema setup complete "
         else
             print_warning "Prisma not found in API package, skipping database setup"
         fi
@@ -276,7 +276,7 @@ setup_dev_tools() {
         fi
     done
     
-    print_status "Development tools setup complete ✅"
+    print_status "Development tools setup complete "
 }
 
 # Verify installation
@@ -286,7 +286,7 @@ verify_setup() {
     # Check if all packages can be built
     print_status "Running type checks..."
     if npm run type-check >/dev/null 2>&1; then
-        print_status "TypeScript type checking passed ✅"
+        print_status "TypeScript type checking passed "
     else
         print_warning "TypeScript type checking failed - check your configuration"
     fi
@@ -294,7 +294,7 @@ verify_setup() {
     # Check if linting passes
     print_status "Running linter..."
     if npm run lint >/dev/null 2>&1; then
-        print_status "Linting passed ✅"
+        print_status "Linting passed "
     else
         print_warning "Linting failed - some code quality issues may exist"
     fi
@@ -302,7 +302,7 @@ verify_setup() {
     # Test build
     print_status "Testing build process..."
     if npm run build >/dev/null 2>&1; then
-        print_status "Build process successful ✅"
+        print_status "Build process successful "
     else
         print_warning "Build process failed - check package configurations"
     fi
@@ -312,12 +312,12 @@ verify_setup() {
 main() {
     echo "Setting up AI Job Chommie Platform development environment..."
     echo "This script will:"
-    echo "  ✨ Check system requirements"
-    echo "  📦 Install dependencies"
-    echo "  ⚙️  Configure environment files"
-    echo "  🗄️  Set up development databases"
-    echo "  🛠️  Install development tools"
-    echo "  ✅ Verify the installation"
+    echo "   Check system requirements"
+    echo "   Install dependencies"
+    echo "    Configure environment files"
+    echo "    Set up development databases"
+    echo "    Install development tools"
+    echo "   Verify the installation"
     echo
     
     read -p "Do you want to continue? (y/N) " -n 1 -r
@@ -336,26 +336,26 @@ main() {
     verify_setup
     
     echo
-    print_header "🎉 Development environment setup complete!"
+    print_header " Development environment setup complete!"
     echo
     echo "Next steps:"
-    echo "  1. 📝 Update environment files with your API keys:"
+    echo "  1.  Update environment files with your API keys:"
     echo "     - .env (root configuration)"
     echo "     - packages/api/.env (API configuration)"
     echo "     - packages/web/.env.local (Web app configuration)"
     echo "     - packages/admin/.env.local (Admin dashboard configuration)"
     echo
-    echo "  2. 🚀 Start the development servers:"
+    echo "  2.  Start the development servers:"
     echo "     npm run dev"
     echo
-    echo "  3. 🌐 Access the applications:"
+    echo "  3.  Access the applications:"
     echo "     - Web App: http://localhost:3000"
     echo "     - API: http://localhost:3001"
     echo "     - Admin Dashboard: http://localhost:3002"
     echo
-    echo "  4. 📚 Read the documentation in the docs/ folder"
+    echo "  4.  Read the documentation in the docs/ folder"
     echo
-    echo "Happy coding! 🚀"
+    echo "Happy coding! "
 }
 
 # Check if script is being run directly

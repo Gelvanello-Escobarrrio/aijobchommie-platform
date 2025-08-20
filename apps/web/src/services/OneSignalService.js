@@ -24,7 +24,7 @@ class OneSignalService {
     try {
       if (this.isInitialized || !this.appId) return;
 
-      console.log('🔔 Initializing OneSignal...');
+      console.log(' Initializing OneSignal...');
       
       await OneSignal.init(this.config);
 
@@ -32,9 +32,9 @@ class OneSignalService {
       this.setupEventListeners();
       this.isInitialized = true;
       
-      console.log('✅ OneSignal initialized successfully');
+      console.log(' OneSignal initialized successfully');
     } catch (error) {
-      console.error('❌ OneSignal initialization failed:', error);
+      console.error(' OneSignal initialization failed:', error);
     }
   }
 
@@ -44,18 +44,18 @@ class OneSignalService {
   setupEventListeners() {
     // When user subscribes to notifications
     OneSignal.on('subscriptionChange', (isSubscribed) => {
-      console.log('🔔 Subscription changed:', isSubscribed);
+      console.log(' Subscription changed:', isSubscribed);
       this.handleSubscriptionChange(isSubscribed);
     });
 
     // When notification is received
     OneSignal.on('notificationDisplay', (event) => {
-      console.log('📱 Notification displayed:', event);
+      console.log(' Notification displayed:', event);
     });
 
     // When notification is clicked
     OneSignal.on('notificationClick', (event) => {
-      console.log('👆 Notification clicked:', event);
+      console.log(' Notification clicked:', event);
       this.handleNotificationClick(event);
     });
   }
@@ -70,17 +70,17 @@ class OneSignalService {
       }
 
       if (!this.appId) {
-        console.warn('⚠️ OneSignal App ID not configured, using fallback notification');
+        console.warn(' OneSignal App ID not configured, using fallback notification');
         return false;
       }
 
-      console.log('🔔 Requesting notification permissions...');
+      console.log(' Requesting notification permissions...');
       
       // Show OneSignal prompt
       const granted = await OneSignal.showSlidedownPrompt();
       
       if (granted) {
-        console.log('✅ Notification permission granted');
+        console.log(' Notification permission granted');
         
         // Get the OneSignal player ID (unique device identifier)
         const playerId = await OneSignal.getUserId();
@@ -99,11 +99,11 @@ class OneSignalService {
 
         return true;
       } else {
-        console.log('❌ Notification permission denied');
+        console.log(' Notification permission denied');
         return false;
       }
     } catch (error) {
-      console.error('❌ Error requesting permission:', error);
+      console.error(' Error requesting permission:', error);
       return false;
     }
   }
@@ -124,9 +124,9 @@ class OneSignalService {
         });
 
       if (error) throw error;
-      console.log('✅ Device linked to user profile');
+      console.log(' Device linked to user profile');
     } catch (error) {
-      console.error('❌ Error linking device to user:', error);
+      console.error(' Error linking device to user:', error);
     }
   }
 
@@ -138,9 +138,9 @@ class OneSignalService {
       if (!this.isInitialized || !this.appId) return;
       
       await OneSignal.sendTags(tags);
-      console.log('🏷️ User tags set:', tags);
+      console.log(' User tags set:', tags);
     } catch (error) {
-      console.error('❌ Error setting user tags:', error);
+      console.error(' Error setting user tags:', error);
     }
   }
 
@@ -179,9 +179,9 @@ class OneSignalService {
 
       if (error) throw error;
       
-      console.log('🚨 Job alerts configured:', preferences);
+      console.log(' Job alerts configured:', preferences);
     } catch (error) {
-      console.error('❌ Error setting up job alerts:', error);
+      console.error(' Error setting up job alerts:', error);
     }
   }
 
@@ -193,8 +193,8 @@ class OneSignalService {
       // This creates a local notification for testing
       // In production, notifications would be sent from your backend
       if (Notification.permission === 'granted') {
-        const notification = new Notification('🧪 OneSignal Test', {
-          body: 'Your push notifications are working perfectly! 🎉',
+        const notification = new Notification(' OneSignal Test', {
+          body: 'Your push notifications are working perfectly! ',
           icon: '/logos/logo-192.png',
           badge: '/logos/logo-72.png',
           tag: 'onesignal-test'
@@ -203,7 +203,7 @@ class OneSignalService {
         setTimeout(() => notification.close(), 5000);
       }
     } catch (error) {
-      console.error('❌ Error sending test notification:', error);
+      console.error(' Error sending test notification:', error);
     }
   }
 
@@ -225,7 +225,7 @@ class OneSignalService {
         if (error) throw error;
       }
     } catch (error) {
-      console.error('❌ Error handling subscription change:', error);
+      console.error(' Error handling subscription change:', error);
     }
   }
 
@@ -244,7 +244,7 @@ class OneSignalService {
         window.location.href = data.url;
       }
     } catch (error) {
-      console.error('❌ Error handling notification click:', error);
+      console.error(' Error handling notification click:', error);
     }
   }
 
@@ -262,7 +262,7 @@ class OneSignalService {
       
       return { supported, enabled, service: 'onesignal' };
     } catch (error) {
-      console.error('❌ Error checking notification status:', error);
+      console.error(' Error checking notification status:', error);
       return { supported: false, enabled: false, service: 'error' };
     }
   }
@@ -282,9 +282,9 @@ class OneSignalService {
       if (!this.isInitialized || !this.appId) return;
       
       await OneSignal.setSubscription(false);
-      console.log('🔇 Unsubscribed from notifications');
+      console.log(' Unsubscribed from notifications');
     } catch (error) {
-      console.error('❌ Error unsubscribing:', error);
+      console.error(' Error unsubscribing:', error);
     }
   }
 
@@ -296,7 +296,7 @@ class OneSignalService {
       if (!this.isInitialized || !this.appId) return null;
       return await OneSignal.getUserId();
     } catch (error) {
-      console.error('❌ Error getting player ID:', error);
+      console.error(' Error getting player ID:', error);
       return null;
     }
   }

@@ -132,11 +132,11 @@ class ProductionScrapingConfig {
    * Initialize automated scraping schedules
    */
   initializeSchedules() {
-    this.logger.info('🚀 Initializing automated scraping schedules');
+    this.logger.info(' Initializing automated scraping schedules');
     
     // Morning scrape (6 AM)
     cron.schedule(this.config.schedules.morning, async () => {
-      this.logger.info('🌅 MORNING SCRAPE STARTED - 6:00 AM SAST');
+      this.logger.info(' MORNING SCRAPE STARTED - 6:00 AM SAST');
       await this.runScrapingSession('morning');
     }, {
       timezone: 'Africa/Johannesburg'
@@ -144,13 +144,13 @@ class ProductionScrapingConfig {
     
     // Evening scrape (6 PM)
     cron.schedule(this.config.schedules.evening, async () => {
-      this.logger.info('🌆 EVENING SCRAPE STARTED - 6:00 PM SAST');
+      this.logger.info(' EVENING SCRAPE STARTED - 6:00 PM SAST');
       await this.runScrapingSession('evening');
     }, {
       timezone: 'Africa/Johannesburg'
     });
     
-    this.logger.info('✅ Scraping schedules initialized successfully');
+    this.logger.info(' Scraping schedules initialized successfully');
   }
   
   /**
@@ -160,7 +160,7 @@ class ProductionScrapingConfig {
     const startTime = Date.now();
     
     try {
-      this.logger.info(`📊 Session: ${sessionType} | Budget Used: R${this.stats.costTracking}/R${this.config.monthlyBudget}`);
+      this.logger.info(` Session: ${sessionType} | Budget Used: R${this.stats.costTracking}/R${this.config.monthlyBudget}`);
       
       // 1. FREE SCRAPING (Always run first)
       const freeJobs = await this.runFreeScrapingSources();
@@ -176,12 +176,12 @@ class ProductionScrapingConfig {
       const processedJobs = await this.processAndSaveJobs(allJobs, sessionType);
       
       const duration = Date.now() - startTime;
-      this.logger.info(`✅ Session complete: ${processedJobs.length} jobs processed in ${duration}ms`);
+      this.logger.info(` Session complete: ${processedJobs.length} jobs processed in ${duration}ms`);
       
       return processedJobs;
       
     } catch (error) {
-      this.logger.error(`❌ Scraping session failed: ${error.message}`);
+      this.logger.error(` Scraping session failed: ${error.message}`);
       return [];
     }
   }
@@ -197,25 +197,25 @@ class ProductionScrapingConfig {
       if (this.config.sources.free.facebook.enabled) {
         const facebookJobs = await this.scrapeFacebookJobs();
         jobs.push(...facebookJobs);
-        this.logger.info(`📘 Facebook: Found ${facebookJobs.length} jobs`);
+        this.logger.info(` Facebook: Found ${facebookJobs.length} jobs`);
       }
       
       // Job sites scraping
       if (this.config.sources.free.jobSites.enabled) {
         const jobSiteJobs = await this.scrapeJobSites();
         jobs.push(...jobSiteJobs);
-        this.logger.info(`💼 Job Sites: Found ${jobSiteJobs.length} jobs`);
+        this.logger.info(` Job Sites: Found ${jobSiteJobs.length} jobs`);
       }
       
       // Company websites
       if (this.config.sources.free.companyWebsites.enabled) {
         const companyJobs = await this.scrapeCompanyWebsites();
         jobs.push(...companyJobs);
-        this.logger.info(`🏢 Companies: Found ${companyJobs.length} jobs`);
+        this.logger.info(` Companies: Found ${companyJobs.length} jobs`);
       }
       
     } catch (error) {
-      this.logger.error(`❌ Free scraping error: ${error.message}`);
+      this.logger.error(` Free scraping error: ${error.message}`);
     }
     
     return jobs;
@@ -249,12 +249,12 @@ class ProductionScrapingConfig {
           await this.delay(3000);
           
         } catch (error) {
-          this.logger.warn(`⚠️ Facebook search failed for "${query}": ${error.message}`);
+          this.logger.warn(` Facebook search failed for "${query}": ${error.message}`);
         }
       }
       
     } catch (error) {
-      this.logger.error(`❌ Facebook scraping error: ${error.message}`);
+      this.logger.error(` Facebook scraping error: ${error.message}`);
     }
     
     return jobs;
@@ -313,18 +313,18 @@ class ProductionScrapingConfig {
           jobs.push(...siteJobs);
           await browser.close();
           
-          this.logger.info(`🌐 ${site}: Found ${siteJobs.length} jobs`);
+          this.logger.info(` ${site}: Found ${siteJobs.length} jobs`);
           
           // Delay between sites
           await this.delay(5000);
           
         } catch (error) {
-          this.logger.warn(`⚠️ Job site scraping failed for ${site}: ${error.message}`);
+          this.logger.warn(` Job site scraping failed for ${site}: ${error.message}`);
         }
       }
       
     } catch (error) {
-      this.logger.error(`❌ Job sites scraping error: ${error.message}`);
+      this.logger.error(` Job sites scraping error: ${error.message}`);
     }
     
     return jobs;
@@ -341,13 +341,13 @@ class ProductionScrapingConfig {
       for (const company of this.config.sources.free.companyWebsites.targets) {
         // Scrape company careers pages
         // Implementation would be similar to scrapeJobSites()
-        this.logger.info(`🏢 Scraping ${company} careers page`);
+        this.logger.info(` Scraping ${company} careers page`);
         
         // Add delay
         await this.delay(4000);
       }
     } catch (error) {
-      this.logger.error(`❌ Company scraping error: ${error.message}`);
+      this.logger.error(` Company scraping error: ${error.message}`);
     }
     
     return jobs;
@@ -371,7 +371,7 @@ class ProductionScrapingConfig {
     const jobs = [];
     
     if (!this.canUsePaidAPI()) {
-      this.logger.info('💰 Skipping paid APIs - budget limit reached');
+      this.logger.info(' Skipping paid APIs - budget limit reached');
       return jobs;
     }
     
@@ -397,12 +397,12 @@ class ProductionScrapingConfig {
           }
           
         } catch (error) {
-          this.logger.warn(`⚠️ SerpAPI search failed for "${query}": ${error.message}`);
+          this.logger.warn(` SerpAPI search failed for "${query}": ${error.message}`);
         }
       }
       
     } catch (error) {
-      this.logger.error(`❌ Paid API scraping error: ${error.message}`);
+      this.logger.error(` Paid API scraping error: ${error.message}`);
     }
     
     return jobs;
@@ -423,7 +423,7 @@ class ProductionScrapingConfig {
                job.phones?.length > 0;
       });
       
-      this.logger.info(`📞 Contact filter: ${jobsWithContact.length}/${jobs.length} jobs have contact info`);
+      this.logger.info(` Contact filter: ${jobsWithContact.length}/${jobs.length} jobs have contact info`);
       
       if (jobsWithContact.length === 0) {
         return [];
@@ -446,12 +446,12 @@ class ProductionScrapingConfig {
       }
       
       this.stats.totalJobsFound += jobsWithContact.length;
-      this.logger.info(`💾 Saved ${jobsWithContact.length} jobs to database`);
+      this.logger.info(` Saved ${jobsWithContact.length} jobs to database`);
       
       return data || jobsWithContact;
       
     } catch (error) {
-      this.logger.error(`❌ Job processing error: ${error.message}`);
+      this.logger.error(` Job processing error: ${error.message}`);
       return [];
     }
   }
@@ -489,14 +489,14 @@ if (require.main === module) {
   const scraper = new ProductionScrapingConfig();
   scraper.initializeSchedules();
   
-  console.log('🚀 Production scraping initialized!');
-  console.log('📅 Schedules: 6:00 AM & 6:00 PM SAST daily');
-  console.log('💰 Budget limit: R100/month');
-  console.log('🎯 Target: Entry-level jobs with contact info');
+  console.log(' Production scraping initialized!');
+  console.log(' Schedules: 6:00 AM & 6:00 PM SAST daily');
+  console.log(' Budget limit: R100/month');
+  console.log(' Target: Entry-level jobs with contact info');
   
   // Keep process running
   process.on('SIGTERM', () => {
-    console.log('👋 Graceful shutdown...');
+    console.log(' Graceful shutdown...');
     process.exit(0);
   });
 }

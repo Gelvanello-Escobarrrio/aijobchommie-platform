@@ -13,7 +13,8 @@ export * from './utils';
 export * from './constants';
 
 // Export schemas (if they exist)
-export * from './schemas';
+// Export schemas under a namespace to avoid colliding top-level type names
+export * as schemas from './schemas';
 
 // Re-export most commonly used items for convenience
 export type {
@@ -21,13 +22,14 @@ export type {
   Job,
   Company,
   JobApplication,
-  Subscription,
-  PaystackTransaction,
   ApiResponse,
   ApiError,
   UploadedFile,
   Notification
 } from './types';
+
+// Payment-related types are defined in the payment module; re-export them explicitly
+export type { Subscription, PaystackTransaction } from './types/payment';
 
 export {
   // Validation utilities

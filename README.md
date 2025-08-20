@@ -18,7 +18,7 @@
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
   [![Made in South Africa](https://img.shields.io/badge/Made%20in-South%20Africa-green?style=for-the-badge&flag=🇿🇦)](https://en.wikipedia.org/wiki/South_Africa)
   
-  [ **Live Demo**](https://aijobchommie.co.za) • [📚 **API Docs**](#-restful-api-documentation) • [🚀 **Get Started**](#-quick-start) • [📖 **Full Docs**](./docs/)
+  [ **Live Demo**](https://aijobchommie.co.za) • [ **API Docs**](#-restful-api-documentation) • [ **Get Started**](#-quick-start) • [ **Full Docs**](./docs/)
   
 </div>
 
@@ -30,7 +30,7 @@ AI Job Chommie Platform is a **world-class, enterprise-grade SaaS solution** tha
 
 -  **Job Seekers**: AI-powered job matching, resume optimization, and career insights
 -  **Employers**: Intelligent candidate screening, job posting management, and hiring analytics
-- ⚙ **Administrators**: Comprehensive platform management with advanced analytics
+-  **Administrators**: Comprehensive platform management with advanced analytics
 
 ###  **Why AI Job Chommie?**
 
@@ -62,7 +62,7 @@ AI Job Chommie Platform is a **world-class, enterprise-grade SaaS solution** tha
 -  **Advanced Search** - Find candidates with specific skills and experience
 -  **Communication Tools** - Built-in messaging and interview scheduling
 
-### ⚙ **For Administrators**
+###  **For Administrators**
 -  **Platform Management** - Complete admin dashboard with real-time monitoring
 -  **Advanced Analytics** - User engagement, job performance, and revenue insights
 -  **User Management** - Account administration and comprehensive support tools
@@ -346,27 +346,27 @@ Technology Stack
 ###  **Installation**
 
 ```bash
-# 1️⃣ Clone the repository
+# 1⃣ Clone the repository
 git clone https://github.com/FernandoSteyn/aijobchommie-platform.git
 cd aijobchommie-platform
 
-# 2️⃣ Install dependencies
+# 2⃣ Install dependencies
 npm install
 
-# 3️⃣ Validate project setup
+# 3⃣ Validate project setup
 npm run validate
 
-# 4️⃣ Set up environment (copies .env.example to .env)
+# 4⃣ Set up environment (copies .env.example to .env)
 npm run setup
 
-# 5️⃣ Configure your .env file with your credentials
+# 5⃣ Configure your .env file with your credentials
 # Edit .env with your database, API keys, and other settings
 
-# 6️⃣ Set up the database
+# 6⃣ Set up the database
 npm run db:generate    # Generate database schema
 npm run db:migrate     # Run database migrations
 
-# 7️⃣ Start the development servers
+# 7⃣ Start the development servers
 npm run dev
 ```
 
@@ -541,7 +541,7 @@ Support
 
 Acknowledgments
 
-- Built with ❤️ for the South African job market
+- Built with  for the South African job market
 - Powered by cutting-edge AI technology
 - Designed for scalability and performance
 

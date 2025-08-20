@@ -278,7 +278,7 @@ const SettingsPage = () => {
               direction: i % 2 === 0 ? "normal" : "reverse"
             }}
           >
-            ⚙️
+            
           </motion.div>
         ))}
       </div>
