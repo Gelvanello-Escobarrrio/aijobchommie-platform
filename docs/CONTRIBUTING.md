@@ -415,6 +415,6 @@ Every contribution, no matter how small, helps create opportunities for South Af
 
 ---
 
-**Made with ❤ for South African job seekers**
+**Made with  for South African job seekers**
 
 *By contributing to AI Job Chommie Platform, you're not just writing code - you're creating opportunities and changing lives.*
