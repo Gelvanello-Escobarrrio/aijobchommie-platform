@@ -199,7 +199,7 @@ const LoginPage: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <MetallicToggle
                     checked={formData.rememberMe}
-                    onChange={(checked) => setFormData({...formData, rememberMe: checked})}
+                    onChange={(checked: boolean) => setFormData({...formData, rememberMe: checked})}
                     label="Remember me"
                   />
 

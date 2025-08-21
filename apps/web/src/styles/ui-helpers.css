@@ -1,0 +1,11 @@
+/* Minimal helper styles for the metallic theme */
+:root{
+  --tech-cyan: #00ffff;
+  --tech-purple: #7c3aed;
+}
+
+.glow-pulse{ box-shadow: 0 0 12px rgba(0,255,255,0.12); }
+.border-tech{ border: 1px solid rgba(0,255,255,0.12); }
+
+/* small animation for page loading spinner */
+@keyframes spin { to { transform: rotate(360deg); } }

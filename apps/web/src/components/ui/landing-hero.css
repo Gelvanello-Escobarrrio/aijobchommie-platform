@@ -1,0 +1,54 @@
+.landing-hero{position:relative}
+.landing-hero__backdrop{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%, rgba(0,0,0,0.6), transparent 40%), linear-gradient(90deg, rgba(12,14,20,1) 0%, rgba(30,35,45,1) 100%);filter:blur(20px);opacity:0.8}
+.text-gradient-tech{background:linear-gradient(90deg,#00ffff,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+	.landing-hero svg { animation: none !important; transition: none !important; }
+	.landing-hero * { transition: none !important; }
+}
+
+/* Focusable region visual cue when keyboard navigating */
+.landing-hero:focus { outline: 3px solid rgba(124,58,237,0.25); outline-offset: 6px }
+
+/* Make SVG decorative and non-interactive on small screens */
+@media (max-width: 768px) {
+	.landing-hero svg { opacity: 0.12; display: none }
+	.landing-hero h1 { font-size: 2.4rem }
+}
+
+/* Scale the 4K SVG backdrop so it remains crisp but performant */
+.landing-hero__svg-large{
+	width:60vw;
+	height:auto;
+	transform-origin: top right;
+	will-change: transform, opacity;
+	mix-blend-mode: screen;
+}
+
+/* When reduced motion is enabled, avoid any heavy transforms */
+@media (prefers-reduced-motion: reduce){
+	.landing-hero__svg-large{transition:none!important;transform:none!important}
+}
+
+/* Raster fallback sits behind text and scales with viewport */
+.landing-hero__raster{
+	width:60vw;
+	height:auto;
+	transform-origin: top right;
+	object-fit: cover;
+	z-index:10;
+	mix-blend-mode: screen;
+	opacity:0.98;
+}
+
+/* small particle glow for subtle motion (reduced-motion safe) */
+.landing-hero__particle{
+	position:absolute;right:22%;top:20%;width:6px;height:6px;border-radius:9999px;background:rgba(255,255,255,0.85);filter:blur(6px);opacity:0.9;animation:heroGlow 4s ease-in-out infinite;
+}
+
+@keyframes heroGlow{0%{transform:translateY(0) scale(1);opacity:.6}50%{transform:translateY(-18px) scale(1.6);opacity:1}100%{transform:translateY(0) scale(1);opacity:.6}}
+
+@media (prefers-reduced-motion: reduce){
+	.landing-hero__particle{animation:none}
+}

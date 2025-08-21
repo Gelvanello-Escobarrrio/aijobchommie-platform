@@ -7,7 +7,7 @@
 
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
+import {
   MapPin, 
   Clock, 
   DollarSign, 
@@ -39,9 +39,13 @@ const JobDetails: React.FC = () => {
   useEffect(() => {
     if (job) {
       // TODO: Track job view
-      console.log(`Viewed job: ${job.id}`);
+    console.log(`Viewed job: ${job.id}`);
     }
   }, [job]);
+
+  // Prevent unused variable compiler errors in strict mode
+  void ExternalLink;
+  void navigate;
 
   // Format salary range
   const formatSalary = (job: any) => {

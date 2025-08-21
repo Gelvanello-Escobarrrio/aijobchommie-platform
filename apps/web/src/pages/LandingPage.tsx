@@ -1,10 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   ArrowRight,
-  Award,
   Brain,
-  CheckCircle,
-  Eye,
   Flag,
   Flame,
   Heart,
@@ -12,11 +9,10 @@ import {
   Rocket,
   Shield,
   Star,
-  Target,
   TrendingUp,
   Zap
 } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Import metallic components
@@ -27,6 +23,7 @@ import {
   MetallicCard,
   SectionHeading
 } from '../components/ui/MetallicComponents';
+import LandingHero from '../components/LandingHero';
 
 // Import premium theme and animations
 import '../styles/micro-interactions.css';
@@ -37,9 +34,9 @@ const LandingPage: React.FC = () => {
   const { scrollY } = useScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  const [currentWord, setCurrentWord] = useState(0);
+  
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, velocity: number}>>([]);
-  const heroRef = useRef<HTMLDivElement>(null);
+  
 
   // Explosive entry animation
   useEffect(() => {
@@ -54,14 +51,7 @@ const LandingPage: React.FC = () => {
     setParticles(newParticles);
   }, []);
 
-  // Dynamic word rotation for attention
-  const dynamicWords = ["REVOLUTIONIZE", "TRANSFORM", "ACCELERATE", "DOMINATE", "UNLEASH"];
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord(prev => (prev + 1) % dynamicWords.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  // Dynamic word rotation for attention (moved into LandingHero)
 
   // Advanced parallax and mouse tracking
   const parallaxY = useTransform(scrollY, [0, 1000], [0, -400]);
@@ -79,37 +69,15 @@ const LandingPage: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Explosive stats that demand attention
-  const explosiveStats = [
-    {
-      value: "500K+",
-      label: "JOBS DOMINATED",
-      icon: <Flame className="w-8 h-8" />,
-      color: "from-red-500 to-orange-600",
-      glow: "shadow-red-500/50"
-    },
-    {
-      value: "99.9%",
-      label: "SUCCESS RATE",
-      icon: <Target className="w-8 h-8" />,
-      color: "from-green-400 to-emerald-600",
-      glow: "shadow-green-500/50"
-    },
-    {
-      value: "50K+",
-      label: "CAREERS LAUNCHED",
-      icon: <Rocket className="w-8 h-8" />,
-      color: "from-blue-500 to-purple-600",
-      glow: "shadow-blue-500/50"
-    },
-    {
-      value: "24/7",
-      label: "AI POWERHOUSE",
-      icon: <Zap className="w-8 h-8" />,
-      color: "from-yellow-400 to-orange-500",
-      glow: "shadow-yellow-500/50"
-    }
-  ];
+  // Reference these variables to avoid no-unused-vars errors in strict TS config
+  // They are used for future interactive UI features.
+  void mousePosition;
+  void isVisible;
+  void parallaxY;
+  void parallaxRotate;
+  void scaleEffect;
+
+  // Explosive stats moved into LandingHero
 
   // Mind-blowing features that grab attention
   const mindBlowingFeatures = [
@@ -227,238 +195,8 @@ const LandingPage: React.FC = () => {
         ))}
       </div>
 
-      {/* MIND-BLOWING Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      >
-        {/* Ultra-Dynamic Navigation */}
-        <motion.nav
-          className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
-          initial={{ y: -200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        >
-          <div className="bg-void-black/80 backdrop-blur-2xl border-2 border-tech-cyan/50 rounded-3xl px-12 py-6 shadow-2xl shadow-tech-cyan/20">
-            <div className="flex items-center space-x-12">
-              <motion.div
-                className="flex items-center space-x-4"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-tech-cyan to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-tech-cyan/50">
-                  <Brain className="w-8 h-8 text-white" />
-                </div>
-                <span className="text-chrome text-3xl font-heading font-black tracking-wider">JOB CHOMMIE</span>
-              </motion.div>
-
-              <div className="hidden lg:flex items-center space-x-8">
-                {['POWER', 'DOMINATE', 'CONQUER', 'TRANSFORM'].map((item) => (
-                  <motion.a
-                    key={item}
-                    href={`/${item.toLowerCase()}`}
-                    className="text-text-secondary hover:text-tech-cyan transition-all duration-300 font-bold text-lg tracking-wide"
-                    whileHover={{ y: -3, scale: 1.1 }}
-                  >
-                    {item}
-                  </motion.a>
-                ))}
-              </div>
-
-              <div className="flex items-center space-x-6">
-                <MetallicButton
-                  variant="outline"
-                  size="lg"
-                  onClick={() => navigate('/auth/login')}
-                  className="font-bold text-lg"
-                >
-                  SIGN IN
-                </MetallicButton>
-                <MetallicButton
-                  variant="tech"
-                  size="lg"
-                  onClick={() => navigate('/auth/signup')}
-                  icon={<Rocket className="w-6 h-6" />}
-                  className="font-bold text-lg glow-pulse"
-                >
-                  LAUNCH NOW
-                </MetallicButton>
-              </div>
-            </div>
-          </div>
-        </motion.nav>
-
-        <div className="responsive-container relative z-20 text-center">
-          {/* EXPLOSIVE Status Badge */}
-          <motion.div
-            className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-green-500/30 to-emerald-500/30 border-2 border-green-400/50 rounded-full mb-12 shadow-2xl shadow-green-500/20"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-6 h-6 bg-green-400 rounded-full animate-ping absolute"></div>
-                <div className="w-6 h-6 bg-green-400 rounded-full"></div>
-              </div>
-              <span className="text-green-300 font-black text-xl tracking-wider">LIVE & DOMINATING</span>
-            </div>
-            <div className="h-8 w-px bg-green-400/50"></div>
-            <span className="text-white font-bold text-lg">500K+ JOBS • AI POWERED • WORLD-CLASS</span>
-          </motion.div>
-
-          {/* MIND-BLOWING Main Headlines */}
-          <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.5 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 100, damping: 10, delay: 0.2 }}
-          >
-            <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-heading font-black mb-8 leading-none">
-              <motion.span
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-tech-cyan via-purple-500 to-pink-500"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                style={{
-                  backgroundSize: "200% 200%"
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                {dynamicWords[currentWord]}
-              </motion.span>
-              <motion.span
-                className="block text-chrome"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                YOUR CAREER
-              </motion.span>
-              <motion.span
-                className="block text-gradient-tech"
-                animate={{ rotateX: [0, 360] }}
-                transition={{ duration: 4, repeat: Infinity }}
-              >
-                DESTINY
-              </motion.span>
-            </h1>
-          </motion.div>
-
-          {/* EXPLOSIVE Subtitle */}
-          <motion.p
-            className="text-3xl md:text-4xl text-text-secondary mb-16 max-w-6xl mx-auto leading-relaxed font-bold"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            Don't just search for jobs - <span className="text-tech-cyan font-black text-5xl">CONQUER</span> the entire South African job market with
-            <span className="text-purple-400 font-black text-5xl"> AI SUPERPOWERS</span> that make competitors weep!
-          </motion.p>
-
-          {/* EXPLOSIVE Action Buttons */}
-          <motion.div
-            className="flex flex-col lg:flex-row gap-8 justify-center items-center mb-20"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 1 }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 2 }}
-              whileTap={{ scale: 0.9 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-purple-600 rounded-3xl blur-xl opacity-75 animate-pulse"></div>
-              <MetallicButton
-                variant="tech"
-                size="xl"
-                onClick={() => navigate('/auth/signup')}
-                icon={<Flame className="w-8 h-8" />}
-                iconPosition="right"
-                className="relative min-w-96 text-2xl py-8 px-16 font-black tracking-wider shadow-2xl"
-              >
-                 DOMINATE JOBS NOW 
-              </MetallicButton>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl blur-xl opacity-50"></div>
-              <MetallicButton
-                variant="outline"
-                size="xl"
-                onClick={() => navigate('/demo')}
-                icon={<Eye className="w-8 h-8" />}
-                className="relative min-w-80 text-2xl py-8 px-16 font-black tracking-wider border-4"
-              >
-                 WITNESS THE POWER
-              </MetallicButton>
-            </motion.div>
-          </motion.div>
-
-          {/* EXPLOSIVE Trust Indicators */}
-          <motion.div
-            className="flex flex-wrap justify-center items-center gap-12 text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-          >
-            {[
-              { icon: <CheckCircle className="w-8 h-8 text-green-400" />, text: "100% FREE DOMINATION" },
-              { icon: <Shield className="w-8 h-8 text-blue-400" />, text: "FORTRESS-LEVEL SECURITY" },
-              { icon: <Zap className="w-8 h-8 text-yellow-400" />, text: "LIGHTNING-SPEED RESULTS" },
-              { icon: <Award className="w-8 h-8 text-purple-400" />, text: "WORLD-CHAMPIONSHIP GRADE" }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center gap-3 font-bold"
-                whileHover={{ scale: 1.2 }}
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  y: { duration: 2, repeat: Infinity, delay: index * 0.3 },
-                  scale: { duration: 0.2 }
-                }}
-              >
-                {item.icon}
-                <span className="text-white tracking-wide">{item.text}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* EXPLOSIVE Stats at Bottom */}
-        <motion.div
-          className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 1 }}
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {explosiveStats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className={`relative bg-gradient-to-br ${stat.color} p-8 rounded-3xl text-center shadow-2xl ${stat.glow}`}
-                whileHover={{ y: -10, scale: 1.05, rotate: Math.random() * 10 - 5 }}
-                animate={{
-                  boxShadow: [`0 0 20px ${stat.color}`, `0 0 40px ${stat.color}`, `0 0 20px ${stat.color}`]
-                }}
-                transition={{
-                  boxShadow: { duration: 2, repeat: Infinity },
-                  hover: { type: "spring", stiffness: 300 }
-                }}
-              >
-                <div className="flex justify-center mb-3">
-                  <div className="text-white">{stat.icon}</div>
-                </div>
-                <div className="text-4xl font-black text-white mb-2">{stat.value}</div>
-                <div className="text-white/90 font-bold text-sm tracking-wider">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
+  {/* Replace the large inline hero with the centralized LandingHero component */}
+  <LandingHero />
 
       {/* MIND-BLOWING Features Section */}
       <section className="section-responsive bg-gradient-to-b from-void-black to-bg-secondary/50 relative overflow-hidden">

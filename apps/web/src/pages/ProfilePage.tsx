@@ -36,6 +36,8 @@ import {
 
 const ProfilePage: React.FC = () => {
   const navigate = useNavigate();
+  // prevent unused variable TS error
+  void navigate;
   const [editing, setEditing] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
 

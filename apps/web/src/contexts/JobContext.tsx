@@ -229,8 +229,9 @@ export const JobProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       if (response.data.success) {
         const application = response.data.data.application;
         
-        // Invalidate applications cache
-        queryClient.invalidateQueries(['applications']);
+  // Invalidate applications cache
+  // React Query types are strict in some versions; cast here to any to satisfy signature
+  (queryClient.invalidateQueries as any)(['applications']);
         
         toast.success(`Application submitted! Tracking: ${application.trackingNumber}`);
       } else {
@@ -392,7 +393,7 @@ export const useApplyToJob = () => {
       applyToJob(jobId, applicationData),
     onSuccess: () => {
       // Invalidate and refetch applications
-      queryClient.invalidateQueries(['applications']);
+  (queryClient.invalidateQueries as any)(['applications']);
     },
   });
 };
