@@ -30,3 +30,26 @@ jobs:
         with:
           name: storybook-static
           path: ./apps/web/storybook-static
+
+      - name: Build hero PNG (CI)
+        working-directory: ./
+        run: |
+          # install only web dependencies to keep install fast
+          cd apps/web
+          npm ci
+          # use node script to render the SVG using system Chrome on ubuntu-latest
+          node ../../scripts/export-hero-png.js
+
+      - name: Upload hero-4k.png
+        uses: actions/upload-artifact@v4
+        with:
+          name: hero-4k-png
+          path: ./apps/web/public/assets/hero-4k.png
+
+      - name: Commit hero PNG back to repo
+        if: ${{ always() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x ./scripts/ci-commit-hero.sh
+          ./scripts/ci-commit-hero.sh
