@@ -9,8 +9,27 @@ import {
 } from './ui/MetallicComponents';
 import './ui/landing-hero.css';
 
-const LandingHero: React.FC = () => {
+type LandingHeroProps = {
+  hue?: number; // degrees shift to moonlight hue
+  spotlightOffset?: { x: number; y: number };
+  spotlightIntensity?: number; // 0-1
+  motionEnabled?: boolean;
+};
+
+const LandingHero: React.FC<LandingHeroProps> = ({
+  hue = 210,
+  spotlightOffset = { x: -740, y: 160 },
+  spotlightIntensity = 0.78,
+  motionEnabled = true
+}) => {
   const navigate = useNavigate();
+  const cssVars = {
+    ['--hero-hue' as any]: `${hue}deg`,
+    ['--spot-x' as any]: `${spotlightOffset.x}px`,
+    ['--spot-y' as any]: `${spotlightOffset.y}px`,
+    ['--spot-intensity' as any]: String(spotlightIntensity),
+    ['--motion-enabled' as any]: motionEnabled ? '1' : '0'
+  } as React.CSSProperties;
 
   return (
     <section
@@ -26,6 +45,7 @@ const LandingHero: React.FC = () => {
         aria-hidden="true"
         loading="lazy"
         className="landing-hero__raster absolute right-0 top-0 pointer-events-none"
+        style={cssVars}
       />
 
       {/* Large original 4K SVG backdrop: moon + soft spotlight that illuminates the heading.
@@ -40,6 +60,7 @@ const LandingHero: React.FC = () => {
         aria-hidden="true"
         focusable="false"
         role="img"
+        style={cssVars}
       >
         <defs>
           {/* Deep space gradient */}
@@ -51,6 +72,7 @@ const LandingHero: React.FC = () => {
 
           {/* Main moon radial gradient (warm center -> cool edge) */}
           <radialGradient id="moon-4k" cx="0.85" cy="0.12" r="0.28">
+            {/* Adjust color stops by hue CSS variable — we tint via blend mode in CSS for simplicity */}
             <stop offset="0%" stopColor="#fff9f0" stopOpacity="0.98" />
             <stop offset="30%" stopColor="#f0f8ff" stopOpacity="0.85" />
             <stop offset="60%" stopColor="#cfe7ff" stopOpacity="0.35" />
@@ -103,10 +125,10 @@ const LandingHero: React.FC = () => {
             <ellipse cx="140" cy="80" rx="160" ry="100" fill="#e6f3ff" opacity="0.18" />
           </g>
 
-        {/* subtle spotlight overlay aimed at heading area (left of center) */}
-        <rect width="3840" height="2160" fill="url(#spotlight)" opacity="0.6" transform="translate(-420,0) scale(1.05)" />
-    {/* intensified spotlight overlay aimed at heading area (left of center) */}
-    <rect width="3840" height="2160" fill="url(#spotlight)" opacity="0.78" transform="translate(-740,160) scale(1.12)" style={{mixBlendMode: 'screen'}} />
+    {/* subtle spotlight overlay aimed at heading area (left of center) */}
+    <rect width="3840" height="2160" fill="url(#spotlight)" opacity="0.6" transform="translate(-420,0) scale(1.05)" />
+  {/* intensified spotlight overlay aimed at heading area (left of center) */}
+  <rect width="3840" height="2160" fill="url(#spotlight)" opacity={spotlightIntensity} transform={`translate(${spotlightOffset.x},${spotlightOffset.y}) scale(1.12)`} style={{mixBlendMode: 'screen'}} />
 
         {/* faint abstract shapes to give depth, kept subtle */}
         <path d="M1200 1600 C 1400 1200, 1900 1100, 2300 900 C 2600 760, 3000 600, 3400 520 L 3600 480 L 3000 480 C 2600 480, 2200 560, 1900 700 C 1700 800, 1500 930, 1200 1060 C 1000 1150, 900 1300, 1200 1600 Z" fill="#07111a" opacity="0.6" />

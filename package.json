@@ -8,7 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+  "build": "turbo run build",
+  "export-storybook-snapshots": "node ./scripts/export-storybook-snapshots.js",
     "dev": "turbo run dev",
     "start": "turbo run start",
     "test": "turbo run test",

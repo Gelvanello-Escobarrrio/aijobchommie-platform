@@ -1,0 +1,32 @@
+name: Build Storybook and Upload Static
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (root)
+        run: npm ci
+
+      - name: Build Storybook (apps/web)
+        working-directory: ./apps/web
+        run: |
+          npm ci
+          npm run build-storybook
+
+      - name: Upload storybook-static
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: ./apps/web/storybook-static
