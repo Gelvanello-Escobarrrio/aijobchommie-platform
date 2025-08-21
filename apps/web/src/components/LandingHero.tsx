@@ -14,6 +14,7 @@ type LandingHeroProps = {
   spotlightOffset?: { x: number; y: number };
   spotlightIntensity?: number; // 0-1
   motionEnabled?: boolean;
+  variant?: 'default' | 'warm' | 'cold' | 'spotlight';
 };
 
 const LandingHero: React.FC<LandingHeroProps> = ({
@@ -21,7 +22,8 @@ const LandingHero: React.FC<LandingHeroProps> = ({
   spotlightOffset = { x: -740, y: 160 },
   spotlightIntensity = 0.78,
   motionEnabled = true
-}) => {
+  variant = 'default'
+}: LandingHeroProps) => {
   const navigate = useNavigate();
   const cssVars = {
     ['--hero-hue' as any]: `${hue}deg`,
@@ -38,15 +40,19 @@ const LandingHero: React.FC<LandingHeroProps> = ({
       aria-label="Hero — Conquer your career with AI"
       tabIndex={-1}
     >
-      {/* Raster fallback (produced from the 4K SVG) for crisp, fast rendering when available. */}
-      <img
-        src="/assets/hero-4k.png"
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        className="landing-hero__raster absolute right-0 top-0 pointer-events-none"
-        style={cssVars}
-      />
+      {/* Raster fallback with WebP preferred and PNG fallback. Uses variant-specific assets. */}
+      <picture className="landing-hero__raster absolute right-0 top-0 pointer-events-none" style={cssVars}>
+        <source type="image/webp" srcSet={
+          variant === 'warm' ? '/assets/hero-4k-warm.webp' : variant === 'cold' ? '/assets/hero-4k-cold.webp' : variant === 'spotlight' ? '/assets/hero-4k-spotlight.webp' : '/assets/hero-4k.webp'
+        } />
+        <img
+          src={variant === 'warm' ? '/assets/hero-4k-warm.png' : variant === 'cold' ? '/assets/hero-4k-cold.png' : variant === 'spotlight' ? '/assets/hero-4k-spotlight.png' : '/assets/hero-4k.png'}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="landing-hero__raster absolute right-0 top-0 pointer-events-none"
+        />
+      </picture>
 
       {/* Large original 4K SVG backdrop: moon + soft spotlight that illuminates the heading.
          This artwork is original and crafted for the project; it's NOT a copy of any screenshot.
